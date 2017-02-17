@@ -9,9 +9,7 @@
         name: 'slide',
         props: {
             index: {
-                type: Number,
-                required: true,
-                default: 0
+                type: Number
             }
         },
         data () {
