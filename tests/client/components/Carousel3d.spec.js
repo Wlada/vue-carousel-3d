@@ -8,7 +8,6 @@ const VueCarousel3d = require('../../../src/index.js');
 const Carousel3d = require('../../../src/Carousel3d.vue');
 const Slide = require('../../../src/Slide.vue');
 
-
 Vue.use(VueCarousel3d.default);
 
 describe('Carousel3d', () => {
