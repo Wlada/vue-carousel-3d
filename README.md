@@ -1,7 +1,7 @@
 # Vue Carousel 3d
 
-[![Build Status](https://travis-ci.org/wlada/vue-carousel.svg?branch=master)](https://travis-ci.org/wlada/vue-carousel)
-[![Coverage Status](https://coveralls.io/repos/github/wlada/vue-carousel-3d/badge.svg?branch=master)](https://coveralls.io/github/wlada/vue-carousel-3d?branch=master)
+[![Build Status](https://travis-ci.org/Wlada/vue-carousel-3d.svg?branch=master)](https://travis-ci.org/Wlada/vue-carousel-3d)
+[![Coverage Status](https://coveralls.io/repos/github/Wlada/vue-carousel-3d/badge.svg)](https://coveralls.io/github/Wlada/vue-carousel-3d)
 [![Latest Stable Version](https://img.shields.io/npm/v/vue-carousel-3d.svg)](https://www.npmjs.com/package/vue-carousel-3d)
 
 **Feel free to submit issues and feature requests [here](https://github.com/wlada/vue-carousel-3d/issues)**.
