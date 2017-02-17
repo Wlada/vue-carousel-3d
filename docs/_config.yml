@@ -69,6 +69,6 @@ theme: vue
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://wlada.github.io/vue-carousel-3d/
+  repo: https://github.com/Wlada/vue-carousel-3d
   branch: gh-pages
   message: Docs updated

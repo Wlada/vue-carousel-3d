@@ -1,9 +1,9 @@
 exports[`Controls should mount successfully 1`] = `
 ".carousel-3d-slider(style=\'width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide.current(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide.current(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide.current(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide.current(style=\'border-width: 1px; width: 362px; height: 272px;\')
 |  
 .carousel-3d-controls
   a.prev(href=\'#\') &lsaquo;
@@ -14,10 +14,10 @@ exports[`Controls should mount successfully 1`] = `
 
 exports[`Controls should render a next button 1`] = `
 ".carousel-3d-slider(style=\'width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide.current(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide.current(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide.current(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide.current(style=\'border-width: 1px; width: 362px; height: 272px;\')
 |  
 .carousel-3d-controls
   a.prev(href=\'#\') &lsaquo;
@@ -28,10 +28,10 @@ exports[`Controls should render a next button 1`] = `
 
 exports[`Controls should render a prev button 1`] = `
 ".carousel-3d-slider(style=\'width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide.current(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide.current(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide.current(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide.current(style=\'border-width: 1px; width: 362px; height: 272px;\')
 |  
 .carousel-3d-controls
   a.prev(href=\'#\') &lsaquo;
@@ -42,10 +42,10 @@ exports[`Controls should render a prev button 1`] = `
 
 exports[`Controls should trigger onNext when next is clicked 1`] = `
 ".carousel-3d-slider(style=\'width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px; top: 0px; opacity: 1; visibility: visible;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px; top: 0px; opacity: 1; visibility: visible;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px; top: 0px; opacity: 1; visibility: visible;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px; top: 0px; opacity: 1; visibility: visible;\')
 |  
 .carousel-3d-controls
   a.prev(href=\'#\') &lsaquo;
@@ -56,10 +56,10 @@ exports[`Controls should trigger onNext when next is clicked 1`] = `
 
 exports[`Controls should trigger onNext when next is clicked 2`] = `
 ".carousel-3d-slider(style=\'width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
-  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px; top: 0px; opacity: 1; visibility: visible;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px; top: 0px; opacity: 1; visibility: visible;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px; top: 0px; opacity: 1; visibility: visible;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px; top: 0px; opacity: 1; visibility: visible;\')
 |  
 .carousel-3d-controls
   a.prev(href=\'#\') &lsaquo;

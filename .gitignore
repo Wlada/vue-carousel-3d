@@ -2,4 +2,7 @@
 node_modules/
 npm-debug.log
 coverage/
+docs/public/
 .idea/
+.deploy_git/
+
