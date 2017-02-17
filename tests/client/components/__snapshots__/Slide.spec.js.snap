@@ -1,0 +1,34 @@
+exports[`Slide should mount successfully 1`] = `
+".carousel-3d-slider(style=\'width: 362px; height: 272px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
+|  
+.carousel-3d-controls
+  a.prev(href=\'#\') &lsaquo;
+  |  
+  a.next(href=\'#\') &rsaquo;
+"
+`;
+
+exports[`Slide should return style object when 3 slides are added to the slots 1`] = `
+".carousel-3d-slider(style=\'width: 362px; height: 272px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
+|  
+.carousel-3d-controls
+  a.prev(href=\'#\') &lsaquo;
+  |  
+  a.next(href=\'#\') &rsaquo;
+"
+`;
+
+exports[`Slide should unmount successfully 1`] = `
+".carousel-3d-slider(style=\'width: 362px; height: 272px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 362px; height: 272px;\')
+|  
+.carousel-3d-controls
+  a.prev(href=\'#\') &lsaquo;
+  |  
+  a.next(href=\'#\') &rsaquo;
+"
+`;
