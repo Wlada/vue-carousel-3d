@@ -179,7 +179,7 @@
              */
             goNext () {
                 if (this.isNextPossible) {
-                    this.isLastSlide ? this.goSlide(0, false) : this.goSlide(this.currentIndex + 1, false)
+                    this.isLastSlide ? this.goSlide(0) : this.goSlide(this.currentIndex + 1)
                 }
             },
             /**
@@ -187,7 +187,7 @@
              */
             goPrev () {
                 if (this.isPrevPossible) {
-                    this.isFirstSlide ? this.goSlide(this.total - 1, false) : this.goSlide(this.currentIndex - 1, false)
+                    this.isFirstSlide ? this.goSlide(this.total - 1) : this.goSlide(this.currentIndex - 1)
                 }
             },
             /**
@@ -247,7 +247,7 @@
              * @param  {Object} e The event object
              */
             handleMousedown (e) {
-                if (!e.touches) {
+                if (e.touches) {
                     e.preventDefault()
                 }
 
@@ -363,7 +363,9 @@
         width: 100%;
         position: relative;
         z-index: 0;
+        overflow: hidden;
         margin: 20px auto;
+        box-sizing: border-box;
     }
 
     .carousel-3d-slider {

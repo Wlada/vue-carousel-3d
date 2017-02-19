@@ -44,6 +44,8 @@
                     }
                 }
 
+                console.log(this.parent.slideHeight)
+
                 return Object.assign(styles, {
                     'border-width': this.parent.border + 'px',
                     'width': this.parent.slideWidth + 'px',
@@ -107,6 +109,7 @@
         background-color: #ccc;
         display: block;
         margin: 0;
+        box-sizing: border-box;
     }
 
     .carousel-3d-slide img {
