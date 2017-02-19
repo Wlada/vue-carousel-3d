@@ -64,6 +64,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: vue
+google_analytics: UA-4467381-14
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
