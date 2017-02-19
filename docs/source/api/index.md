@@ -74,7 +74,7 @@ Slide width displayed in center of carousel
 * **Type**: `Number`
 * **Default**: `360`
 
-### width
+### height
 
 Slide height displayed in center of carousel
 
