@@ -1,7 +1,7 @@
 {
     "name": "vue-carousel-3d",
-    "version": "0.1.2",
-    "description": "Beautiful, flexible and touch-friendly 3D Carousel for Vue.js",
+    "version": "0.1.3",
+    "description": "Beautiful, flexible and touch supported 3D Carousel for Vue.js",
     "main": "dist/vue-carousel-3d.min.js",
     "scripts": {
         "build": "webpack --config config/webpack.min.conf.js && npm run updateDocAssets",

@@ -5,10 +5,10 @@
 # Site
 title: Vue Carousel 3D
 subtitle: 
-description: Beautiful flexible and touch-friendly 3D Carousel for Vue.js
+description: Beautiful flexible and touch supported 3D Carousel for Vue.js
 author: Vladimir Bujanvoic
 language:
-timezone:
+timezone: 
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -72,4 +72,4 @@ deploy:
   type: git
   repo: https://github.com/Wlada/vue-carousel-3d
   branch: gh-pages
-  message: Docs updated
+  message: Docs updated with hexo deploy
