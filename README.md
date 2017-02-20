@@ -36,7 +36,7 @@ This will make **&lt;carousel-3d&gt;** and **&lt;slide&gt;** available to all co
 
 ##### Usage (Local)
 
-Include the carousel 3d directly into your component using import:
+Include the Carousel 3d into your component using import:
 
 ``` js
 import { Carousel3d, Slide } from 'vue-carousel-3d';
@@ -53,7 +53,7 @@ export default {
 
 ## HTML Structure
 
-Once the **Carousel3d** and **Slide** components are installed globally or imported, they can be used in templates in the following manner:
+Once the **Carousel3d** and **Slide** components are installed globally or imported, they can be used in templates like below:
 
 ``` html
   <carousel-3d>
@@ -66,11 +66,11 @@ Once the **Carousel3d** and **Slide** components are installed globally or impor
   </carousel-3d>
 ```
 
-Keep in mind that **index** property on slide component is required property and you need to pass it for every slide 
+Keep in mind that **index** property on slide component is required property and you will need to pass it for every slide starting from 0 
 
 ## Development
 
-A sandboxed dev environment is provided by [vue-play](https://github.com/vue-play/vue-play). Changes made to the component files will appear in real time in the sandbox.
+Dev environment is created by [vue-play](https://github.com/vue-play/vue-play). Changes made to the component files will appear in real time in the sandbox.
 
 To begin development, run:
 
@@ -79,9 +79,9 @@ npm install
 npm run dev
 ```
 
-then navigate to `http://localhost:5000`
+now open  `http://localhost:5000` in your browser
 
-To modify and add sandbox scenarios, edit `play/index.js`
+You can modify and add scenarios in `play/index.js`
 
 ## License
 
