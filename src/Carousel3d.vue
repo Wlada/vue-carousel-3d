@@ -247,7 +247,7 @@
              * @param  {Object} e The event object
              */
             handleMousedown (e) {
-                if (e.touches) {
+                if (!e.touches) {
                     e.preventDefault()
                 }
 

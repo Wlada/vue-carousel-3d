@@ -163,6 +163,23 @@ play('Carousel3d', module)
         }
     })
 
+    .add("controls enabled", {
+        template: `<carousel-3d controls-enabled="true">
+            <slide v-for="(slide, i) in slides" :index="i">
+                <img :src="slide.src">
+            </slide>
+        </carousel-3d>`,
+        components: {
+            Carousel3d,
+            Slide
+        },
+        data() {
+            return {
+                slides: slides
+            }
+        }
+    })
+
     .add("ltr direction", {
         template: `<carousel-3d :dir="'ltr'">
             <slide v-for="(slide, i) in slides" :index="i">
