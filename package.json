@@ -1,6 +1,6 @@
 {
     "name": "vue-carousel-3d",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "Beautiful, flexible and touch supported 3D Carousel for Vue.js",
     "main": "dist/vue-carousel-3d.min.js",
     "scripts": {
@@ -15,7 +15,8 @@
         "test:client": "jest --config tests/client.jest.json --forceExit",
         "test:client:coverage": "jest --config tests/client.jest.json --coverage --forceExit",
         "test-coverage": "npm run test:client:coverage",
-        "updateDocAssets": "cp ./dist/vue-carousel-3d.min.js ./docs/themes/vue/source/js/"
+        "updateDocAssets": "cp ./dist/vue-carousel-3d.min.js ./docs/themes/vue/source/js/",
+        "docs:deploy": "cd docs && hexo deploy && cd .."
     },
     "repository": {
         "type": "git",

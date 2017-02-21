@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Vue Carousel 3D
-subtitle: 
+title: Vue Carousel 3D - 3D Carousel for Vue.js
+subtitle:
 description: Beautiful flexible and touch supported 3D Carousel for Vue.js
 author: Vladimir Bujanvoic
 language:
-timezone: 
+timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'

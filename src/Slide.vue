@@ -120,6 +120,7 @@
         opacity: 1 !important;
         visibility: visible !important;
         transform: none !important;
+        z-index: 99;
     }
 
 </style>
