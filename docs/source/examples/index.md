@@ -11,7 +11,7 @@ Without any options configured and seven slides added to 3D Carousel
 
 ## Controls
 
-Arrow controls enabled, clicking on slide is disabled and seven slides with captions added to 3D Carousel
+Arrow controls visible, clicking on slide is disabled and seven slides with captions added to 3D Carousel
 
 <script async src="//jsfiddle.net/Wlada/684ptro6/embed/result,js,html,css/?accentColor=405671"></script>
 

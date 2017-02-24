@@ -3,7 +3,7 @@
         <div class="carousel-3d-slider">
             <slot></slot>
         </div>
-        <controls v-if="controlsEnabled"></controls>
+        <controls v-if="controlsVisible"></controls>
     </div>
 </template>
 
@@ -21,7 +21,7 @@
             Slide
         },
         props: {
-            controlsEnabled: {
+            controlsVisible: {
                 type: Boolean,
                 default: false
             },
@@ -88,6 +88,7 @@
         },
         data () {
             return {
+                viewport: 0,
                 currentIndex: 0,
                 total: 0,
                 lock: false,
@@ -113,10 +114,17 @@
                 return !(!this.loop && this.isFirstSlide)
             },
             slideWidth () {
-                return parseInt(this.width + (this.border * 2), 10)
+                const vw = this.viewport
+                const sw = parseInt(this.width + (this.border * 2), 10)
+
+                return vw < sw ? vw : sw
             },
             slideHeight () {
-                return parseInt(this.height + (this.border * 2), 10)
+                const sw = parseInt(this.width + (this.border * 2), 10)
+                const sh = parseInt(this.height + (this.border * 2), 10)
+                const ar = this.calculateAspectRatio(sw, sh)
+
+                return this.slideWidth / ar
             },
             visible () {
                 const v = (this.display > this.total) ? this.total : this.display
@@ -293,7 +301,7 @@
 
                     this.mutationObserver = new MutationObserver(() => {
                         this.$nextTick(() => {
-                            this.computeSize()
+                            this.computeData()
                         })
                     })
 
@@ -315,22 +323,34 @@
              * @return {Number} Number of slides
              */
             getSlideCount () {
-                if (this.$slots.default === void 0) {
-                    return 0
-                } else {
+                if (this.$slots.default !== undefined) {
                     return this.$slots.default.filter((value) => {
                         return value.tag !== void 0
                     }).length
                 }
+
+                return 0
             },
             /**
-             * Re-compute the size of the carousel and current slide
+             * Calculate slide with and keep defined aspect ratio
+             * @return {Number} Aspect ratio number
              */
-            computeSize () {
+            calculateAspectRatio (width, height) {
+                return Math.min(width / height)
+            },
+            /**
+             * Re-compute the number of slides and current slide
+             */
+            computeData () {
                 this.total = this.getSlideCount()
                 this.currentIndex = this.startIndex > this.total - 1 ? this.total - 1 : this.startIndex
+                this.viewport = this.$el.clientWidth
             },
-            destroyed () {
+            setSize () {
+                this.$el.style.cssText += 'height:' + this.slideHeight
+                this.$el.childNodes[0].style.cssText += 'width:' + this.slideWidth + 'px;' + ' height:' + this.slideHeight + 'px'
+            },
+            beforeDestroy () {
                 if (!this.$isServer) {
                     this.detachMutationObserver()
 
@@ -339,14 +359,19 @@
                     } else {
                         this.$el.removeEventListener('mousemove', this.handleMousemove)
                     }
+
+                    window.removeEventListener('resize', this.setSize)
                 }
             }
         },
         mounted () {
-            this.computeSize()
+            this.computeData()
             this.attachMutationObserver()
+            this.setSize()
 
             if (!this.$isServer) {
+                window.addEventListener('resize', this.setSize)
+
                 if ('ontouchstart' in window) {
                     this.$el.addEventListener('touchstart', this.handleMousedown)
                     this.$el.addEventListener('touchend', this.handleMouseup)
@@ -356,9 +381,6 @@
                     this.$el.addEventListener('mouseup', this.handleMouseup)
                     this.$el.addEventListener('mousemove', this.handleMousemove)
                 }
-
-                this.$el.style.cssText += 'height:' + this.slideHeight
-                this.$el.childNodes[0].style.cssText += 'width:' + this.slideWidth + 'px;' + ' height:' + this.slideHeight + 'px'
             }
         }
     }

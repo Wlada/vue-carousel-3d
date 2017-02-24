@@ -44,13 +44,11 @@
                     }
                 }
 
-                console.log(this.parent.slideHeight)
-
                 return Object.assign(styles, {
                     'border-width': this.parent.border + 'px',
                     'width': this.parent.slideWidth + 'px',
                     'height': this.parent.slideHeight + 'px',
-                    'transition': 'all ' + this.parent.animationSpeed + 'ms'
+                    'transition': 'transform ' + this.parent.animationSpeed + 'ms'
                 })
             }
         },

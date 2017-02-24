@@ -163,8 +163,8 @@ play('Carousel3d', module)
         }
     })
 
-    .add("controls enabled", {
-        template: `<carousel-3d controls-enabled="true">
+    .add("controls visible", {
+        template: `<carousel-3d :controls-visible="true">
             <slide v-for="(slide, i) in slides" :index="i">
                 <img :src="slide.src">
             </slide>

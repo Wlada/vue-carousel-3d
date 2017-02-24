@@ -25,9 +25,9 @@ Flag to pause autoplay on hover
 * **Type**: `Boolean`
 * **Default**: `false`
 
-### controlsEnabled
+### controlsVisible
 
-Enable controls
+Show controls (left/right arrow) 
 
 * **Type**: `Boolean`
 * **Default**: `false`

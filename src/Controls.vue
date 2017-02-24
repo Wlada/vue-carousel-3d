@@ -1,9 +1,13 @@
 <template>
     <div class="carousel-3d-controls">
         <a href="#" class="prev" @click.prevent="parent.goPrev()"
-           :class="{ disabled: !parent.isPrevPossible }">&lsaquo;</a>
+           :class="{ disabled: !parent.isPrevPossible }">
+            <span>&lsaquo;</span>
+        </a>
         <a href="#" class="next" @click.prevent="parent.goNext()"
-           :class="{ disabled: !parent.isNextPossible }">&rsaquo;</a>
+           :class="{ disabled: !parent.isNextPossible }">
+            <span>&rsaquo;</span>
+        </a>
     </div>
 </template>
 
@@ -21,7 +25,9 @@
 <style scoped>
     .carousel-3d-controls {
         position: absolute;
-        top: 30%;
+        top: 50%;
+        height: 60px;
+        margin-top: -30px;
         left: 0;
         width: 100%;
         z-index: 9099;
@@ -32,6 +38,7 @@
         position: absolute;
         z-index: 9999;
         font-size: 60px;
+        height: 60px;
         line-height: 60px;
         color: #333;
         -webkit-user-select: none;
@@ -39,6 +46,7 @@
         -ms-user-select: none;
         user-select: none;
         text-decoration: none;
+        top: 0;
     }
 
     .next:hover, .prev:hover {
@@ -47,13 +55,13 @@
     }
 
     .prev {
-        top: 15px;
         left: 10px;
+        text-align: left;
     }
 
     .next {
-        top: 15px;
         right: 10px;
+        text-align: right;
     }
 
     .disabled {

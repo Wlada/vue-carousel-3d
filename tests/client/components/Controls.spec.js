@@ -15,7 +15,7 @@ describe('Controls', () => {
     beforeEach(() => {
         vm = new Vue({
             el: document.createElement('div'),
-            render: (h) => h(Carousel3d, { props: { controlsEnabled: true } }, [h(Slide), h(Slide), h(Slide),  h(Slide)]),
+            render: (h) => h(Carousel3d, { props: { controlsVisible: true } }, [h(Slide), h(Slide), h(Slide),  h(Slide)]),
         });
         carouselInstance = vm.$children[0];
         $controls = vm.$el.querySelector('.carousel-3d-controls');
