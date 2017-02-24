@@ -1,0 +1,79 @@
+exports[`Controls should mount successfully 1`] = `
+".carousel-3d-slider(style=\'width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+|  
+.carousel-3d-controls
+  a.prev(href=\'#\')
+    span &lsaquo;
+  |  
+  a.next(href=\'#\')
+    span &rsaquo;
+"
+`;
+
+exports[`Controls should render a next button 1`] = `
+".carousel-3d-slider(style=\'width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+|  
+.carousel-3d-controls
+  a.prev(href=\'#\')
+    span &lsaquo;
+  |  
+  a.next(href=\'#\')
+    span &rsaquo;
+"
+`;
+
+exports[`Controls should render a prev button 1`] = `
+".carousel-3d-slider(style=\'width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+|  
+.carousel-3d-controls
+  a.prev(href=\'#\')
+    span &lsaquo;
+  |  
+  a.next(href=\'#\')
+    span &rsaquo;
+"
+`;
+
+exports[`Controls should trigger onNext when next is clicked 1`] = `
+".carousel-3d-slider(style=\'width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+|  
+.carousel-3d-controls
+  a.prev(href=\'#\')
+    span &lsaquo;
+  |  
+  a.next(href=\'#\')
+    span &rsaquo;
+"
+`;
+
+exports[`Controls should trigger onNext when next is clicked 2`] = `
+".carousel-3d-slider(style=\'width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+|  
+.carousel-3d-controls
+  a.prev(href=\'#\')
+    span &lsaquo;
+  |  
+  a.next(href=\'#\')
+    span &rsaquo;
+"
+`;
