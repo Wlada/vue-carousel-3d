@@ -315,7 +315,13 @@
              * @return {Number} Number of slides
              */
             getSlideCount () {
-                return this.$slots.default ? this.$slots.default.length : 0
+                if (this.$slots.default === void 0) {
+                    return 0
+                } else {
+                    return this.$slots.default.filter((value) => {
+                        return value.tag !== void 0
+                    }).length
+                }
             },
             /**
              * Re-compute the size of the carousel and current slide
