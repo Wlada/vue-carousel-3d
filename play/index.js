@@ -198,7 +198,7 @@ play('Carousel3d', module)
     })
 
     .add("callbacks", {
-        template: `<carousel-3d :on-slide-change="onSlideChanged" :on-last-slide="onLastSlide">
+        template: `<carousel-3d :on-slide-change="onSlideChanged" :on-slide-will-change="onSlideWillChange" :on-last-slide="onLastSlide">
             <slide v-for="(slide, i) in slides" :index="i">
                 <img :src="slide.src">
             </slide>
@@ -213,6 +213,9 @@ play('Carousel3d', module)
             }
         },
         methods: {
+            onSlideWillChange(index) {
+                console.log('onSlideWillChange Callback Triggered', 'Slide Index ' + index)
+            },
             onSlideChanged(index){
                 console.log('onSlideChanged Callback Triggered', 'Slide Index ' + index)
             },

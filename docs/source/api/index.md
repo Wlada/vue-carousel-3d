@@ -27,7 +27,7 @@ Flag to pause autoplay on hover
 
 ### controlsVisible
 
-Show controls (left/right arrow) 
+Show controls (left/right arrow)
 
 * **Type**: `Boolean`
 * **Default**: `false`
@@ -62,7 +62,7 @@ Animation between slides in milliseconds
 
 ### dir
 
-Animation direction 
+Animation direction
 
 * **Type**: `String`
 * **Default**: `rtl`
@@ -130,10 +130,16 @@ Callback triggered on last slide
 * **Type**: `Function`
 * **param**: `index`
 
+### onSlideWillChange
+
+Callback triggered before slide changed
+
+* **Type**: `Function`
+* **param**: `index`
+
 ### onSlideChange
 
 Callback triggered on slide changed
 
 * **Type**: `Function`
 * **param**: `index`
-
