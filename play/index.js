@@ -252,3 +252,34 @@ play('Carousel3d', module)
             }
         }
     })
+
+    .add("callbacks through emit", {
+        template: `<carousel-3d
+                      @afterSlideChanged="onAfterSlideChanged"
+                      @lastSlide="onLastSlide"
+                      @slideChange="onSlideChange">
+            <slide v-for="(slide, i) in slides" :index="i">
+                <img :src="slide.src">
+            </slide>
+        </carousel-3d>`,
+        components: {
+            Carousel3d,
+            Slide
+        },
+        data() {
+            return {
+                slides: slides
+            }
+        },
+        methods: {
+            onAfterSlideChanged(index){
+                console.log('@afterSlideChanged Callback Triggered', 'Slide Index ' + index)
+            },
+            onSlideChange(index){
+                console.log('@slideChange Callback Triggered', 'Slide Index ' + index)
+            },
+            onLastSlide(index){
+                console.log('@lastSlide Callback Triggered', 'Slide Index ' + index)
+            }
+        }
+    })
