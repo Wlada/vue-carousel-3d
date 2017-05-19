@@ -207,8 +207,15 @@
                 this.lock = true
 
                 if (this.isLastSlide) {
+                    if (this.onLastSlide !== noop) {
+                        console.warn('onLastSlide deprecated, please use @lastSlide')
+                    }
                     this.onLastSlide(this.currentIndex)
+
+                    this.$emit('lastSlide', this.currentIndex)
                 }
+
+                this.$emit('slideChange', this.currentIndex)
 
                 setTimeout(() => this.animationEnd(), this.animationSpeed)
             },
@@ -240,7 +247,13 @@
              */
             animationEnd () {
                 this.lock = false
+
+                if (this.onSlideChange !== noop) {
+                    console.warn('onSlideChange deprecated, please use @afterSlideChanged')
+                }
                 this.onSlideChange(this.currentIndex)
+
+                this.$emit('afterSlideChanged', this.currentIndex)
             },
             /**
              * Trigger actions when mouse is released
