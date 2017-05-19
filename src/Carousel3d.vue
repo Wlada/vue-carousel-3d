@@ -84,6 +84,10 @@
             onSlideChange: {
                 type: Function,
                 default: noop
+            },
+            onSlideWillChange: {
+                type: Function,
+                default: noop
             }
         },
         data () {
@@ -205,6 +209,8 @@
             goSlide (index) {
                 this.currentIndex = (index < 0 || index > this.total - 1) ? 0 : index
                 this.lock = true
+
+                this.onSlideWillChange(this.currentIndex);
 
                 if (this.isLastSlide) {
                     if (this.onLastSlide !== noop) {
