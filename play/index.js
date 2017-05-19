@@ -11,70 +11,91 @@ const slides = [
     {
         title: 'Slide 1',
         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
-        src: 'http://placehold.it/360x270'
+        src: 'http://placehold.it/360x270',
+        type: 1
     },
     {
         title: 'Slide 2',
         desc: 'Lorem ipsum dolor sit amet ',
-        src: 'http://placehold.it/360x270'
+        src: 'http://placehold.it/360x270',
+        type: 1
     },
     {
         title: 'Slide 3',
         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ',
-        src: 'http://placehold.it/360x270'
+        src: 'http://placehold.it/360x270',
+        type: 1
     },
     {
         title: 'Slide 4',
         desc: 'Lorem ipsum dolor sit amet,  Enim, maxime.',
-        src: 'http://placehold.it/360x270'
+        src: 'http://placehold.it/360x270',
+        type: 1
     },
     {
         title: 'Slide 5',
         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
-        src: 'http://placehold.it/360x270'
+        src: 'http://placehold.it/360x270',
+        type: 1
     },
     {
         title: 'Slide 6',
         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
-        src: 'http://placehold.it/360x270'
+        src: 'http://placehold.it/360x270',
+        type: 1
     },
     {
         title: 'Slide 7',
         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
-        src: 'http://placehold.it/360x270'
+        src: 'http://placehold.it/360x270',
+        type: 2
     },
     {
         title: 'Slide 8',
         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
-        src: 'http://placehold.it/360x270'
+        src: 'http://placehold.it/360x270',
+        type: 2
     },
     {
         title: 'Slide 9',
         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
-        src: 'http://placehold.it/360x270'
+        src: 'http://placehold.it/360x270',
+        type: 2
     },
     {
         title: 'Slide 10',
         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
-        src: 'http://placehold.it/360x270'
+        src: 'http://placehold.it/360x270',
+        type: 2
     }
 ]
 
 play('Carousel3d', module)
     .add("default", {
-        template: `<carousel-3d>
-            <slide v-for="(slide, i) in slides" :index="i">
+        template: `<div><button @click="type = 2">Filter type 2</button>
+        <button @click="type = 1">Filter type 1</button>
+        <carousel-3d :length="slideFilter.length">
+            <slide v-for="(slide, i) in slideFilter" :index="i" :key="i">
                 <h1>{{slide.title}}</h1>
                 <p>{{slide.desc}}</p>
             </slide>
-        </carousel-3d>`,
+        </carousel-3d></div>`,
         components: {
             Carousel3d,
             Slide
         },
         data() {
             return {
+                type: 1,
                 slides: slides
+            }
+        },
+        computed: {
+            slideFilter () {
+                var _self = this;
+                return this.slides.filter(function (item) {
+                    return item.type === _self.type;
+                });
             }
         }
     })
