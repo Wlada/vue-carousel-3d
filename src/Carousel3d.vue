@@ -212,10 +212,10 @@
                     }
                     this.onLastSlide(this.currentIndex)
 
-                    this.$emit('lastSlide', this.currentIndex)
+                    this.$emit('last-slide', this.currentIndex)
                 }
 
-                this.$emit('slideChange', this.currentIndex)
+                this.$emit('before-slide-change', this.currentIndex)
 
                 setTimeout(() => this.animationEnd(), this.animationSpeed)
             },
@@ -253,7 +253,7 @@
                 }
                 this.onSlideChange(this.currentIndex)
 
-                this.$emit('afterSlideChanged', this.currentIndex)
+                this.$emit('after-slide-change', this.currentIndex)
             },
             /**
              * Trigger actions when mouse is released

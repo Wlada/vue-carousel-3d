@@ -8,6 +8,11 @@ Without any options configured and seven slides added to 3D Carousel
 
 <script async src="//jsfiddle.net/Wlada/kqen0yba/embed/result,js,html,css/?accentColor=405671"></script>
 
+## Callbacks
+
+Callbacks added, seven slides added to 3D Carousel
+
+<script async src="//jsfiddle.net/Wlada/dtwg9kr9/embed/result,js,html,css/?accentColor=405671"></script>
 
 ## Controls
 

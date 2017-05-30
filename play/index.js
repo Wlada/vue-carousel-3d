@@ -255,9 +255,9 @@ play('Carousel3d', module)
 
     .add("callbacks through emit", {
         template: `<carousel-3d
-                      @afterSlideChanged="onAfterSlideChanged"
-                      @lastSlide="onLastSlide"
-                      @slideChange="onSlideChange">
+                      @before-slide-change="onSlideChange"
+                      @after-slide-change="onAfterSlideChanged"
+                      @last-slide="onLastSlide">
             <slide v-for="(slide, i) in slides" :index="i">
                 <img :src="slide.src">
             </slide>
@@ -273,13 +273,13 @@ play('Carousel3d', module)
         },
         methods: {
             onAfterSlideChanged(index){
-                console.log('@afterSlideChanged Callback Triggered', 'Slide Index ' + index)
+                console.log('@after-slide-changed Callback Triggered', 'Slide Index ' + index)
             },
             onSlideChange(index){
-                console.log('@slideChange Callback Triggered', 'Slide Index ' + index)
+                console.log('@before-slide-change Callback Triggered', 'Slide Index ' + index)
             },
             onLastSlide(index){
-                console.log('@lastSlide Callback Triggered', 'Slide Index ' + index)
+                console.log('@last-slide Callback Triggered', 'Slide Index ' + index)
             }
         }
     })

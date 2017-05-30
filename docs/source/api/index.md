@@ -122,18 +122,3 @@ Slide inverse scaling
 
 * **Type**: `Number`
 * **Default**: `300`
-
-### onLastSlide
-
-Callback triggered on last slide
-
-* **Type**: `Function`
-* **param**: `index`
-
-### onSlideChange
-
-Callback triggered on slide changed
-
-* **Type**: `Function`
-* **param**: `index`
-
