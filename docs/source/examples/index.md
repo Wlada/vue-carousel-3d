@@ -10,7 +10,7 @@ Without any options configured and seven slides added to 3D Carousel
 
 ## Callbacks
 
-Callbacks added, seven slides added to 3D Carousel
+Added @after-slide-change, @before-slide-change and @last-slide callbacks
 
 <script async src="//jsfiddle.net/Wlada/dtwg9kr9/embed/result,js,html,css/?accentColor=405671"></script>
 
