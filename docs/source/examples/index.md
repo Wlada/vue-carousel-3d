@@ -12,7 +12,7 @@ Without any options configured and seven slides added to 3D Carousel
 
 Added @after-slide-change, @before-slide-change and @last-slide callbacks
 
-<script async src="//jsfiddle.net/Wlada/dtwg9kr9/embed/result,js,html,css/?accentColor=405671"></script>
+<script async src="//jsfiddle.net/Wlada/dtwg9kr9/embed/result,js,html/?accentColor=405671"></script>
 
 ## Controls
 
@@ -24,6 +24,12 @@ Arrow controls visible, clicking on slide is disabled and seven slides with capt
 ## Autoplay
 
 Autoplay enabled, number of displayed configured and seven slides added to 3D Carousel
+
+<script async src="//jsfiddle.net/Wlada/stsao0e1/embed/result,js,html/?accentColor=405671"></script>
+
+## Dynamic Slides
+
+Add / Remove slides from 3D Carousel
 
 <script async src="//jsfiddle.net/Wlada/p2927k3p/embed/result,js,html,css/?accentColor=405671"></script>
 

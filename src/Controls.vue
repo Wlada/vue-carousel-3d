@@ -26,7 +26,7 @@
     .carousel-3d-controls {
         position: absolute;
         top: 50%;
-        height: 60px;
+        height: 0;
         margin-top: -30px;
         left: 0;
         width: 100%;

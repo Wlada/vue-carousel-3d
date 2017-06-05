@@ -15,7 +15,8 @@
         data () {
             return {
                 parent: this.$parent,
-                styles: {}
+                styles: {},
+                zIndex: 999
             }
         },
         computed: {
@@ -30,16 +31,16 @@
                     const lIndex = this.getSideIndex(this.parent.leftIndices)
 
                     if (rIndex >= 0 || lIndex >= 0) {
-                        styles = rIndex >= 0 ? this.calculatePosition(rIndex, true) : this.calculatePosition(lIndex)
+                        styles = rIndex >= 0 ? this.calculatePosition(rIndex, true, this.zIndex) : this.calculatePosition(lIndex, false, this.zIndex)
                         styles.opacity = 1
                         styles.visibility = 'visible'
                     }
 
                     if (this.parent.hasHiddenSlides) {
                         if (this.matchIndex(this.parent.leftOutIndex)) {
-                            styles = this.calculatePosition(this.parent.leftIndices.length - 1)
+                            styles = this.calculatePosition(this.parent.leftIndices.length - 1, false, this.zIndex)
                         } else if (this.matchIndex(this.parent.rightOutIndex)) {
-                            styles = this.calculatePosition(this.parent.rightIndices.length - 1, true)
+                            styles = this.calculatePosition(this.parent.rightIndices.length - 1, true, this.zIndex)
                         }
                     }
                 }
@@ -69,20 +70,21 @@
             matchIndex (index) {
                 return (index >= 0) ? this.index === index : (this.parent.total + index) === this.index
             },
-            calculatePosition (i, positive) {
+            calculatePosition (i, positive, zIndex) {
                 const leftRemain = (this.parent.space === 'auto')
                     ? parseInt((i + 1) * (this.parent.width / 1.5), 10)
                     : parseInt((i + 1) * (this.parent.space), 10)
                 const transform = (positive)
-                    ? 'translateX(' + (leftRemain) + 'px) translateZ(-' + (this.parent.inverseScaling + ((i + 1) * 100)) + 'px) ' +
-                    'rotateY(-' + this.parent.perspective + 'deg)'
-                    : 'translateX(-' + (leftRemain) + 'px) translateZ(-' + (this.parent.inverseScaling + ((i + 1) * 100)) + 'px) ' +
-                    'rotateY(' + this.parent.perspective + 'deg)'
+                    ? 'translateX(' + (leftRemain) + 'px) translateZ(-' + (parseInt(this.parent.inverseScaling) + ((i + 1) * 100)) + 'px) ' +
+                    'rotateY(-' + parseInt(this.parent.perspective) + 'deg)'
+                    : 'translateX(-' + (leftRemain) + 'px) translateZ(-' + (parseInt(this.parent.inverseScaling) + ((i + 1) * 100)) + 'px) ' +
+                    'rotateY(' + parseInt(this.parent.perspective) + 'deg)'
                 const top = this.parent.space === 'auto' ? 0 : parseInt((i + 1) * (this.parent.space))
 
                 return {
                     transform: transform,
-                    top: top
+                    top: top,
+                    zIndex: zIndex - (Math.abs(i) + 1)
                 }
             },
             goTo () {
@@ -112,6 +114,10 @@
         box-sizing: border-box;
     }
 
+    .carousel-3d-slide {
+        text-align: left;
+    }
+
     .carousel-3d-slide img {
         width: 100%;
     }
@@ -120,7 +126,7 @@
         opacity: 1 !important;
         visibility: visible !important;
         transform: none !important;
-        z-index: 99;
+        z-index: 999;
     }
 
 </style>

@@ -1,6 +1,6 @@
 <template>
-    <div class="carousel-3d-container">
-        <div class="carousel-3d-slider">
+    <div class="carousel-3d-container" :style="{height: this.slideHeight + 'px'}">
+        <div class="carousel-3d-slider" :style="{width: this.slideWidth + 'px', height: this.slideHeight + 'px'}">
             <slot></slot>
         </div>
         <controls v-if="controlsVisible"></controls>
@@ -12,7 +12,8 @@
     import Controls from './Controls.vue'
     import Slide from './Slide.vue'
 
-    const noop = () => {}
+    const noop = () => {
+    }
 
     export default {
         name: 'carousel3d',
@@ -26,11 +27,11 @@
                 default: false
             },
             perspective: {
-                type: Number,
+                type: [Number, String],
                 default: 35
             },
             display: {
-                type: Number,
+                type: [Number, String],
                 default: 5
             },
             loop: {
@@ -38,7 +39,7 @@
                 default: true
             },
             animationSpeed: {
-                type: Number,
+                type: [Number, String],
                 default: 500
             },
             dir: {
@@ -46,15 +47,15 @@
                 default: 'rtl'
             },
             width: {
-                type: Number,
+                type: [Number, String],
                 default: 360
             },
             height: {
-                type: Number,
+                type: [Number, String],
                 default: 270
             },
             border: {
-                type: Number,
+                type: [Number, String],
                 default: 1
             },
             space: {
@@ -62,7 +63,7 @@
                 default: 'auto'
             },
             startIndex: {
-                type: Number,
+                type: [Number, String],
                 default: 0
             },
             clickable: {
@@ -74,7 +75,7 @@
                 default: 10
             },
             inverseScaling: {
-                type: Number,
+                type: [Number, String],
                 default: 300
             },
             onLastSlide: {
@@ -94,7 +95,8 @@
                 lock: false,
                 dragOffset: 0,
                 dragStartX: 0,
-                mousedown: false
+                mousedown: false,
+                zIndex: 998
             }
         },
         mixins: [
@@ -115,13 +117,13 @@
             },
             slideWidth () {
                 const vw = this.viewport
-                const sw = parseInt(this.width + (this.border * 2), 10)
+                const sw = parseInt(this.width) + (parseInt(this.border, 10) * 2)
 
                 return vw < sw ? vw : sw
             },
             slideHeight () {
-                const sw = parseInt(this.width + (this.border * 2), 10)
-                const sh = parseInt(this.height + (this.border * 2), 10)
+                const sw = parseInt(this.width, 10) + (parseInt(this.border, 10) * 2)
+                const sh = parseInt(parseInt(this.height) + (this.border * 2), 10)
                 const ar = this.calculateAspectRatio(sw, sh)
 
                 return this.slideWidth / ar
@@ -309,7 +311,8 @@
                 if (MutationObserver) {
                     const config = {
                         attributes: true,
-                        data: true
+                        childList: true,
+                        characterData: true
                     }
 
                     this.mutationObserver = new MutationObserver(() => {
@@ -356,7 +359,7 @@
              */
             computeData () {
                 this.total = this.getSlideCount()
-                this.currentIndex = this.startIndex > this.total - 1 ? this.total - 1 : this.startIndex
+                this.currentIndex = parseInt(this.startIndex) > this.total - 1 ? this.total - 1 : parseInt(this.startIndex)
                 this.viewport = this.$el.clientWidth
             },
             setSize () {
@@ -380,7 +383,6 @@
         mounted () {
             this.computeData()
             this.attachMutationObserver()
-            this.setSize()
 
             if (!this.$isServer) {
                 window.addEventListener('resize', this.setSize)
@@ -401,6 +403,7 @@
 
 <style scoped>
     .carousel-3d-container {
+        min-height: 1px;
         width: 100%;
         position: relative;
         z-index: 0;
