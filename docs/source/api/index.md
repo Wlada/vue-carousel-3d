@@ -32,6 +32,13 @@ Show controls (left/right arrow)
 * **Type**: `Boolean`
 * **Default**: `false`
 
+### count
+
+Number of slides (required for dynamic slides)
+
+* **Type**: `Number`
+* **Default**: `0`
+
 ### perspective
 
 Slides perspective position

@@ -26,6 +26,10 @@
                 type: Boolean,
                 default: false
             },
+            count: {
+                type: [Number, String],
+                default: 0
+            },
             perspective: {
                 type: [Number, String],
                 default: 35

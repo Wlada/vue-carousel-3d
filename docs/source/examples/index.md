@@ -20,18 +20,17 @@ Arrow controls visible, clicking on slide is disabled and seven slides with capt
 
 <script async src="//jsfiddle.net/Wlada/684ptro6/embed/result,js,html,css/?accentColor=405671"></script>
 
-
 ## Autoplay
 
 Autoplay enabled, number of displayed configured and seven slides added to 3D Carousel
 
-<script async src="//jsfiddle.net/Wlada/stsao0e1/embed/result,js,html/?accentColor=405671"></script>
+<script async src="//jsfiddle.net/Wlada/p2927k3p/embed/result,js,html,css/?accentColor=405671"></script>
 
 ## Dynamic Slides
 
 Add / Remove slides from 3D Carousel
 
-<script async src="//jsfiddle.net/Wlada/p2927k3p/embed/result,js,html,css/?accentColor=405671"></script>
+<script async src="//jsfiddle.net/Wlada/stsao0e1/embed/result,js,html/?accentColor=405671"></script>
 
 
 ## Sizes
