@@ -224,7 +224,7 @@ play('Carousel3d', module)
 
     .add("add/remove slides", {
         template: `<div>
-            <carousel-3d :slides="slideCount">
+            <carousel-3d :count="slideCount">
                 <slide v-for="(slide, i) in slideCount" :index="i">
                     <h1>Slide {{slide}}</h1>
                 </slide>

@@ -106,6 +106,11 @@
         mixins: [
             autoplay
         ],
+        watch: {
+            count () {
+                this.computeData()
+            }
+        },
         computed: {
             isLastSlide () {
                 return this.currentIndex === this.total - 1
