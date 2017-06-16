@@ -375,20 +375,8 @@
                 this.$el.style.cssText += 'height:' + this.slideHeight + 'px;'
                 this.$el.childNodes[0].style.cssText += 'width:' + this.slideWidth + 'px;' + ' height:' + this.slideHeight + 'px;'
             },
-            beforeDestroy () {
-                if (!this.$isServer) {
-                    this.detachMutationObserver()
-
-                    if ('ontouchstart' in window) {
-                        this.$el.removeEventListener('touchmove', this.handleMousemove)
-                    } else {
-                        this.$el.removeEventListener('mousemove', this.handleMousemove)
-                    }
-
-                    window.removeEventListener('resize', this.setSize)
-                }
-            }
         },
+        
         mounted () {
             this.computeData()
             this.attachMutationObserver()
@@ -405,6 +393,20 @@
                     this.$el.addEventListener('mouseup', this.handleMouseup)
                     this.$el.addEventListener('mousemove', this.handleMousemove)
                 }
+            }
+        },
+        
+        beforeDestroy () {
+            if (!this.$isServer) {
+                this.detachMutationObserver()
+
+                if ('ontouchstart' in window) {
+                    this.$el.removeEventListener('touchmove', this.handleMousemove)
+                } else {
+                    this.$el.removeEventListener('mousemove', this.handleMousemove)
+                }
+
+                window.removeEventListener('resize', this.setSize)
             }
         }
     }
