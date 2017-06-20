@@ -219,7 +219,7 @@
 
                 if (this.isLastSlide) {
                     if (this.onLastSlide !== noop) {
-                        console.warn('onLastSlide deprecated, please use @lastSlide')
+                        console.warn('onLastSlide deprecated, please use @last-slide')
                     }
                     this.onLastSlide(this.currentIndex)
 
@@ -260,7 +260,7 @@
                 this.lock = false
 
                 if (this.onSlideChange !== noop) {
-                    console.warn('onSlideChange deprecated, please use @afterSlideChanged')
+                    console.warn('onSlideChange deprecated, please use @after-slide-change')
                 }
                 this.onSlideChange(this.currentIndex)
 
