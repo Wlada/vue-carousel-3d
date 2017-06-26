@@ -60,5 +60,11 @@ Perspective, space between slides and number of displayed configured. Seven slid
 
 <script async src="//jsfiddle.net/Wlada/fp646v7f/embed/result,js,html,css/?accentColor=405671"></script>
 
+## 3d Disabled
+
+3d mode is disable, space between slide is set to slide width, clickable is disabled and controls are visible. 
+
+<script async src="//jsfiddle.net/Wlada/34d6uqpw/embed/result,js,html/?accentColor=405671"></script>
+
 
 <style type="text/css">iframe { height: 400px; }</style>

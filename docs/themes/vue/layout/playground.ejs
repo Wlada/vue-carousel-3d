@@ -18,7 +18,7 @@
     <div id="playground-example">
 
         <carousel-3d :count="slides.length" :controls-visible="carouselControls" :width="slideWidth"
-                     :height="slideHeight" :autoplay="autoplayEnabled"
+                     :height="slideHeight" :autoplay="autoplayEnabled" :disable3d="disable3d"
                      :space="slideSpace" :perspective="slidePerspective" :display="visible" :loop="infinite"
                      :animation-speed="animationSpeed" :dir="direction" :border="slideBorder"
                      :start-index="startIndex"
@@ -77,6 +77,9 @@
                     <label for="infiniteCheckbox">Infinite loop</label>
                     <input type="checkbox" id="infiniteCheckbox" v-model="infinite">
                 </div>
+                <label for="disable3dCheckbox">Disable 3d</label>
+                    <input type="checkbox" id="disable3dCheckbox" v-model="disable3d">
+                <hr>
                 <!--<div class="form-input">-->
                     <!--<label for="autoplay">Autoplay</label>-->
                     <!--<input type="checkbox" id="autoplay" v-model="autoplayEnabled">-->
@@ -136,6 +139,7 @@
             visible: 5,
             direction: 'rtl',
             infinite: true,
+            disable3d: false,
             slides: [
                 {
                     title: 'Slide 1',

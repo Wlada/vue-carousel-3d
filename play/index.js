@@ -283,3 +283,31 @@ play('Carousel3d', module)
             }
         }
     })
+
+    .add("3d Disabled", {
+        template: `<carousel-3d :disable3d="true" :space="370" :clickable="false" :controls-visible="true">
+            <slide v-for="(slide, i) in slides" :index="i">
+                <img :src="slide.src">
+            </slide>
+        </carousel-3d>`,
+        components: {
+            Carousel3d,
+            Slide
+        },
+        data() {
+            return {
+                slides: slides
+            }
+        },
+        methods: {
+            onAfterSlideChanged(index){
+                console.log('@after-slide-changed Callback Triggered', 'Slide Index ' + index)
+            },
+            onSlideChange(index){
+                console.log('@before-slide-change Callback Triggered', 'Slide Index ' + index)
+            },
+            onLastSlide(index){
+                console.log('@last-slide Callback Triggered', 'Slide Index ' + index)
+            }
+        }
+    })

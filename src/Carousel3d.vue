@@ -74,6 +74,10 @@
                 type: Boolean,
                 default: true
             },
+            disable3d: {
+                type: Boolean,
+                default: false
+            },
             minSwipeDistance: {
                 type: Number,
                 default: 10
