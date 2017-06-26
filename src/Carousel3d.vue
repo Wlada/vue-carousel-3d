@@ -374,9 +374,9 @@
             setSize () {
                 this.$el.style.cssText += 'height:' + this.slideHeight + 'px;'
                 this.$el.childNodes[0].style.cssText += 'width:' + this.slideWidth + 'px;' + ' height:' + this.slideHeight + 'px;'
-            },
+            }
         },
-        
+
         mounted () {
             this.computeData()
             this.attachMutationObserver()
@@ -395,7 +395,7 @@
                 }
             }
         },
-        
+
         beforeDestroy () {
             if (!this.$isServer) {
                 this.detachMutationObserver()

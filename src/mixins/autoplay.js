@@ -28,6 +28,8 @@ const autoplay = {
         }
     },
     destroyed () {
+        this.pauseAutoplay()
+
         if (!this.$isServer) {
             this.$el.removeEventListener('mouseenter', this.pauseAutoplay)
             this.$el.removeEventListener('mouseleave', this.startAutoplay)
