@@ -76,11 +76,6 @@
                 const leftRemain = (this.parent.space === 'auto')
                     ? parseInt((i + 1) * (this.parent.width / 1.5), 10)
                     : parseInt((i + 1) * (this.parent.space), 10)
-//                const transform = (positive)
-//                    ? 'translateX(' + (leftRemain) + 'px) translateZ(-' + (parseInt(this.parent.inverseScaling) + ((i + 1) * 100)) + 'px) ' +
-//                    'rotateY(-' + parseInt(this.parent.perspective) + 'deg)'
-//                    : 'translateX(-' + (leftRemain) + 'px) translateZ(-' + (parseInt(this.parent.inverseScaling) + ((i + 1) * 100)) + 'px) ' +
-//                    'rotateY(' + parseInt(this.parent.perspective) + 'deg)'
                 const transform = (positive)
                     ? 'translateX(' + (leftRemain) + 'px) translateZ(-' + z + 'px) ' +
                     'rotateY(-' + y + 'deg)'

@@ -14,11 +14,17 @@ Added @after-slide-change, @before-slide-change and @last-slide callbacks
 
 <script async src="//jsfiddle.net/Wlada/dtwg9kr9/embed/result,js,html/?accentColor=405671"></script>
 
-## Controls
+## Controls Enabled
 
 Arrow controls visible, clicking on slide is disabled and seven slides with captions added to 3D Carousel
 
 <script async src="//jsfiddle.net/Wlada/684ptro6/embed/result,js,html,css/?accentColor=405671"></script>
+
+## Controls Customised
+
+Arrow controls customised. Text, width and height of a button is updated.
+
+<script async src="//jsfiddle.net/Wlada/r6auc7bh/embed/result,js,html/?accentColor=405671"></script>
 
 ## Autoplay
 

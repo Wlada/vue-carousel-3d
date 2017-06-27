@@ -3,7 +3,8 @@
         <div class="carousel-3d-slider" :style="{width: this.slideWidth + 'px', height: this.slideHeight + 'px'}">
             <slot></slot>
         </div>
-        <controls v-if="controlsVisible"></controls>
+        <controls v-if="controlsVisible" :next-html="controlsNextHtml" :prev-html="controlsPrevHtml"
+                  :width="controlsWidth" :height="controlsHeight"></controls>
     </div>
 </template>
 
@@ -22,10 +23,6 @@
             Slide
         },
         props: {
-            controlsVisible: {
-                type: Boolean,
-                default: false
-            },
             count: {
                 type: [Number, String],
                 default: 0
@@ -85,6 +82,26 @@
             inverseScaling: {
                 type: [Number, String],
                 default: 300
+            },
+            controlsVisible: {
+                type: Boolean,
+                default: false
+            },
+            controlsPrevHtml: {
+                type: String,
+                default: '&lsaquo;'
+            },
+            controlsNextHtml: {
+                type: String,
+                default: '&rsaquo;'
+            },
+            controlsWidth: {
+                type: [String, Number],
+                default: 50
+            },
+            controlsHeight: {
+                type: [String, Number],
+                default: 50
             },
             onLastSlide: {
                 type: Function,
