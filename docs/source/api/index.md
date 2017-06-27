@@ -25,13 +25,6 @@ Flag to pause autoplay on hover
 * **Type**: `Boolean`
 * **Default**: `false`
 
-### controlsVisible
-
-Show controls (left/right arrow) 
-
-* **Type**: `Boolean`
-* **Default**: `false`
-
 ### count
 
 Number of slides (required for dynamic slides)
@@ -129,3 +122,38 @@ Slide inverse scaling
 
 * **Type**: `Number`
 * **Default**: `300`
+
+### controlsVisible
+
+Show controls (left/right arrow) 
+
+* **Type**: `Boolean`
+* **Default**: `false`
+
+### controlsPrevHtml
+
+Set previous arrow string 
+
+* **Type**: `String`
+* **Default**: `&lsaquo;`
+
+### controlsNextHtml
+
+Set next arrow string
+
+* **Type**: `String`
+* **Default**: `&rsaquo;`
+
+### controlsWidth
+
+Set arrows target width area in pixels
+
+* **Type**: `Number`
+* **Default**: `50`
+
+### controlsHeight
+
+Set arrows target height area in pixels
+
+* **Type**: `Number`
+* **Default**: `60`
