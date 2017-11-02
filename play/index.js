@@ -129,6 +129,23 @@ play('Carousel3d', module)
         }
     })
 
+    .add("even number displayed", {
+        template: `<carousel-3d :display="6">
+            <slide v-for="(slide, i) in slides" :index="i">
+                <img :src="slide.src">
+            </slide>
+        </carousel-3d>`,
+        components: {
+            Carousel3d,
+            Slide
+        },
+        data() {
+            return {
+                slides: slides
+            }
+        }
+    })
+
     .add("slides clickable", {
         template: `<carousel-3d :clickable="true">
             <slide v-for="(slide, i) in slides" :index="i">

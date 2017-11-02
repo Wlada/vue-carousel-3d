@@ -110,6 +110,10 @@
             onSlideChange: {
                 type: Function,
                 default: noop
+            },
+            bias: {
+                type: String,
+                default: 'left'
             }
         },
         data () {
@@ -160,17 +164,19 @@
             },
             visible () {
                 const v = (this.display > this.total) ? this.total : this.display
-
-                return v !== 2 ? (v % 2) ? v : v - 1 : v
+                return v
             },
             hasHiddenSlides () {
                 return this.total > this.visible
             },
             leftIndices () {
-                const n = Math.floor(this.visible / 2) + 1
+                let n = (this.visible - 1) / 2
+
+                n = (this.bias.toLowerCase() === 'left' ? Math.ceil(n) : Math.floor(n))
+
                 const indices = []
 
-                for (let m = 1; m < n; m++) {
+                for (let m = 1; m <= n; m++) {
                     indices.push((this.dir === 'ltr')
                         ? (this.currentIndex + m) % (this.total)
                         : (this.currentIndex - m) % (this.total))
@@ -179,10 +185,12 @@
                 return indices
             },
             rightIndices () {
-                const n = Math.floor(this.visible / 2) + 1
+                let n = (this.visible - 1) / 2
+
+                n = (this.bias.toLowerCase() === 'right' ? Math.ceil(n) : Math.floor(n))
                 const indices = []
 
-                for (let m = 1; m < n; m++) {
+                for (let m = 1; m <= n; m++) {
                     indices.push((this.dir === 'ltr')
                         ? (this.currentIndex - m) % (this.total)
                         : (this.currentIndex + m) % (this.total))
@@ -191,7 +199,10 @@
                 return indices
             },
             leftOutIndex () {
-                const n = Math.floor(this.visible / 2) + 1
+                let n = (this.visible - 1) / 2
+
+                n = (this.bias.toLowerCase() === 'left' ? Math.ceil(n) : Math.floor(n))
+                n++
 
                 if (this.dir === 'ltr') {
                     return ((this.total - this.currentIndex - n) <= 0)
@@ -202,7 +213,10 @@
                 }
             },
             rightOutIndex () {
-                const n = Math.floor(this.visible / 2) + 1
+                let n = (this.visible - 1) / 2
+
+                n = (this.bias.toLowerCase() === 'right' ? Math.ceil(n) : Math.floor(n))
+                n++
 
                 if (this.dir === 'ltr') {
                     return (this.currentIndex - n)
