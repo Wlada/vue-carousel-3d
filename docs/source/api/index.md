@@ -46,6 +46,13 @@ Number of slides displayed on each page
 * **Type**: `Number`
 * **Default**: `5`
 
+### bias
+
+When displaying even number of slides chose bigger side
+
+* **Type**: `String`
+* **Default**: `left`
+
 ### loop
 
 Enable carousel infinite loop
