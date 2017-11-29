@@ -130,7 +130,7 @@ play('Carousel3d', module)
     })
 
     .add("even number displayed", {
-        template: `<carousel-3d :display="6">
+        template: `<carousel-3d :display="6" :bias="'right'">
             <slide v-for="(slide, i) in slides" :index="i">
                 <img :src="slide.src">
             </slide>

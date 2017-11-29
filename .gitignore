@@ -3,6 +3,7 @@ node_modules/
 npm-debug.log
 coverage/
 docs/public/
+dist-play/
 .idea/
 .deploy_git/
 
