@@ -9,7 +9,7 @@
     "dev": "vue-play start --standalone",
     "dev:build": "vue-play build",
     "docs:build": "npm run build && rm -rf ./docs/public && mkdir ./docs/public/ && cd ./docs/public/ && git init && git remote add origin git@github.com:wlada/vue-carousel-3d.git && git fetch && git checkout -f gh-pages && cd .. && npm install && ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate",
-    "lint": "eslint 'src/**/?(*.js|*.vue)' || exit 1",
+    "lint": "eslint \"src/**/?(*.js|*.vue)\" || exit 1",
     "precommit": "npm run lint && npm run test",
     "test": "npm run test:client",
     "test:client": "jest --config tests/client.jest.json --forceExit",
