@@ -5,10 +5,6 @@
 </template>
 
 <script>
-    const noop = () => {
-    }
-
-
     export default {
         name: 'slide',
         props: {
@@ -16,7 +12,7 @@
                 type: Number
             }
         },
-        data() {
+        data () {
             return {
                 parent: this.$parent,
                 styles: {},
@@ -24,10 +20,10 @@
             }
         },
         computed: {
-            isCurrent() {
+            isCurrent () {
                 return this.index === this.parent.currentIndex
             },
-            slideStyle() {
+            slideStyle () {
                 let styles = {}
 
                 if (!this.isCurrent) {
@@ -60,7 +56,7 @@
             }
         },
         methods: {
-            getSideIndex(array) {
+            getSideIndex (array) {
                 let index = -1
 
                 array.forEach((pos, i) => {
@@ -71,10 +67,10 @@
 
                 return index
             },
-            matchIndex(index) {
+            matchIndex (index) {
                 return (index >= 0) ? this.index === index : (this.parent.total + index) === this.index
             },
-            calculatePosition(i, positive, zIndex) {
+            calculatePosition (i, positive, zIndex) {
                 const z = !this.parent.disable3d ? parseInt(this.parent.inverseScaling) + ((i + 1) * 100) : 0
                 const y = !this.parent.disable3d ? parseInt(this.parent.perspective) : 0
                 const leftRemain = (this.parent.space === 'auto')
@@ -93,13 +89,13 @@
                     zIndex: zIndex - (Math.abs(i) + 1)
                 }
             },
-            goTo() {
+            goTo () {
                 if (!this.isCurrent) {
                     if (this.parent.clickable === true) {
                         this.parent.goFar(this.index)
                     }
                 } else {
-                    this.parent.onMainSlideClick();
+                    this.parent.onMainSlideClick()
                 }
             }
         }
