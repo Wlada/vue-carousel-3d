@@ -1,11 +1,11 @@
 <template>
-    <div class="carousel-3d-container" :style="{height: this.slideHeight + 'px'}">
-        <div class="carousel-3d-slider" :style="{width: this.slideWidth + 'px', height: this.slideHeight + 'px'}">
-            <slot></slot>
-        </div>
-        <controls v-if="controlsVisible" :next-html="controlsNextHtml" :prev-html="controlsPrevHtml"
-                  :width="controlsWidth" :height="controlsHeight"></controls>
-    </div>
+	<div class="carousel-3d-container" :style="{height: this.slideHeight + 'px'}">
+		<div class="carousel-3d-slider" :style="{width: this.slideWidth + 'px', height: this.slideHeight + 'px'}">
+			<slot></slot>
+		</div>
+		<controls v-if="controlsVisible" :next-html="controlsNextHtml" :prev-html="controlsPrevHtml"
+		          :width="controlsWidth" :height="controlsHeight"></controls>
+	</div>
 </template>
 
 <script>
@@ -15,6 +15,7 @@
 
     const noop = () => {
     }
+
 
     export default {
         name: 'carousel3d',
@@ -114,9 +115,12 @@
             bias: {
                 type: String,
                 default: 'left'
+            },
+            onMainSlideClick: {
+                type: Function
             }
         },
-        data () {
+        data() {
             return {
                 viewport: 0,
                 currentIndex: 0,
@@ -132,44 +136,44 @@
             autoplay
         ],
         watch: {
-            count () {
+            count() {
                 this.computeData()
             }
         },
         computed: {
-            isLastSlide () {
+            isLastSlide() {
                 return this.currentIndex === this.total - 1
             },
-            isFirstSlide () {
+            isFirstSlide() {
                 return this.currentIndex === 0
             },
-            isNextPossible () {
+            isNextPossible() {
                 return !(!this.loop && this.isLastSlide)
             },
-            isPrevPossible () {
+            isPrevPossible() {
                 return !(!this.loop && this.isFirstSlide)
             },
-            slideWidth () {
+            slideWidth() {
                 const vw = this.viewport
                 const sw = parseInt(this.width) + (parseInt(this.border, 10) * 2)
 
                 return vw < sw ? vw : sw
             },
-            slideHeight () {
+            slideHeight() {
                 const sw = parseInt(this.width, 10) + (parseInt(this.border, 10) * 2)
                 const sh = parseInt(parseInt(this.height) + (this.border * 2), 10)
                 const ar = this.calculateAspectRatio(sw, sh)
 
                 return this.slideWidth / ar
             },
-            visible () {
+            visible() {
                 const v = (this.display > this.total) ? this.total : this.display
                 return v
             },
-            hasHiddenSlides () {
+            hasHiddenSlides() {
                 return this.total > this.visible
             },
-            leftIndices () {
+            leftIndices() {
                 let n = (this.visible - 1) / 2
 
                 n = (this.bias.toLowerCase() === 'left' ? Math.ceil(n) : Math.floor(n))
@@ -184,7 +188,7 @@
 
                 return indices
             },
-            rightIndices () {
+            rightIndices() {
                 let n = (this.visible - 1) / 2
                 n = (this.bias.toLowerCase() === 'right' ? Math.ceil(n) : Math.floor(n))
                 const indices = []
@@ -197,7 +201,7 @@
 
                 return indices
             },
-            leftOutIndex () {
+            leftOutIndex() {
                 let n = (this.visible - 1) / 2
 
                 n = (this.bias.toLowerCase() === 'left' ? Math.ceil(n) : Math.floor(n))
@@ -211,7 +215,7 @@
                     return (this.currentIndex - n)
                 }
             },
-            rightOutIndex () {
+            rightOutIndex() {
                 let n = (this.visible - 1) / 2
 
                 n = (this.bias.toLowerCase() === 'right' ? Math.ceil(n) : Math.floor(n))
@@ -230,7 +234,7 @@
             /**
              * Go to next slide
              */
-            goNext () {
+            goNext() {
                 if (this.isNextPossible) {
                     this.isLastSlide ? this.goSlide(0) : this.goSlide(this.currentIndex + 1)
                 }
@@ -238,7 +242,7 @@
             /**
              * Go to previous slide
              */
-            goPrev () {
+            goPrev() {
                 if (this.isPrevPossible) {
                     this.isFirstSlide ? this.goSlide(this.total - 1) : this.goSlide(this.currentIndex - 1)
                 }
@@ -247,7 +251,7 @@
              * Go to slide
              * @param  {String} index of slide where to go
              */
-            goSlide (index) {
+            goSlide(index) {
                 this.currentIndex = (index < 0 || index > this.total - 1) ? 0 : index
                 this.lock = true
 
@@ -267,7 +271,7 @@
             /**
              * Go to slide far slide
              */
-            goFar (index) {
+            goFar(index) {
                 let diff = (index === this.total - 1 && this.isFirstSlide) ? -1 : (index - this.currentIndex)
 
                 if (this.isLastSlide && index === 0) {
@@ -290,7 +294,7 @@
             /**
              * Trigger actions when animation ends
              */
-            animationEnd () {
+            animationEnd() {
                 this.lock = false
 
                 if (this.onSlideChange !== noop) {
@@ -304,7 +308,7 @@
              * Trigger actions when mouse is released
              * @param  {Object} e The event object
              */
-            handleMouseup () {
+            handleMouseup() {
                 this.mousedown = false
                 this.dragOffset = 0
             },
@@ -312,7 +316,7 @@
              * Trigger actions when mouse is pressed
              * @param  {Object} e The event object
              */
-            handleMousedown (e) {
+            handleMousedown(e) {
                 if (!e.touches) {
                     e.preventDefault()
                 }
@@ -324,7 +328,7 @@
              * Trigger actions when mouse is pressed and then moved (mouse drag)
              * @param  {Object} e The event object
              */
-            handleMousemove (e) {
+            handleMousemove(e) {
                 if (!this.mousedown) {
                     return
                 }
@@ -346,7 +350,7 @@
              * A mutation observer is used to detect changes to the containing node
              * in order to keep the magnet container in sync with the height its reference node.
              */
-            attachMutationObserver () {
+            attachMutationObserver() {
                 const MutationObserver = window.MutationObserver ||
                     window.WebKitMutationObserver ||
                     window.MozMutationObserver
@@ -372,7 +376,7 @@
             /**
              * Stop listening to mutation changes
              */
-            detachMutationObserver () {
+            detachMutationObserver() {
                 if (this.mutationObserver) {
                     this.mutationObserver.disconnect()
                 }
@@ -381,7 +385,7 @@
              * Get the number of slides
              * @return {Number} Number of slides
              */
-            getSlideCount () {
+            getSlideCount() {
                 if (this.$slots.default !== undefined) {
                     return this.$slots.default.filter((value) => {
                         return value.tag !== void 0
@@ -394,24 +398,24 @@
              * Calculate slide with and keep defined aspect ratio
              * @return {Number} Aspect ratio number
              */
-            calculateAspectRatio (width, height) {
+            calculateAspectRatio(width, height) {
                 return Math.min(width / height)
             },
             /**
              * Re-compute the number of slides and current slide
              */
-            computeData () {
+            computeData() {
                 this.total = this.getSlideCount()
                 this.currentIndex = parseInt(this.startIndex) > this.total - 1 ? this.total - 1 : parseInt(this.startIndex)
                 this.viewport = this.$el.clientWidth
             },
-            setSize () {
+            setSize() {
                 this.$el.style.cssText += 'height:' + this.slideHeight + 'px;'
                 this.$el.childNodes[0].style.cssText += 'width:' + this.slideWidth + 'px;' + ' height:' + this.slideHeight + 'px;'
             }
         },
 
-        mounted () {
+        mounted() {
             this.computeData()
             this.attachMutationObserver()
 
@@ -430,7 +434,7 @@
             }
         },
 
-        beforeDestroy () {
+        beforeDestroy() {
             if (!this.$isServer) {
                 this.detachMutationObserver()
 
@@ -447,23 +451,23 @@
 </script>
 
 <style scoped>
-    .carousel-3d-container {
-        min-height: 1px;
-        width: 100%;
-        position: relative;
-        z-index: 0;
-        overflow: hidden;
-        margin: 20px auto;
-        box-sizing: border-box;
-    }
+	.carousel-3d-container {
+		min-height: 1px;
+		width: 100%;
+		position: relative;
+		z-index: 0;
+		overflow: hidden;
+		margin: 20px auto;
+		box-sizing: border-box;
+	}
 
-    .carousel-3d-slider {
-        position: relative;
-        margin: 0 auto;
-        transform-style: preserve-3d;
-        -webkit-perspective: 1000px;
-        -moz-perspective: 1000px;
-        perspective: 1000px;
-    }
+	.carousel-3d-slider {
+		position: relative;
+		margin: 0 auto;
+		transform-style: preserve-3d;
+		-webkit-perspective: 1000px;
+		-moz-perspective: 1000px;
+		perspective: 1000px;
+	}
 
 </style>
