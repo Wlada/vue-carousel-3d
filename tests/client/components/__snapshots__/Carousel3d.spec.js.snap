@@ -1,3 +1,19 @@
+exports[`Carousel3d check if exact callback function is received for onMainSlideClick  1`] = `
+".carousel-3d-slider(style=\'width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+// 
+"
+`;
+
+exports[`Carousel3d check if exact callback function is received for onMainSlideClick  2`] = `
+".carousel-3d-slider(style=\'width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+  .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')
+// 
+"
+`;
+
 exports[`Carousel3d should be able to go on next slide if start slide index is 0 and there are 2 slides  1`] = `
 ".carousel-3d-slider(style=\'width: 0px; height: 0px;\')
   .carousel-3d-slide(style=\'border-width: 1px; width: 0px; height: 0px;\')

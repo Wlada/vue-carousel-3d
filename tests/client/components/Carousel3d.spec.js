@@ -166,4 +166,41 @@ describe('Carousel3d', () => {
 
         return utils.expectToMatchSnapshot(vm);
     });
+
+	it('check if exact callback function is received for onMainSlideClick ', () => {
+
+		const noop = () => {
+		};
+
+		const vm = new Vue({
+			el: document.createElement('div'),
+			render: (h) => h(Carousel3d, { props: { onMainSlideClick: noop } }, [h(Slide), h(Slide)]),
+		});
+		const carouselInstance = vm.$children[0];
+
+		expect(carouselInstance.onMainSlideClick).toEqual(noop);
+
+		return utils.expectToMatchSnapshot(vm);
+	});
+
+	it('check if exact callback function is received for onMainSlideClick ', () => {
+
+		const returnTrue = () => {
+			return true;
+		};
+
+		const vm = new Vue({
+			el: document.createElement('div'),
+			render: (h) => h(Carousel3d, { props: { onMainSlideClick: returnTrue } }, [h(Slide), h(Slide)]),
+		});
+		const carouselInstance = vm.$children[0];
+
+		const result = carouselInstance.onMainSlideClick();
+
+		expect(result).toBe(true);
+
+		return utils.expectToMatchSnapshot(vm);
+	});
+
+
 })
