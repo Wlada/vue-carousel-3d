@@ -233,7 +233,7 @@ play('Carousel3d', module)
     })
 
     .add("callbacks", {
-        template: `<carousel-3d :on-slide-change="onSlideChanged" :on-last-slide="onLastSlide" :onMainSlideClick="onMainSlideClick">
+        template: `<carousel-3d :on-slide-change="onSlideChanged" :on-last-slide="onLastSlide" :on-main-slide-click="onMainSlideClick">
             <slide v-for="(slide, i) in slides" :index="i" >
                 <img :src="slide.src">
             </slide>
