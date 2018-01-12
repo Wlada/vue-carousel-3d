@@ -164,3 +164,9 @@ Set arrows target height area in pixels
 
 * **Type**: `Number`
 * **Default**: `60`
+
+
+### onMainSlideClick
+
+* **Type**: `Function`
+* **Default**: `None`

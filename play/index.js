@@ -233,8 +233,8 @@ play('Carousel3d', module)
     })
 
     .add("callbacks", {
-        template: `<carousel-3d :on-slide-change="onSlideChanged" :on-last-slide="onLastSlide">
-            <slide v-for="(slide, i) in slides" :index="i">
+        template: `<carousel-3d :on-slide-change="onSlideChanged" :on-last-slide="onLastSlide" :on-main-slide-click="onMainSlideClick">
+            <slide v-for="(slide, i) in slides" :index="i" >
                 <img :src="slide.src">
             </slide>
         </carousel-3d>`,
@@ -248,11 +248,14 @@ play('Carousel3d', module)
             }
         },
         methods: {
-            onSlideChanged(index){
+            onSlideChanged(index) {
                 console.log('onSlideChanged Callback Triggered', 'Slide Index ' + index)
             },
-            onLastSlide(index){
+            onLastSlide(index) {
                 console.log('onLastSlide Callback Triggered', 'Slide Index ' + index)
+            },
+            onMainSlideClick() {
+                console.log('onMainSlideClick Callback Triggered')
             }
         }
     })
@@ -307,13 +310,13 @@ play('Carousel3d', module)
             }
         },
         methods: {
-            onAfterSlideChanged(index){
+            onAfterSlideChanged(index) {
                 console.log('@after-slide-changed Callback Triggered', 'Slide Index ' + index)
             },
-            onSlideChange(index){
+            onSlideChange(index) {
                 console.log('@before-slide-change Callback Triggered', 'Slide Index ' + index)
             },
-            onLastSlide(index){
+            onLastSlide(index) {
                 console.log('@last-slide Callback Triggered', 'Slide Index ' + index)
             }
         }
@@ -335,13 +338,13 @@ play('Carousel3d', module)
             }
         },
         methods: {
-            onAfterSlideChanged(index){
+            onAfterSlideChanged(index) {
                 console.log('@after-slide-changed Callback Triggered', 'Slide Index ' + index)
             },
-            onSlideChange(index){
+            onSlideChange(index) {
                 console.log('@before-slide-change Callback Triggered', 'Slide Index ' + index)
             },
-            onLastSlide(index){
+            onLastSlide(index) {
                 console.log('@last-slide Callback Triggered', 'Slide Index ' + index)
             }
         }
