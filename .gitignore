@@ -6,4 +6,5 @@ docs/public/
 dist-play/
 .idea/
 .deploy_git/
+package-lock.json
 

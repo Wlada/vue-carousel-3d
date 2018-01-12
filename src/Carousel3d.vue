@@ -1,11 +1,11 @@
 <template>
-    <div class="carousel-3d-container" :style="{height: this.slideHeight + 'px'}">
-        <div class="carousel-3d-slider" :style="{width: this.slideWidth + 'px', height: this.slideHeight + 'px'}">
-            <slot></slot>
-        </div>
-        <controls v-if="controlsVisible" :next-html="controlsNextHtml" :prev-html="controlsPrevHtml"
-                  :width="controlsWidth" :height="controlsHeight"></controls>
-    </div>
+	<div class="carousel-3d-container" :style="{height: this.slideHeight + 'px'}">
+		<div class="carousel-3d-slider" :style="{width: this.slideWidth + 'px', height: this.slideHeight + 'px'}">
+			<slot></slot>
+		</div>
+		<controls v-if="controlsVisible" :next-html="controlsNextHtml" :prev-html="controlsPrevHtml"
+		          :width="controlsWidth" :height="controlsHeight"></controls>
+	</div>
 </template>
 
 <script>
@@ -114,6 +114,10 @@
             bias: {
                 type: String,
                 default: 'left'
+            },
+            onMainSlideClick: {
+                type: Function,
+                default: noop
             }
         },
         data () {
@@ -186,7 +190,7 @@
             },
             rightIndices () {
                 let n = (this.visible - 1) / 2
-
+                
                 n = (this.bias.toLowerCase() === 'right' ? Math.ceil(n) : Math.floor(n))
                 const indices = []
 
@@ -448,23 +452,23 @@
 </script>
 
 <style scoped>
-    .carousel-3d-container {
-        min-height: 1px;
-        width: 100%;
-        position: relative;
-        z-index: 0;
-        overflow: hidden;
-        margin: 20px auto;
-        box-sizing: border-box;
-    }
+	.carousel-3d-container {
+		min-height: 1px;
+		width: 100%;
+		position: relative;
+		z-index: 0;
+		overflow: hidden;
+		margin: 20px auto;
+		box-sizing: border-box;
+	}
 
-    .carousel-3d-slider {
-        position: relative;
-        margin: 0 auto;
-        transform-style: preserve-3d;
-        -webkit-perspective: 1000px;
-        -moz-perspective: 1000px;
-        perspective: 1000px;
-    }
+	.carousel-3d-slider {
+		position: relative;
+		margin: 0 auto;
+		transform-style: preserve-3d;
+		-webkit-perspective: 1000px;
+		-moz-perspective: 1000px;
+		perspective: 1000px;
+	}
 
 </style>
