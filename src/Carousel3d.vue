@@ -190,6 +190,7 @@
             },
             rightIndices () {
                 let n = (this.visible - 1) / 2
+                
                 n = (this.bias.toLowerCase() === 'right' ? Math.ceil(n) : Math.floor(n))
                 const indices = []
 
