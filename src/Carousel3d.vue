@@ -190,7 +190,7 @@
             },
             rightIndices () {
                 let n = (this.visible - 1) / 2
-                
+
                 n = (this.bias.toLowerCase() === 'right' ? Math.ceil(n) : Math.floor(n))
                 const indices = []
 
@@ -405,9 +405,12 @@
             /**
              * Re-compute the number of slides and current slide
              */
-            computeData () {
+            computeData (firstRun) {
                 this.total = this.getSlideCount()
-                this.currentIndex = parseInt(this.startIndex) > this.total - 1 ? this.total - 1 : parseInt(this.startIndex)
+                if (firstRun || this.currentIndex >= this.total) {
+                    this.currentIndex = parseInt(this.startIndex) > this.total - 1 ? this.total - 1 : parseInt(this.startIndex)
+                }
+
                 this.viewport = this.$el.clientWidth
             },
             setSize () {
@@ -417,7 +420,7 @@
         },
 
         mounted () {
-            this.computeData()
+            this.computeData(true)
             this.attachMutationObserver()
 
             if (!this.$isServer) {
