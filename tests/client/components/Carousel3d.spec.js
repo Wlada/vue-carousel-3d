@@ -166,4 +166,71 @@ describe('Carousel3d', () => {
 
         return utils.expectToMatchSnapshot(vm);
     });
+
+	it('check if exact callback function is received for onMainSlideClick ', () => {
+
+		const noop = () => {
+		};
+
+		const vm = new Vue({
+			el: document.createElement('div'),
+			render: (h) => h(Carousel3d, { props: { onMainSlideClick: noop } }, [h(Slide), h(Slide)]),
+		});
+		const carouselInstance = vm.$children[0];
+
+		expect(carouselInstance.onMainSlideClick).toEqual(noop);
+
+		return utils.expectToMatchSnapshot(vm);
+	});
+
+	it('check if exact callback function is received for onMainSlideClick ', () => {
+
+		const returnTrue = () => {
+			return true;
+		};
+
+		const vm = new Vue({
+			el: document.createElement('div'),
+			render: (h) => h(Carousel3d, { props: { onMainSlideClick: returnTrue } }, [h(Slide), h(Slide)]),
+		});
+		const carouselInstance = vm.$children[0];
+
+		const result = carouselInstance.onMainSlideClick();
+
+		expect(result).toBe(true);
+
+		return utils.expectToMatchSnapshot(vm);
+	});
+
+    it('should not change current slide index if computeData called and total number of slides have not change and in of bounds ', () => {
+        const vm = new Vue({
+            el: document.createElement('div'),
+            render: (h) => h(Carousel3d, { props: { startIndex: 0, loop: false } }, [h(Slide), h(Slide)]),
+        });
+        const carouselInstance = vm.$children[0];
+        return carouselInstance.$nextTick().then(() => {
+            carouselInstance.goNext();
+            carouselInstance.computeData();
+            expect(carouselInstance.$data.currentIndex).toBe(1);
+    
+            return utils.expectToMatchSnapshot(vm);
+        });
+    });
+
+    it('should change current slide index if computeData called and current slide index falls out of bounds ', () => {
+        const vm = new Vue({
+            el: document.createElement('div'),
+            render: (h) => h(Carousel3d, { props: { startIndex: 0, loop: false } }, [h(Slide), h(Slide), h(Slide)]),
+        });
+        const carouselInstance = vm.$children[0];
+        return carouselInstance.$nextTick().then(() => {
+            carouselInstance.goSlide(2);
+            carouselInstance.$slots.default.pop();
+            carouselInstance.computeData();
+            expect(carouselInstance.$data.currentIndex).toBe(0);
+    
+            return utils.expectToMatchSnapshot(vm);
+        });
+    });
+
 })
