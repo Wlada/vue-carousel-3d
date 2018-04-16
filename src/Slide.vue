@@ -78,7 +78,7 @@
                     : parseInt((i + 1) * (this.parent.space), 10)
                 const transform = (positive)
                     ? 'translateX(' + (leftRemain) + 'px) translateZ(-' + z + 'px) ' +
-                    'rotateY(-' + y + 'deg)'
+                    'rotateY(' + (y>0?-y:Math.abs(y)) + 'deg)'
                     : 'translateX(-' + (leftRemain) + 'px) translateZ(-' + z + 'px) ' +
                     'rotateY(' + y + 'deg)'
                 const top = this.parent.space === 'auto' ? 0 : parseInt((i + 1) * (this.parent.space))
