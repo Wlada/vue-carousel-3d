@@ -1,11 +1,11 @@
 /* eslint-disable */
 
-import Vue from "vue"
-import {play} from "vue-play"
-import Carousel3d from "../src/Carousel3d.vue"
-import Slide from "../src/Slide.vue"
+import Vue from 'vue'
+import { play } from 'vue-play'
+import Carousel3d from '../src/Carousel3d.vue'
+import Slide from '../src/Slide.vue'
 
-play("Carousel3d", module)
+play('Carousel3d', module)
 
 const slides = [
     {
@@ -61,7 +61,7 @@ const slides = [
 ]
 
 play('Carousel3d', module)
-    .add("default", {
+    .add('default', {
         template: `<carousel-3d>
             <slide v-for="(slide, i) in slides" :index="i">
                 <h1>{{slide.title}}</h1>
@@ -72,13 +72,13 @@ play('Carousel3d', module)
             Carousel3d,
             Slide
         },
-        data() {
+        data () {
             return {
                 slides: slides
             }
         }
     })
-    .add("images", {
+    .add('images', {
         template: `<carousel-3d>
             <slide v-for="(slide, i) in slides" :index="i">
                 <img :src="slide.src">
@@ -88,14 +88,14 @@ play('Carousel3d', module)
             Carousel3d,
             Slide
         },
-        data() {
+        data () {
             return {
                 slides: slides
             }
         }
     })
 
-    .add("autoplay enabled", {
+    .add('autoplay enabled', {
         template: `<carousel-3d :autoplay="true">
             <slide v-for="(slide, i) in slides" :index="i">
                 <img :src="slide.src">
@@ -105,14 +105,14 @@ play('Carousel3d', module)
             Carousel3d,
             Slide
         },
-        data() {
+        data () {
             return {
                 slides: slides
             }
         }
     })
 
-    .add("num of displayed", {
+    .add('num of displayed', {
         template: `<carousel-3d :display="3">
             <slide v-for="(slide, i) in slides" :index="i">
                 <img :src="slide.src">
@@ -122,14 +122,14 @@ play('Carousel3d', module)
             Carousel3d,
             Slide
         },
-        data() {
+        data () {
             return {
                 slides: slides
             }
         }
     })
 
-    .add("even number displayed", {
+    .add('even number displayed', {
         template: `<carousel-3d :display="6" :bias="'right'">
             <slide v-for="(slide, i) in slides" :index="i">
                 <img :src="slide.src">
@@ -139,14 +139,14 @@ play('Carousel3d', module)
             Carousel3d,
             Slide
         },
-        data() {
+        data () {
             return {
                 slides: slides
             }
         }
     })
 
-    .add("slides clickable", {
+    .add('slides clickable', {
         template: `<carousel-3d :clickable="true">
             <slide v-for="(slide, i) in slides" :index="i">
                 <img :src="slide.src">
@@ -156,14 +156,14 @@ play('Carousel3d', module)
             Carousel3d,
             Slide
         },
-        data() {
+        data () {
             return {
                 slides: slides
             }
         }
     })
 
-    .add("loop disabled", {
+    .add('loop disabled', {
         template: `<carousel-3d :loop="false">
             <slide v-for="(slide, i) in slides" :index="i">
                 <img :src="slide.src">
@@ -173,14 +173,14 @@ play('Carousel3d', module)
             Carousel3d,
             Slide
         },
-        data() {
+        data () {
             return {
                 slides: slides
             }
         }
     })
 
-    .add("controls visible", {
+    .add('controls visible', {
         template: `<carousel-3d :controls-visible="true">
             <slide v-for="(slide, i) in slides" :index="i">
                 <img :src="slide.src">
@@ -190,14 +190,14 @@ play('Carousel3d', module)
             Carousel3d,
             Slide
         },
-        data() {
+        data () {
             return {
                 slides: slides
             }
         }
     })
 
-    .add("custom controls", {
+    .add('custom controls', {
         template: `<carousel-3d :controls-visible="true" :controls-prev-html="'&#10092;'" :controls-next-html="'&#10093;'" 
                                 :controls-width="30" :controls-height="60">
             <slide v-for="(slide, i) in slides" :index="i">
@@ -208,14 +208,14 @@ play('Carousel3d', module)
             Carousel3d,
             Slide
         },
-        data() {
+        data () {
             return {
                 slides: slides
             }
         }
     })
 
-    .add("ltr direction", {
+    .add('ltr direction', {
         template: `<carousel-3d :dir="'ltr'">
             <slide v-for="(slide, i) in slides" :index="i">
                 <img :src="slide.src">
@@ -225,14 +225,14 @@ play('Carousel3d', module)
             Carousel3d,
             Slide
         },
-        data() {
+        data () {
             return {
                 slides: slides
             }
         }
     })
 
-    .add("callbacks", {
+    .add('callbacks', {
         template: `<carousel-3d :on-slide-change="onSlideChanged" :on-last-slide="onLastSlide" :on-main-slide-click="onMainSlideClick">
             <slide v-for="(slide, i) in slides" :index="i" >
                 <img :src="slide.src">
@@ -242,25 +242,25 @@ play('Carousel3d', module)
             Carousel3d,
             Slide
         },
-        data() {
+        data () {
             return {
                 slides: slides
             }
         },
         methods: {
-            onSlideChanged(index) {
+            onSlideChanged (index) {
                 console.log('onSlideChanged Callback Triggered', 'Slide Index ' + index)
             },
-            onLastSlide(index) {
+            onLastSlide (index) {
                 console.log('onLastSlide Callback Triggered', 'Slide Index ' + index)
             },
-            onMainSlideClick() {
+            onMainSlideClick () {
                 console.log('onMainSlideClick Callback Triggered')
             }
         }
     })
 
-    .add("add/remove slides", {
+    .add('add/remove slides', {
         template: `<div>
             <carousel-3d :count="slideCount">
                 <slide v-for="(slide, i) in slideCount" :index="i">
@@ -274,16 +274,16 @@ play('Carousel3d', module)
             Carousel3d,
             Slide
         },
-        data() {
+        data () {
             return {
                 slideCount: 10
             }
         },
         methods: {
-            addSlide() {
+            addSlide () {
                 this.slideCount++
             },
-            removeSlide() {
+            removeSlide () {
                 if (this.slideCount > 1) {
                     this.slideCount--
                 }
@@ -291,7 +291,7 @@ play('Carousel3d', module)
         }
     })
 
-    .add("callbacks through emit", {
+    .add('callbacks through emit', {
         template: `<carousel-3d
                       @before-slide-change="onSlideChange"
                       @after-slide-change="onAfterSlideChanged"
@@ -304,25 +304,25 @@ play('Carousel3d', module)
             Carousel3d,
             Slide
         },
-        data() {
+        data () {
             return {
                 slides: slides
             }
         },
         methods: {
-            onAfterSlideChanged(index) {
+            onAfterSlideChanged (index) {
                 console.log('@after-slide-changed Callback Triggered', 'Slide Index ' + index)
             },
-            onSlideChange(index) {
+            onSlideChange (index) {
                 console.log('@before-slide-change Callback Triggered', 'Slide Index ' + index)
             },
-            onLastSlide(index) {
+            onLastSlide (index) {
                 console.log('@last-slide Callback Triggered', 'Slide Index ' + index)
             }
         }
     })
 
-    .add("3d Disabled", {
+    .add('3d Disabled', {
         template: `<carousel-3d :disable3d="true" :space="370" :clickable="false" :controls-visible="true">
             <slide v-for="(slide, i) in slides" :index="i">
                 <img :src="slide.src">
@@ -332,20 +332,42 @@ play('Carousel3d', module)
             Carousel3d,
             Slide
         },
-        data() {
+        data () {
             return {
                 slides: slides
             }
         },
         methods: {
-            onAfterSlideChanged(index) {
+            onAfterSlideChanged (index) {
                 console.log('@after-slide-changed Callback Triggered', 'Slide Index ' + index)
             },
-            onSlideChange(index) {
+            onSlideChange (index) {
                 console.log('@before-slide-change Callback Triggered', 'Slide Index ' + index)
             },
-            onLastSlide(index) {
+            onLastSlide (index) {
                 console.log('@last-slide Callback Triggered', 'Slide Index ' + index)
+            }
+        }
+    })
+    .add('Scoped Slot', {
+        template: `<carousel-3d>
+            <slide v-for="(slide, i) in slides" :index="i" :key="i">
+                <template slot-scope="{ index, isCurrent, leftIndex, rightIndex }">
+                    <div :style="{ textAlign: leftIndex >= 0 ? 'right' : 'left' }">
+                        right {{ rightIndex }} <br>
+                        left {{ leftIndex }} 
+                    </div>  
+                    <img :data-index="index" :data-is-current="isCurrent" :src="slide.src">
+                </template>
+            </slide>
+        </carousel-3d>`,
+        components: {
+            Carousel3d,
+            Slide
+        },
+        data () {
+            return {
+                slides: slides
             }
         }
     })

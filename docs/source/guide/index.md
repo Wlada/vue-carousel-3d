@@ -53,6 +53,20 @@ Once the **Carousel3d** and **Slide** components are installed globally or impor
 ```
 Keep in mind that **index** property on slide component is required property and you will need to pass it for every slide starting from 0 
 
+## Scoped Slots
+
+You can use scoped slots to access current slide index, left and right indexes
+
+```html
+<carousel-3d>
+    <slide v-for="(slide, i) in slides" :index="i" :key="i">
+        <template slot-scope="{ index, isCurrent, leftIndex, rightIndex }">
+            <img :data-index="index" :class="{ current: isCurrent, onLeft: (leftIndex >= 0), onRight: (rightIndex >= 0) }" :src="slide.src">
+        </template>
+    </slide>
+</carousel-3d>
+```
+
 ## Development
 
 Dev environment is created by [vue-play](https://github.com/vue-play/vue-play). Changes made to the component files will appear in real time in the sandbox.
