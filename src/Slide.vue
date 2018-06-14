@@ -1,6 +1,6 @@
 <template>
-	<div class="carousel-3d-slide" :style="slideStyle" :class="{ 'current': isCurrent }" @click="goTo()">
-		<slot></slot>
+	<div class="carousel-3d-slide" :style="slideStyle" :class="computedClasses" @click="goTo()">
+		<slot :index="index" :isCurrent="isCurrent" :leftIndex="leftIndex" :rightIndex="rightIndex"/>
 	</div>
 </template>
 
@@ -23,13 +23,18 @@
             isCurrent () {
                 return this.index === this.parent.currentIndex
             },
+            leftIndex () {
+                return this.getSideIndex(this.parent.leftIndices)
+            },
+            rightIndex () {
+                return this.getSideIndex(this.parent.rightIndices)
+            },
             slideStyle () {
                 let styles = {}
 
                 if (!this.isCurrent) {
-                    const rIndex = this.getSideIndex(this.parent.rightIndices)
-                    const lIndex = this.getSideIndex(this.parent.leftIndices)
-
+                    const rIndex = this.leftIndex
+                    const lIndex = this.rightIndex
                     if (rIndex >= 0 || lIndex >= 0) {
                         styles = rIndex >= 0 ? this.calculatePosition(rIndex, true, this.zIndex) : this.calculatePosition(lIndex, false, this.zIndex)
                         styles.opacity = 1
@@ -53,6 +58,13 @@
                     '               opacity ' + this.parent.animationSpeed + 'ms, ' +
                     '               visibility ' + this.parent.animationSpeed + 'ms'
                 })
+            },
+            computedClasses () {
+                return {
+                    [`left-${this.leftIndex + 1}`]: this.leftIndex >= 0,
+                    [`right-${this.rightIndex + 1}`]: this.rightIndex >= 0,
+                    'current': this.isCurrent
+                }
             }
         },
         methods: {
