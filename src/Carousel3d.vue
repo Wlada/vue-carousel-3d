@@ -125,7 +125,6 @@
                 viewport: 0,
                 currentIndex: 0,
                 total: 0,
-                lock: false,
                 dragOffset: 0,
                 dragStartX: 0,
                 mousedown: false,
@@ -254,7 +253,6 @@
              */
             goSlide (index) {
                 this.currentIndex = (index < 0 || index > this.total - 1) ? 0 : index
-                this.lock = true
 
                 if (this.isLastSlide) {
                     if (this.onLastSlide !== noop) {
@@ -296,8 +294,6 @@
              * Trigger actions when animation ends
              */
             animationEnd () {
-                this.lock = false
-
                 if (this.onSlideChange !== noop) {
                     console.warn('onSlideChange deprecated, please use @after-slide-change')
                 }
