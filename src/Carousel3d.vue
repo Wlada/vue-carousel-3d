@@ -67,6 +67,10 @@
                 type: [Number, String],
                 default: 0
             },
+            showIndex: {
+                type: [Number, String],
+                default: 0
+            },
             clickable: {
                 type: Boolean,
                 default: true
@@ -138,6 +142,10 @@
         watch: {
             count () {
                 this.computeData()
+            },
+
+            showIndex (index) {
+                this.goSlide(index)
             }
         },
         computed: {
