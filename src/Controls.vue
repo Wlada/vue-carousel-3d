@@ -62,13 +62,13 @@
         margin-top: -30px;
         left: 0;
         width: 100%;
-        z-index: 9099;
+        z-index: 1000;
     }
 
     .next, .prev {
         width: 60px;
         position: absolute;
-        z-index: 9999;
+        z-index: 1010;
         font-size: 60px;
         height: 60px;
         line-height: 60px;
