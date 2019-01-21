@@ -156,7 +156,7 @@
                 const vw = this.viewport
                 const sw = parseInt(this.width) + (parseInt(this.border, 10) * 2)
 
-                return vw < sw ? vw : sw
+                return vw < sw && process.browser ? vw : sw
             },
             slideHeight () {
                 const sw = parseInt(this.width, 10) + (parseInt(this.border, 10) * 2)
