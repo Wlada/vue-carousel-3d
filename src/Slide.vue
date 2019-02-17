@@ -107,7 +107,8 @@
                         this.parent.goFar(this.index)
                     }
                 } else {
-                    this.parent.onMainSlideClick()
+                    const {index} = this;
+                    this.parent.onMainSlideClick({index});
                 }
             }
         }
