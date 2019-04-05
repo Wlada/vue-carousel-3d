@@ -33,8 +33,8 @@
                 let styles = {}
 
                 if (!this.isCurrent) {
-                    const rIndex = this.leftIndex
-                    const lIndex = this.rightIndex
+                    const lIndex = this.leftIndex
+                    const rIndex = this.rightIndex
                     if (rIndex >= 0 || lIndex >= 0) {
                         styles = rIndex >= 0 ? this.calculatePosition(rIndex, true, this.zIndex) : this.calculatePosition(lIndex, false, this.zIndex)
                         styles.opacity = 1
