@@ -1,5 +1,6 @@
 # Vue Carousel 3d
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/22c6361755bb4bdd935fd8534babbbb8)](https://app.codacy.com/app/Wlada/vue-carousel-3d?utm_source=github.com&utm_medium=referral&utm_content=Wlada/vue-carousel-3d&utm_campaign=Badge_Grade_Dashboard)
 [![NPM downloads](https://img.shields.io/npm/dm/vue-carousel-3d.svg)](https://npmjs.com/package/vue-carousel-3d)
 [![Build Status](https://travis-ci.org/Wlada/vue-carousel-3d.svg?branch=master)](https://travis-ci.org/Wlada/vue-carousel-3d)
 [![Coverage Status](https://coveralls.io/repos/github/Wlada/vue-carousel-3d/badge.svg)](https://coveralls.io/github/Wlada/vue-carousel-3d)
