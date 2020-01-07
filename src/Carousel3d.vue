@@ -23,6 +23,10 @@
             Slide
         },
         props: {
+            adaptiveHeight: {
+                type: Boolean,
+                default: false
+            },
             count: {
                 type: [Number, String],
                 default: 0
@@ -162,8 +166,9 @@
                 const sw = parseInt(this.width, 10) + (parseInt(this.border, 10) * 2)
                 const sh = parseInt(parseInt(this.height) + (this.border * 2), 10)
                 const ar = this.calculateAspectRatio(sw, sh)
+                const h = this.adaptiveHeight ? sh : this.slideWidth / ar
 
-                return this.slideWidth / ar
+                return h
             },
             visible () {
                 const v = (this.display > this.total) ? this.total : this.display
@@ -456,7 +461,7 @@
 		width: 100%;
 		position: relative;
 		z-index: 0;
-		overflow: hidden;
+        overflow: hidden;
 		margin: 20px auto;
 		box-sizing: border-box;
 	}
