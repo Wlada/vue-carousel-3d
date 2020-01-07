@@ -53,7 +53,7 @@
                 return Object.assign(styles, {
                     'border-width': this.parent.border + 'px',
                     'width': this.parent.slideWidth + 'px',
-                    'height': this.parent.slideHeight + 'px',
+                    'height': this.parent.adaptiveHeight ? 'auto' : this.parent.slideHeight + 'px',
                     'transition': ' transform ' + this.parent.animationSpeed + 'ms, ' +
                     '               opacity ' + this.parent.animationSpeed + 'ms, ' +
                     '               visibility ' + this.parent.animationSpeed + 'ms'
