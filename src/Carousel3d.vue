@@ -23,6 +23,10 @@
             Slide
         },
         props: {
+            adaptiveHeight: {
+                type: Boolean,
+                default: false
+            },
             count: {
                 type: [Number, String],
                 default: 0
@@ -127,6 +131,7 @@
                 total: 0,
                 dragOffset: 0,
                 dragStartX: 0,
+                dragStartY: 0,
                 mousedown: false,
                 zIndex: 998
             }
@@ -162,8 +167,9 @@
                 const sw = parseInt(this.width, 10) + (parseInt(this.border, 10) * 2)
                 const sh = parseInt(parseInt(this.height) + (this.border * 2), 10)
                 const ar = this.calculateAspectRatio(sw, sh)
+                const h = this.adaptiveHeight ? sh : this.slideWidth / ar
 
-                return this.slideWidth / ar
+                return h
             },
             visible () {
                 const v = (this.display > this.total) ? this.total : this.display
@@ -320,6 +326,7 @@
 
                 this.mousedown = true
                 this.dragStartX = ('ontouchstart' in window) ? e.touches[0].clientX : e.clientX
+                this.dragStartY = ('ontouchstart' in window) ? e.touches[0].clientY : e.clientY
             },
             /**
              * Trigger actions when mouse is pressed and then moved (mouse drag)
@@ -331,14 +338,16 @@
                 }
 
                 const eventPosX = ('ontouchstart' in window) ? e.touches[0].clientX : e.clientX
+                const eventPosY = ('ontouchstart' in window) ? e.touches[0].clientY : e.clientY
                 const deltaX = (this.dragStartX - eventPosX)
+                const deltaY = (this.dragStartY - eventPosY)
 
                 this.dragOffset = deltaX
 
-                if (this.dragOffset > this.minSwipeDistance) {
+                if (this.dragOffset > this.minSwipeDistance && deltaY >= -5 && deltaY <= 5) {
                     this.handleMouseup()
                     this.goNext()
-                } else if (this.dragOffset < -this.minSwipeDistance) {
+                } else if (this.dragOffset < -this.minSwipeDistance && deltaY >= -5 && deltaY <= 5) {
                     this.handleMouseup()
                     this.goPrev()
                 }
@@ -456,7 +465,7 @@
 		width: 100%;
 		position: relative;
 		z-index: 0;
-		overflow: hidden;
+        overflow: hidden;
 		margin: 20px auto;
 		box-sizing: border-box;
 	}
