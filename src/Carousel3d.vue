@@ -131,6 +131,7 @@
                 total: 0,
                 dragOffset: 0,
                 dragStartX: 0,
+                dragStartY: 0,
                 mousedown: false,
                 zIndex: 998
             }
@@ -325,6 +326,7 @@
 
                 this.mousedown = true
                 this.dragStartX = ('ontouchstart' in window) ? e.touches[0].clientX : e.clientX
+                this.dragStartY = ('ontouchstart' in window) ? e.touches[0].clientY : e.clientY
             },
             /**
              * Trigger actions when mouse is pressed and then moved (mouse drag)
@@ -336,14 +338,16 @@
                 }
 
                 const eventPosX = ('ontouchstart' in window) ? e.touches[0].clientX : e.clientX
+                const eventPosY = ('ontouchstart' in window) ? e.touches[0].clientY : e.clientY
                 const deltaX = (this.dragStartX - eventPosX)
+                const deltaY = (this.dragStartY - eventPosY)
 
                 this.dragOffset = deltaX
 
-                if (this.dragOffset > this.minSwipeDistance) {
+                if (this.dragOffset > this.minSwipeDistance && deltaY >= -5 && deltaY <= 5) {
                     this.handleMouseup()
                     this.goNext()
-                } else if (this.dragOffset < -this.minSwipeDistance) {
+                } else if (this.dragOffset < -this.minSwipeDistance && deltaY >= -5 && deltaY <= 5) {
                     this.handleMouseup()
                     this.goPrev()
                 }
