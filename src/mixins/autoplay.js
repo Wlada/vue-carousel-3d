@@ -28,9 +28,9 @@ const autoplay = {
         }
     },
     destroyed () {
-        this.pauseAutoplay()
-
         if (!process.server) {
+            this.pauseAutoplay()
+
             this.$el.removeEventListener('mouseenter', this.pauseAutoplay)
             this.$el.removeEventListener('mouseleave', this.startAutoplay)
         }
