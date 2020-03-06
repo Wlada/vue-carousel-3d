@@ -370,9 +370,7 @@
                     }
                 }
             },
-            /**
-             * Stop listening to mutation changes
-             */
+
             detachMutationObserver () {
                 if (this.mutationObserver) {
                     this.mutationObserver.disconnect()
@@ -416,10 +414,9 @@
         },
 
         mounted () {
-            this.computeData(true)
-            this.attachMutationObserver()
-
-            if (!this.$isServer) {
+            if (!process.server) {
+                this.computeData(true)
+                this.attachMutationObserver()
                 window.addEventListener('resize', this.setSize)
 
                 if ('ontouchstart' in window) {
@@ -435,7 +432,7 @@
         },
 
         beforeDestroy () {
-            if (!this.$isServer) {
+            if (!process.server) {
                 this.detachMutationObserver()
 
                 if ('ontouchstart' in window) {
