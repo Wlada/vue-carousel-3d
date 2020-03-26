@@ -28,9 +28,9 @@ const autoplay = {
         }
     },
     destroyed () {
-        this.pauseAutoplay()
+        if (!process.server) {
+            this.pauseAutoplay()
 
-        if (!this.$isServer) {
             this.$el.removeEventListener('mouseenter', this.pauseAutoplay)
             this.$el.removeEventListener('mouseleave', this.startAutoplay)
         }
@@ -50,12 +50,12 @@ const autoplay = {
         }
     },
     mounted () {
-        if (!this.$isServer && this.autoplayHoverPause) {
+        if (!process.server && this.autoplayHoverPause) {
             this.$el.addEventListener('mouseenter', this.pauseAutoplay)
             this.$el.addEventListener('mouseleave', this.startAutoplay)
-        }
 
-        this.startAutoplay()
+            this.startAutoplay()
+        }
     }
 }
 

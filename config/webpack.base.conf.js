@@ -5,6 +5,8 @@ const webpack = require('webpack');
 const npmCfg = require('../package.json');
 const projectRoot = path.resolve(__dirname, '../');
 
+const { VueLoaderPlugin } = require('vue-loader');
+
 var banner = [
     'vue-carousel-3d v' + npmCfg.version,
     '(c) ' + (new Date().getFullYear()) + ' ' + npmCfg.author,
@@ -20,35 +22,47 @@ module.exports = {
         libraryTarget: 'umd'
     },
     resolve: {
-        extensions: ['', '.js', '.vue'],
-        fallback: [path.join(__dirname, '../node_modules')],
+        extensions: ['.js', '.vue'],
+        modules: [
+            path.join(__dirname, 'node_modules')
+        ],
         alias: {
             'vue$': 'vue/dist/vue.common.js',
         }
     },
     resolveLoader: {
-        fallback: [path.join(__dirname, '../node_modules')]
+        modules: [
+            path.join(__dirname, '..', 'node_modules')
+          ]
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.vue$/,
-                loader: 'vue'
+                loader: 'vue-loader'
             },
             {
                 test: /\.js$/,
-                loader: 'babel',
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            ['@babel/preset-env']
+                          ],
+                          comments: false
+                    }
+                },
                 include: projectRoot,
                 exclude: /node_modules/,
+            },
+            {
+                test: /\.css$/,
+                use: [ 'vue-style-loader', 'css-loader' ]
             }
         ]
     },
-    vue: {
-        loaders: {
-            js: 'babel'
-        }
-    },
     plugins: [
-        new webpack.BannerPlugin(banner)
+        new webpack.BannerPlugin(banner),
+        new VueLoaderPlugin()
     ]
 }
