@@ -24,9 +24,13 @@
                 return this.index === this.parent.currentIndex
             },
             leftIndex () {
+                if (this.parent.oneDirectional && this.getSideIndex(this.parent.leftIndices) > this.parent.currentIndex - 1) return -1;
+
                 return this.getSideIndex(this.parent.leftIndices)
             },
             rightIndex () {
+                if (this.parent.oneDirectional && this.getSideIndex(this.parent.rightIndices) > this.parent.total - this.parent.currentIndex - 2) return -1;
+
                 return this.getSideIndex(this.parent.rightIndices)
             },
             slideStyle () {
@@ -107,7 +111,8 @@
                         this.parent.goFar(this.index)
                     }
                 } else {
-                    this.parent.onMainSlideClick()
+                    const {index} = this;
+                    this.parent.onMainSlideClick({index});
                 }
             }
         }
