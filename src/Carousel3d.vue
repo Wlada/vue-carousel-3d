@@ -129,8 +129,10 @@
                 viewport: 0,
                 currentIndex: 0,
                 total: 0,
-                dragOffset: 0,
+                dragOffsetX: 0,
                 dragStartX: 0,
+                dragOffsetY: 0,
+                dragStartY: 0,
                 mousedown: false,
                 zIndex: 998
             }
@@ -311,7 +313,8 @@
              */
             handleMouseup () {
                 this.mousedown = false
-                this.dragOffset = 0
+                this.dragOffsetX = 0
+                this.dragOffsetY = 0
             },
             /**
              * Trigger actions when mouse is pressed
@@ -324,6 +327,7 @@
 
                 this.mousedown = true
                 this.dragStartX = ('ontouchstart' in window) ? e.touches[0].clientX : e.clientX
+                this.dragStartY = ('ontouchstart' in window) ? e.touches[0].clientY : e.clientY
             },
             /**
              * Trigger actions when mouse is pressed and then moved (mouse drag)
@@ -335,14 +339,22 @@
                 }
 
                 const eventPosX = ('ontouchstart' in window) ? e.touches[0].clientX : e.clientX
+                const eventPosY = ('ontouchstart' in window) ? e.touches[0].clientY : e.clientY
                 const deltaX = (this.dragStartX - eventPosX)
+                const deltaY = (this.dragStartY - eventPosY)
 
-                this.dragOffset = deltaX
+                this.dragOffsetX = deltaX
+                this.dragOffsetY = deltaY
 
-                if (this.dragOffset > this.minSwipeDistance) {
+                // If the swipe is more significant on the Y axis, do not move the slides because this is a scroll gesture
+                if (Math.abs(this.dragOffsetY) > Math.abs(this.dragOffsetX)) {
+                    return
+                }
+
+                if (this.dragOffsetX > this.minSwipeDistance) {
                     this.handleMouseup()
                     this.goNext()
-                } else if (this.dragOffset < -this.minSwipeDistance) {
+                } else if (this.dragOffsetX < -this.minSwipeDistance) {
                     this.handleMouseup()
                     this.goPrev()
                 }
