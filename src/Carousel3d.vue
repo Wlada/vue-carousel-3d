@@ -118,6 +118,10 @@
             onMainSlideClick: {
                 type: Function,
                 default: noop
+            },
+            oneDirectional: {
+                type: Boolean,
+                default: false
             }
         },
         data () {
