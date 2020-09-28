@@ -11,7 +11,7 @@
     "build:docs:assets": "cp ./dist/carousel-3d.common.js ./docs/themes/vue/source/js/",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "test:unit:coverage": "vue-cli-service test:unit --coverage",
+    "test-coverage": "vue-cli-service test:unit --coverage",
     "test:e2e": "vue-cli-service test:e2e",
     "deploy:docs": "cd docs && hexo deploy && cd ..",
     "deploy": "git push https://github.com/Wlada/vue-carousel-3d master"
