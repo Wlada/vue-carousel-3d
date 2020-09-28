@@ -27,7 +27,7 @@
 
         <!-- this needs to be loaded before guide's inline scripts -->
         <script src="/vue-carousel-3d/js/vue.js"></script>
-        <script src="/vue-carousel-3d/js/carousel-3d.common.js"></script>
+        <script src="/vue-carousel-3d/js/carousel-3d.umd.js"></script>
         <script>window.PAGE_TYPE = ""</script>
     </head>
     <body class>        <div id="mobile-bar" class="top">
@@ -140,8 +140,8 @@
     new Vue({
         el: '#index-example',
         components: {
-            'carousel-3d': Carousel3d.Carousel3d,
-            'slide': Carousel3d.Slide
+            'carousel-3d': window['carousel-3d'].Carousel3d,
+            'slide': window['carousel-3d'].Slide
         },
         template: '<carousel-3d :controls-visible="true">' + slideTpl + '</carousel-3d>'
     });

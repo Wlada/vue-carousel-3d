@@ -123,8 +123,8 @@
     new Vue({
         el: '#playground-example',
         components: {
-            'carousel-3d': Carousel3d.Carousel3d,
-            'slide': Carousel3d.Slide
+            'carousel-3d': window['carousel-3d'].Carousel3d,
+            'slide': window['carousel-3d'].Slide
         },
         data: {
             carouselControls: true,

@@ -1,6 +1,6 @@
 {
   "name": "vue-carousel-3d",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Beautiful, flexible and touch supported 3D Carousel for Vue.js",
   "main": "./dist/carousel-3d.common.js",
   "sideEffects": true,
@@ -8,7 +8,7 @@
     "serve": "vue-cli-service serve",
     "build:lib": "vue-cli-service build --target lib --name carousel-3d src/carousel-3d/index.js  && npm run build:docs:assets",
     "build:docs": "npm run build:lib && rm -rf ./docs/public && mkdir ./docs/public/ && cd ./docs/public/ && git init && git remote add origin git@github.com:wlada/vue-carousel-3d.git && git fetch && git checkout -f gh-pages && cd .. && npm install && ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate",
-    "build:docs:assets": "cp ./dist/carousel-3d.common.js ./docs/themes/vue/source/js/",
+    "build:docs:assets": "cp ./dist/carousel-3d.umd.js ./docs/themes/vue/source/js/",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "test-coverage": "vue-cli-service test:unit --coverage",
@@ -37,7 +37,6 @@
     "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@vue/cli": "^4.5.6",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-e2e-cypress": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
