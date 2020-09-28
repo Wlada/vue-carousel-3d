@@ -7,6 +7,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/22c6361755bb4bdd935fd8534babbbb8)](https://app.codacy.com/app/Wlada/vue-carousel-3d?utm_source=github.com&utm_medium=referral&utm_content=Wlada/vue-carousel-3d&utm_campaign=Badge_Grade_Dashboard)
 [![Latest Stable Version](https://img.shields.io/npm/v/vue-carousel-3d.svg)](https://www.npmjs.com/package/vue-carousel-3d)
 
+The repository is back in action. I'll try to keep it updated and to merge pull requests occasionally. Also, some new features are coming soon.
 
 **Feel free to submit issues and feature requests [here](https://github.com/wlada/vue-carousel-3d/issues)**.
 
@@ -70,23 +71,19 @@ Once the **Carousel3d** and **Slide** components are installed globally or impor
   </carousel-3d>
 ```
 
-Keep in mind that **index** property on slide component is required property and you will need to pass it for every slide starting from 0 
-
-## Development
-
-Dev environment is created by [vue-play](https://github.com/vue-play/vue-play). Changes made to the component files will appear in real time in the sandbox.
-
-To begin development, run:
-
-``` bash
-npm install
-npm run dev
-```
-
-now open  `http://localhost:5000` in your browser
-
-You can modify and add scenarios in `play/index.js`
+Keep in mind that **index** property on slide component is required property and you will need to pass it for every slide starting from 0
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Changelog
+####Version 1.0.0
+
+- All dependencies updated to the latest
+- Added one directional carousel and updated the docs (docs updated)
+- area-labels added to the buttons
+- Y-axys swipe bug fixed.
+- Fix SSR
+- onMainSlideClick callback now returns the slide index as function parameter (docs updated)
+- Added scoped slides (docs updated)

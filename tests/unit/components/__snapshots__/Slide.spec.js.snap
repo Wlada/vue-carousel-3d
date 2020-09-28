@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slide should mount successfully 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Slide should render a scoped slot 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide.current(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+    div(data-left-index='-1', data-right-index='-1', data-index='0', data-is-current='true') 0
+  .carousel-3d-slide.right-1(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms; transform: translateX(240px) translateZ(-400px) rotateY(-35deg); top: 0px; z-index: 998; opacity: 1; visibility: visible;')
+    div(data-left-index='-1', data-right-index='0', data-index='1') 1
+  .carousel-3d-slide.right-2(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms; transform: translateX(480px) translateZ(-500px) rotateY(-35deg); top: 0px; z-index: 997; opacity: 1; visibility: visible;')
+    div(data-left-index='-1', data-right-index='1', data-index='2') 2
+  .carousel-3d-slide.left-2(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms; transform: translateX(-480px) translateZ(-500px) rotateY(35deg); top: 0px; z-index: 997; opacity: 1; visibility: visible;')
+    div(data-left-index='1', data-right-index='-1', data-index='3') 3
+  .carousel-3d-slide.left-1(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms; transform: translateX(-240px) translateZ(-400px) rotateY(35deg); top: 0px; z-index: 998; opacity: 1; visibility: visible;')
+    div(data-left-index='0', data-right-index='-1', data-index='4') 4
+// 
+"
+`;
+
+exports[`Slide should return style object when 3 slides are added to the slots 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Slide should unmount successfully 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
