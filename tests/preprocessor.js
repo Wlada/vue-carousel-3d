@@ -1,7 +1,6 @@
 'use strict'
 
 const path = require('path')
-const fs = require('fs')
 const babelc = require('@babel/core')
 const babelOptions = require('../babel.config.js')({ env: () => false })
 

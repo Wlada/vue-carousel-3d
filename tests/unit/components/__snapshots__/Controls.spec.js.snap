@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Controls should mount successfully 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+|  
+.carousel-3d-controls
+  a.prev(href='#', aria-label='Previous slide', style='width: 50px; height: 50px; line-height: 50px;')
+    span &lsaquo;
+  |  
+  a.next(href='#', aria-label='Next slide', style='width: 50px; height: 50px; line-height: 50px;')
+    span &rsaquo;
+"
+`;
+
+exports[`Controls should render a next button 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+|  
+.carousel-3d-controls
+  a.prev(href='#', aria-label='Previous slide', style='width: 50px; height: 50px; line-height: 50px;')
+    span &lsaquo;
+  |  
+  a.next(href='#', aria-label='Next slide', style='width: 50px; height: 50px; line-height: 50px;')
+    span &rsaquo;
+"
+`;
+
+exports[`Controls should render a prev button 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+|  
+.carousel-3d-controls
+  a.prev(href='#', aria-label='Previous slide', style='width: 50px; height: 50px; line-height: 50px;')
+    span &lsaquo;
+  |  
+  a.next(href='#', aria-label='Next slide', style='width: 50px; height: 50px; line-height: 50px;')
+    span &rsaquo;
+"
+`;
+
+exports[`Controls should trigger onNext when next is clicked 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+|  
+.carousel-3d-controls
+  a.prev(href='#', aria-label='Previous slide', style='width: 50px; height: 50px; line-height: 50px;')
+    span &lsaquo;
+  |  
+  a.next(href='#', aria-label='Next slide', style='width: 50px; height: 50px; line-height: 50px;')
+    span &rsaquo;
+"
+`;
+
+exports[`Controls should trigger onNext when next is clicked 2`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+|  
+.carousel-3d-controls
+  a.prev(href='#', aria-label='Previous slide', style='width: 50px; height: 50px; line-height: 50px;')
+    span &lsaquo;
+  |  
+  a.next(href='#', aria-label='Next slide', style='width: 50px; height: 50px; line-height: 50px;')
+    span &rsaquo;
+"
+`;

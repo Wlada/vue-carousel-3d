@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel3d check if exact callback function is received for onMainSlideClick  1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Carousel3d check if exact callback function is received for onMainSlideClick  2`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Carousel3d should be able to go on next slide if start slide index is 0 and there are 2 slides  1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Carousel3d should be able to go on prev slide if start slide index is 0, loop is disabled and there are 2 slides  1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Carousel3d should be able to go on prev slide if start slide index is 0, loop is enabled and there are 2 slides  1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Carousel3d should change current slide index if computeData called and current slide index falls out of bounds  1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Carousel3d should decrease current index number by 1 when goPrev is called 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Carousel3d should increase current index number by 1 when goNext is called 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Carousel3d should mount successfully 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+// 
+"
+`;
+
+exports[`Carousel3d should not be able to go on next slide if start slide index is 1, loop is disabled and there are 2 slides  1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Carousel3d should not change current slide index if computeData called and total number of slides have not change and in of bounds  1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Carousel3d should register 0 slides when 0 slides are added to the slots 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+// 
+"
+`;
+
+exports[`Carousel3d should register 3 slides when 3 slides are added to the slots 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Carousel3d should show 2 slides when 2 slides are added to the slots 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Carousel3d should show 3 slides when 3 slides are added to the slots and display property is set to 5 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Carousel3d should show 5 slides when 7 slides are added to the slots 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+  .carousel-3d-slide(style='border-width: 1px; width: 362px; height: 272px; transition:  transform 500ms,                opacity 500ms,                visibility 500ms;')
+// 
+"
+`;
+
+exports[`Carousel3d should unmount successfully 1`] = `
+".carousel-3d-slider(style='width: 362px; height: 272px;')
+// 
+"
+`;
