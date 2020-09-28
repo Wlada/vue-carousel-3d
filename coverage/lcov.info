@@ -1,5 +1,5 @@
 TN:
-SF:/Users/vladimirbujanovic/Projects/vue-carousel-3d-component/vue-carousel-3d/src/carousel-3d/Carousel3d.vue
+SF:/Users/vladimirbujanovic/Projects/vue-carousel-3d/vue-carousel-3d/src/carousel-3d/Carousel3d.vue
 FN:15,(anonymous_1)
 FN:125,(anonymous_2)
 FN:142,(anonymous_3)
@@ -311,7 +311,7 @@ BRF:99
 BRH:43
 end_of_record
 TN:
-SF:/Users/vladimirbujanovic/Projects/vue-carousel-3d-component/vue-carousel-3d/src/carousel-3d/Controls.vue
+SF:/Users/vladimirbujanovic/Projects/vue-carousel-3d/vue-carousel-3d/src/carousel-3d/Controls.vue
 FN:51,(anonymous_1)
 FNF:1
 FNH:1
@@ -323,7 +323,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/vladimirbujanovic/Projects/vue-carousel-3d-component/vue-carousel-3d/src/carousel-3d/Slide.vue
+SF:/Users/vladimirbujanovic/Projects/vue-carousel-3d/vue-carousel-3d/src/carousel-3d/Slide.vue
 FN:15,(anonymous_1)
 FN:23,(anonymous_2)
 FN:26,(anonymous_3)
@@ -428,7 +428,7 @@ BRF:36
 BRH:26
 end_of_record
 TN:
-SF:/Users/vladimirbujanovic/Projects/vue-carousel-3d-component/vue-carousel-3d/src/carousel-3d/mixins/autoplay.js
+SF:/Users/vladimirbujanovic/Projects/vue-carousel-3d/vue-carousel-3d/src/carousel-3d/mixins/autoplay.js
 FN:25,(anonymous_0)
 FN:30,(anonymous_1)
 FN:39,(anonymous_2)
@@ -476,7 +476,7 @@ BRF:12
 BRH:6
 end_of_record
 TN:
-SF:/Users/vladimirbujanovic/Projects/vue-carousel-3d-component/vue-carousel-3d/tests/unit/utils.js
+SF:/Users/vladimirbujanovic/Projects/vue-carousel-3d/vue-carousel-3d/tests/unit/utils.js
 FN:7,html2pug
 FN:8,(anonymous_1)
 FN:9,(anonymous_2)
