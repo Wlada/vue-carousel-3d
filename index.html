@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head><meta name="generator" content="Hexo 3.9.0">
+        <title>Vue Carousel 3D - 3D Carousel for Vue.js</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Vue Carousel 3D - Beautiful, flexible and touch supported 3D Carousel for Vue.js">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Vue Carousel 3D">
+        <meta property="og:description" content="Vue Carousel 3D - Beautiful, flexible and touch supported 3D Carousel for Vue.js">
+        <meta property="og:image" content="https:///images/logo.png">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Vue Carousel 3D">
+        <meta name="twitter:description" content="Vue Carousel 3D - Beautiful, flexible and touch supported 3D Carousel for Vue.js">
+        <meta name="twitter:image" content="https:///images/logo.png">
+
+        <meta name="google-site-verification" content="j7k2Vin9D3fJKlxZqkcEQK-o4eH3yJbJHwi3u2-KHwQ">
+
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel="stylesheet" type="text/css">
+        <link href="//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js" rel="stylesheet" type="text/css">
+
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/vue-carousel-3d/css/index.css">
+
+        <!-- this needs to be loaded before guide's inline scripts -->
+        <script src="/vue-carousel-3d/js/vue.js"></script>
+        <script src="/vue-carousel-3d/js/carousel-3d.umd.js"></script>
+        <script>window.PAGE_TYPE = ""</script>
+    </head>
+    <body class>        <div id="mobile-bar" class="top">
+            <a class="menu-button"></a>
+            <a class="logo" href="/vue-carousel-3d/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/vue-carousel-3d/">
+    <img src="/vue-carousel-3d/images/logo.png" alt="Vue Carousel 3D">
+    <span>Vue Carousel 3D</span>
+  </a>
+  <ul id="nav">
+    <li><a href="/vue-carousel-3d/guide" class="nav-link">Guide</a></li>
+<li><a href="/vue-carousel-3d/api" class="nav-link">API</a></li>
+<li><a href="/vue-carousel-3d/examples" class="nav-link">Examples</a></li>
+<li><a href="/vue-carousel-3d/playground" class="nav-link">Playground</a></li>
+
+  </ul>
+</div>
+
+        
+            <div class="sidebar">
+    <ul class="main-menu">
+        <li><a href="/vue-carousel-3d/guide" class="nav-link">Guide</a></li>
+<li><a href="/vue-carousel-3d/api" class="nav-link">API</a></li>
+<li><a href="/vue-carousel-3d/examples" class="nav-link">Examples</a></li>
+<li><a href="/vue-carousel-3d/playground" class="nav-link">Playground</a></li>
+
+    </ul>
+</div>
+
+<div id="hero">
+    <div class="inner">
+        <h1>
+            Beautiful, flexible and touch supported <br> <strong>3D Carousel for Vue.js</strong>
+        </h1>
+        <p>
+            <a class="button" href="/vue-carousel-3d/guide">GET STARTED</a>
+            <a class="button white" href="https://github.com/wlada/vue-carousel-3d" target="_blank">GITHUB</a>
+        </p>
+    </div>
+</div>
+
+<div id="hero" class="hero-sm">
+    <div class="inner">
+        <div id="index-example"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var slides = [
+        {
+            title: 'Slide 1',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
+            src: 'https://placehold.it/360x270'
+        },
+        {
+            title: 'Slide 2',
+            desc: 'Lorem ipsum dolor sit amet ',
+            src: 'https://placehold.it/360x270'
+        },
+        {
+            title: 'Slide 3',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ',
+            src: 'https://placehold.it/360x270'
+        },
+        {
+            title: 'Slide 4',
+            desc: 'Lorem ipsum dolor sit amet,  Enim, maxime.',
+            src: 'https://placehold.it/360x270'
+        },
+        {
+            title: 'Slide 5',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
+            src: 'https://placehold.it/360x270'
+        },
+        {
+            title: 'Slide 6',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
+            src: 'https://placehold.it/360x270'
+        },
+        {
+            title: 'Slide 7',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
+            src: 'https://placehold.it/360x270'
+        },
+        {
+            title: 'Slide 8',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
+            src: 'https://placehold.it/360x270'
+        },
+        {
+            title: 'Slide 9',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
+            src: 'https://placehold.it/360x270'
+        },
+        {
+            title: 'Slide 10',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
+            src: 'https://placehold.it/360x270'
+        }
+    ]
+
+    var slideTpl = '';
+
+    slides.forEach(function (slide, index) {
+        slideTpl += '<slide :index="' + index + '"><img src="' + slide.src + '" /></slide>';
+    });
+
+    new Vue({
+        el: '#index-example',
+        components: {
+            'carousel-3d': window['carousel-3d'].Carousel3d,
+            'slide': window['carousel-3d'].Slide
+        },
+        template: '<carousel-3d :controls-visible="true">' + slideTpl + '</carousel-3d>'
+    });
+</script>
+
+<div id="highlights">
+    <div class="inner">
+        <div class="point">
+            <h2>Beautiful</h2>
+            <p>With CSS transition you will get nice and smooth slide transition in 3D effect </p>
+        </div>
+
+        <div class="point">
+            <h2>Flexible</h2>
+            <p>Inside slides you can display any html content or some other Vue component</p>
+        </div>
+
+        <div class="point">
+            <h2>Touch supported</h2>
+            <p></p>
+            <p>Touch support enabled on mobile devices</p>
+        </div>
+    </div>
+</div>
+
+<div id="footer">
+    Released under the <a href="https://opensource.org/licenses/MIT">MIT License</a><br>
+    Copyright &copy; 2020 <a href="http://vladimirbujanovic.com/">Vladimir Bujanovic</a>
+</div>
+
+<script>
+    var topScrolled = false
+    window.addEventListener('scroll', function () {
+        if (window.pageYOffset > 165 && !topScrolled) {
+            topScrolled = true
+            document.getElementById('mobile-bar').classList.remove('top')
+        } else if (window.pageYOffset <= 165 && topScrolled) {
+            topScrolled = false
+            document.getElementById('mobile-bar').classList.add('top')
+        }
+    })
+</script>
+
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/vue-carousel-3d/js/common.js"></script>
+
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-4467381-14', 'auto');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/vue-carousel-3d/css/search.css">
+        <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+        <script>
+            [
+                '#search-query-nav',
+                '#search-query-sidebar'
+            ].forEach(function (selector) {
+                if (!document.querySelector(selector)) return
+                // search index defaults to v2
+                var match = window.location.pathname.match(/^\/(v\d+)/)
+                var version = match ? match[1] : 'v2'
+//                docsearch({
+//                    appId: 'BH4D9OD16A',
+//                    apiKey: '85cc3221c9f23bfbaa4e3913dd7625ea',
+//                    indexName: 'vuejs',
+//                    inputSelector: selector,
+//                    algoliaOptions: { facetFilters: ["version:" + version] }
+//                })
+            })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>
