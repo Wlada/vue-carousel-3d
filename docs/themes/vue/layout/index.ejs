@@ -85,8 +85,8 @@
     new Vue({
         el: '#index-example',
         components: {
-            'carousel-3d': Carousel3d.Carousel3d,
-            'slide': Carousel3d.Slide
+            'carousel-3d': window['carousel-3d'].Carousel3d,
+            'slide': window['carousel-3d'].Slide
         },
         template: '<carousel-3d :controls-visible="true">' + slideTpl + '</carousel-3d>'
     });

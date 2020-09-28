@@ -1,6 +1,6 @@
 {
   "name": "vue-carousel-3d",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Beautiful, flexible and touch supported 3D Carousel for Vue.js",
   "main": "./dist/carousel-3d.common.js",
   "sideEffects": true,
@@ -8,10 +8,10 @@
     "serve": "vue-cli-service serve",
     "build:lib": "vue-cli-service build --target lib --name carousel-3d src/carousel-3d/index.js  && npm run build:docs:assets",
     "build:docs": "npm run build:lib && rm -rf ./docs/public && mkdir ./docs/public/ && cd ./docs/public/ && git init && git remote add origin git@github.com:wlada/vue-carousel-3d.git && git fetch && git checkout -f gh-pages && cd .. && npm install && ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate",
-    "build:docs:assets": "cp ./dist/carousel-3d.common.js ./docs/themes/vue/source/js/",
+    "build:docs:assets": "cp ./dist/carousel-3d.umd.js ./docs/themes/vue/source/js/",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "test:unit:coverage": "vue-cli-service test:unit --coverage",
+    "test-coverage": "vue-cli-service test:unit --coverage",
     "test:e2e": "vue-cli-service test:e2e",
     "deploy:docs": "cd docs && hexo deploy && cd ..",
     "deploy": "git push https://github.com/Wlada/vue-carousel-3d master"
