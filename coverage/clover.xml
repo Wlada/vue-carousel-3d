@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1601256857219" clover="3.2.0">
-  <project timestamp="1601256857219" name="All files">
+<coverage generated="1601257972448" clover="3.2.0">
+  <project timestamp="1601257972448" name="All files">
     <metrics statements="201" coveredstatements="138" conditionals="151" coveredconditionals="78" methods="65" coveredmethods="51" elements="417" coveredelements="267" complexity="0" loc="201" ncloc="201" packages="3" files="5" classes="5"/>
     <package name="src.carousel-3d">
       <metrics statements="171" coveredstatements="113" conditionals="135" coveredconditionals="69" methods="48" coveredmethods="36"/>
-      <file name="Carousel3d.vue" path="/Users/vladimirbujanovic/Projects/vue-carousel-3d-component/vue-carousel-3d/src/carousel-3d/Carousel3d.vue">
+      <file name="Carousel3d.vue" path="/Users/vladimirbujanovic/Projects/vue-carousel-3d/vue-carousel-3d/src/carousel-3d/Carousel3d.vue">
         <metrics statements="132" coveredstatements="81" conditionals="99" coveredconditionals="43" methods="36" coveredmethods="25"/>
         <line num="12" count="3" type="stmt"/>
         <line num="13" count="3" type="stmt"/>
@@ -139,11 +139,11 @@
         <line num="455" count="1" type="stmt"/>
         <line num="458" count="1" type="stmt"/>
       </file>
-      <file name="Controls.vue" path="/Users/vladimirbujanovic/Projects/vue-carousel-3d-component/vue-carousel-3d/src/carousel-3d/Controls.vue">
+      <file name="Controls.vue" path="/Users/vladimirbujanovic/Projects/vue-carousel-3d/vue-carousel-3d/src/carousel-3d/Controls.vue">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="52" count="5" type="stmt"/>
       </file>
-      <file name="Slide.vue" path="/Users/vladimirbujanovic/Projects/vue-carousel-3d-component/vue-carousel-3d/src/carousel-3d/Slide.vue">
+      <file name="Slide.vue" path="/Users/vladimirbujanovic/Projects/vue-carousel-3d/vue-carousel-3d/src/carousel-3d/Slide.vue">
         <metrics statements="38" coveredstatements="31" conditionals="36" coveredconditionals="26" methods="11" coveredmethods="10"/>
         <line num="16" count="68" type="stmt"/>
         <line num="24" count="92" type="stmt"/>
@@ -187,7 +187,7 @@
     </package>
     <package name="src.carousel-3d.mixins">
       <metrics statements="15" coveredstatements="12" conditionals="12" coveredconditionals="6" methods="6" coveredmethods="5"/>
-      <file name="autoplay.js" path="/Users/vladimirbujanovic/Projects/vue-carousel-3d-component/vue-carousel-3d/src/carousel-3d/mixins/autoplay.js">
+      <file name="autoplay.js" path="/Users/vladimirbujanovic/Projects/vue-carousel-3d/vue-carousel-3d/src/carousel-3d/mixins/autoplay.js">
         <metrics statements="15" coveredstatements="12" conditionals="12" coveredconditionals="6" methods="6" coveredmethods="5"/>
         <line num="1" count="3" type="stmt"/>
         <line num="26" count="26" type="stmt"/>
@@ -208,7 +208,7 @@
     </package>
     <package name="tests.unit">
       <metrics statements="15" coveredstatements="13" conditionals="4" coveredconditionals="3" methods="11" coveredmethods="10"/>
-      <file name="utils.js" path="/Users/vladimirbujanovic/Projects/vue-carousel-3d-component/vue-carousel-3d/tests/unit/utils.js">
+      <file name="utils.js" path="/Users/vladimirbujanovic/Projects/vue-carousel-3d/vue-carousel-3d/tests/unit/utils.js">
         <metrics statements="15" coveredstatements="13" conditionals="4" coveredconditionals="3" methods="11" coveredmethods="10"/>
         <line num="3" count="3" type="stmt"/>
         <line num="4" count="3" type="stmt"/>
