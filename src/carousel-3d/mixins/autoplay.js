@@ -53,9 +53,9 @@ const autoplay = {
         if (!process.server && this.autoplayHoverPause) {
             this.$el.addEventListener('mouseenter', this.pauseAutoplay)
             this.$el.addEventListener('mouseleave', this.startAutoplay)
-
-            this.startAutoplay()
         }
+        
+        this.startAutoplay()
     }
 }
 
