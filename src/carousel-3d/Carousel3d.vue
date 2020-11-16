@@ -120,6 +120,10 @@ export default {
     oneDirectional: {
       type: Boolean,
       default: false
+    },
+    disableSwipeUpAndDown: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -319,7 +323,7 @@ export default {
      * @param  {Object} e The event object
      */
     handleMousedown (e) {
-      if (!e.touches) {
+      if (!e.touches || this.disableSwipeUpAndDown) {
         e.preventDefault()
       }
 
