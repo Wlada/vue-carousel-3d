@@ -170,3 +170,8 @@ Set arrows target height area in pixels
 
 * **Type**: `Function`
 * **Default**: `None`
+
+### on-slide-change
+
+* **Type**: `Function`
+* **Default**: `None`
