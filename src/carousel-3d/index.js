@@ -1,5 +1,5 @@
-import Slide from "@/carousel-3d/Slide";
-import Carousel3d from "@/carousel-3d/Carousel3d";
+import Slide from "@/carousel-3d/Slide/Slide.vue";
+import Carousel3d from "@/carousel-3d/Carousel3d/Carousel3d.vue";
 
 const install = (Vue) => {
     Vue.component('carousel3d', Carousel3d)

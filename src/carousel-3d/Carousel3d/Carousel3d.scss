@@ -1,0 +1,16 @@
+.carousel-3d-container {
+  min-height: 1px;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+.carousel-3d-slider {
+  position: relative;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
