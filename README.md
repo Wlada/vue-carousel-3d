@@ -7,7 +7,6 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/22c6361755bb4bdd935fd8534babbbb8)](https://app.codacy.com/app/Wlada/vue-carousel-3d?utm_source=github.com&utm_medium=referral&utm_content=Wlada/vue-carousel-3d&utm_campaign=Badge_Grade_Dashboard)
 [![Latest Stable Version](https://img.shields.io/npm/v/vue-carousel-3d.svg)](https://www.npmjs.com/package/vue-carousel-3d)
 
-The repository is back in action. I'll try to keep it updated and to merge pull requests occasionally. Also, some new features are coming soon.
 
 **Feel free to submit issues and feature requests [here](https://github.com/wlada/vue-carousel-3d/issues)**.
 
