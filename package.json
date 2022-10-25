@@ -1,24 +1,24 @@
 {
-  "name": "vue-carousel-3d",
-  "version": "1.0.1",
+  "name": "vue3-carousel-3d",
+  "version": "1.1.0",
   "description": "Beautiful, flexible and touch supported 3D Carousel for Vue.js",
   "main": "./dist/carousel-3d.common.js",
   "sideEffects": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:lib": "vue-cli-service build --target lib --name carousel-3d src/carousel-3d/index.js  && npm run build:docs:assets",
-    "build:docs": "npm run build:lib && rm -rf ./docs/public && mkdir ./docs/public/ && cd ./docs/public/ && git init && git remote add origin git@github.com:wlada/vue-carousel-3d.git && git fetch && git checkout -f gh-pages && cd .. && npm install && ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate",
+    "build:docs": "npm run build:lib && rm -rf ./docs/public && mkdir ./docs/public/ && cd ./docs/public/ && git init && git remote add origin git@github.com:xumumi/vue-carousel-3d.git && git fetch && git checkout -f gh-pages && cd .. && npm install && ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate",
     "build:docs:assets": "cp ./dist/carousel-3d.umd.js ./docs/themes/vue/source/js/",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "test-coverage": "vue-cli-service test:unit --coverage",
     "test:e2e": "vue-cli-service test:e2e",
     "deploy:docs": "cd docs && hexo deploy && cd ..",
-    "deploy": "git push https://github.com/Wlada/vue-carousel-3d master"
+    "deploy": "git push https://github.com/xumumi/vue-carousel-3d master"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/wlada/vue-carousel-3d.git"
+    "url": "git+ssh://git@github.com/xumumi/vue-carousel-3d.git"
   },
   "keywords": [
     "Vue",
@@ -29,12 +29,12 @@
   "author": "Vladimir Bujanovic",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wlada/vue-carousel-3d/issues"
+    "url": "https://github.com/xumumi/vue-carousel-3d/issues"
   },
-  "homepage": "https://github.com/wlada/vue-carousel-3d#readme",
+  "homepage": "https://github.com/xumumi/vue-carousel-3d#readme",
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "~3.2.31"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -42,11 +42,14 @@
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-unit-jest": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.0.0",
     "html2jade": "^0.8.6",
+    "prettier": "^2.2.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
