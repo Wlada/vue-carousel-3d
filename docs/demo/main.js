@@ -9,7 +9,9 @@ const slides = [
   ['02', 'Depth'],
   ['03', 'Touch'],
   ['04', 'Control'],
-  ['05', 'Focus']
+  ['05', 'Focus'],
+  ['06', 'Flow'],
+  ['07', 'Scale']
 ]
 
 new Vue({
@@ -38,11 +40,11 @@ new Vue({
       h(Carousel3d, {
         props: {
           controlsVisible: true,
-          display: 3,
-          width: 320,
-          height: 240,
+          display: 5,
+          width: 280,
+          height: 210,
           perspective: 32,
-          space: 210,
+          space: 160,
           ariaLabel: 'Interactive feature carousel'
         },
         on: {
