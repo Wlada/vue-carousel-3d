@@ -74,7 +74,7 @@ pnpm docs:build
 pnpm pack:check
 ```
 
-Node `20.19+` or `22.13+` and pnpm `11.20.0` are supported by the maintenance toolchain.
+Node `20.19+` or `22.13+` and pnpm `10.34.5` are supported by the maintenance toolchain.
 
 ## License
 

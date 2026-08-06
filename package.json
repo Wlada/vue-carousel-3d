@@ -64,7 +64,7 @@
   "engines": {
     "node": "^20.19.0 || >=22.13.0"
   },
-  "packageManager": "pnpm@11.20.0",
+  "packageManager": "pnpm@10.34.5",
   "peerDependencies": {
     "vue": "^2.6.14 || ^2.7.0"
   },
