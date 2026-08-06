@@ -1,11 +1,10 @@
-/* eslint-disable */
 'use strict'
 
 const Vue = require('vue')
 const utils = require('../utils')
 
-import Carousel3d from "@/carousel-3d/Carousel3d";
-import Slide from "@/carousel-3d/Slide";
+import Carousel3d from '@/carousel-3d/Carousel3d.vue'
+import Slide from '@/carousel-3d/Slide.vue'
 
 describe('Slide', () => {
     it('should mount successfully', () => {

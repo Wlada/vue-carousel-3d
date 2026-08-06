@@ -1,10 +1,9 @@
-/* eslint-disable */
 "use strict"
 
 const Vue = require('vue');
 const utils = require('../utils');
-import Carousel3d from "@/carousel-3d/Carousel3d";
-import Slide from "@/carousel-3d/Slide";
+import Carousel3d from '@/carousel-3d/Carousel3d.vue'
+import Slide from '@/carousel-3d/Slide.vue'
 
 
 describe('Carousel3d', () => {
@@ -40,6 +39,65 @@ describe('Carousel3d', () => {
         expect(carouselInstance.total).toBe(0);
 
         return utils.expectToMatchSnapshot(vm);
+    });
+
+    it('should keep a safe index and ignore navigation when there are no slides', () => {
+        const vm = new Vue({
+            el: document.createElement('div'),
+            render: (h) => h(Carousel3d),
+        });
+        const carouselInstance = vm.$children[0];
+
+        carouselInstance.goNext();
+        carouselInstance.goPrev();
+        carouselInstance.goSlide(4);
+
+        expect(carouselInstance.currentIndex).toBe(0);
+        expect(carouselInstance.isNextPossible).toBe(false);
+        expect(carouselInstance.isPrevPossible).toBe(false);
+        expect(carouselInstance.$listeners['before-slide-change']).toBeUndefined();
+    });
+
+    it('should support arrow-key navigation', async () => {
+        const vm = new Vue({
+            el: document.createElement('div'),
+            render: (h) => h(Carousel3d, {}, [
+                h(Slide, { props: { index: 0 } }),
+                h(Slide, { props: { index: 1 } }),
+            ]),
+        });
+        const carouselInstance = vm.$children[0];
+
+        carouselInstance.$el.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
+        await Vue.nextTick();
+
+        expect(carouselInstance.currentIndex).toBe(1);
+        expect(carouselInstance.$el.getAttribute('aria-roledescription')).toBe('carousel');
+    });
+
+    it('should autoplay when hover pause is disabled without stacking intervals', () => {
+        vi.useFakeTimers();
+        const vm = new Vue({
+            el: document.createElement('div'),
+            render: (h) => h(Carousel3d, {
+                props: { autoplay: true, autoplayHoverPause: false, autoplayTimeout: 100 },
+            }, [
+                h(Slide, { props: { index: 0 } }),
+                h(Slide, { props: { index: 1 } }),
+            ]),
+        });
+        const carouselInstance = vm.$children[0];
+        const firstInterval = carouselInstance.autoplayInterval;
+
+        carouselInstance.startAutoplay();
+        expect(carouselInstance.autoplayInterval).not.toBe(firstInterval);
+
+        vi.advanceTimersByTime(100);
+        expect(carouselInstance.currentIndex).toBe(1);
+
+        carouselInstance.$destroy();
+        expect(carouselInstance.autoplayInterval).toBeNull();
+        vi.useRealTimers();
     });
 
     it('should register 3 slides when 3 slides are added to the slots', () => {

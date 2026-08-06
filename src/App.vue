@@ -165,59 +165,60 @@
 </template>
 
 <script>
-import Carousel3d from "@/carousel-3d/Carousel3d";
-import Slide from "@/carousel-3d/Slide";
+import Carousel3d from "@/carousel-3d/Carousel3d.vue";
+import Slide from "@/carousel-3d/Slide.vue";
+import placeholderImage from '@/assets/carousel-placeholder.svg'
 
 const slides = [
   {
     title: 'Slide 1',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
-    src: 'https://placehold.it/360x270'
+    src: placeholderImage
   },
   {
     title: 'Slide 2',
     desc: 'Lorem ipsum dolor sit amet ',
-    src: 'https://placehold.it/360x270'
+    src: placeholderImage
   },
   {
     title: 'Slide 3',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ',
-    src: 'https://placehold.it/360x270'
+    src: placeholderImage
   },
   {
     title: 'Slide 4',
     desc: 'Lorem ipsum dolor sit amet,  Enim, maxime.',
-    src: 'https://placehold.it/360x270'
+    src: placeholderImage
   },
   {
     title: 'Slide 5',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
-    src: 'https://placehold.it/360x270'
+    src: placeholderImage
   },
   {
     title: 'Slide 6',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
-    src: 'https://placehold.it/360x270'
+    src: placeholderImage
   },
   {
     title: 'Slide 7',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
-    src: 'https://placehold.it/360x270'
+    src: placeholderImage
   },
   {
     title: 'Slide 8',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
-    src: 'https://placehold.it/360x270'
+    src: placeholderImage
   },
   {
     title: 'Slide 9',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
-    src: 'https://placehold.it/360x270'
+    src: placeholderImage
   },
   {
     title: 'Slide 10',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, maxime.',
-    src: 'https://placehold.it/360x270'
+    src: placeholderImage
   }
 ]
 

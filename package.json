@@ -1,20 +1,49 @@
 {
   "name": "vue-carousel-3d",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Beautiful, flexible and touch supported 3D Carousel for Vue.js",
   "main": "./dist/carousel-3d.common.js",
+  "module": "./dist/carousel-3d.es.mjs",
+  "types": "./types/index.d.ts",
+  "unpkg": "./dist/carousel-3d.umd.min.js",
+  "jsdelivr": "./dist/carousel-3d.umd.min.js",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/carousel-3d.es.mjs",
+      "require": "./dist/carousel-3d.common.js",
+      "default": "./dist/carousel-3d.es.mjs"
+    },
+    "./dist/carousel-3d.common": "./dist/carousel-3d.common.js",
+    "./dist/carousel-3d.common.js": "./dist/carousel-3d.common.js",
+    "./dist/carousel-3d.umd.js": "./dist/carousel-3d.umd.js",
+    "./dist/carousel-3d.umd.min.js": "./dist/carousel-3d.umd.min.js"
+  },
+  "files": [
+    "dist",
+    "types",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
   "sideEffects": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build:lib": "vue-cli-service build --target lib --name carousel-3d src/carousel-3d/index.js  && npm run build:docs:assets",
-    "build:docs": "npm run build:lib && rm -rf ./docs/public && mkdir ./docs/public/ && cd ./docs/public/ && git init && git remote add origin git@github.com:wlada/vue-carousel-3d.git && git fetch && git checkout -f gh-pages && cd .. && npm install && ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate",
-    "build:docs:assets": "cp ./dist/carousel-3d.umd.js ./docs/themes/vue/source/js/",
-    "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit",
-    "test-coverage": "vue-cli-service test:unit --coverage",
-    "test:e2e": "vue-cli-service test:e2e",
-    "deploy:docs": "cd docs && hexo deploy && cd ..",
-    "deploy": "git push https://github.com/Wlada/vue-carousel-3d master"
+    "dev": "vite",
+    "serve": "vite",
+    "build": "pnpm run build:lib",
+    "build:lib": "vite build && vite build --config vite.umd.config.mjs",
+    "prepack": "pnpm run build:lib",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:browser": "playwright test",
+    "docs:demo": "vite build --config docs/demo/vite.config.mjs",
+    "docs:dev": "pnpm docs:demo && vitepress dev docs",
+    "docs:build": "pnpm docs:demo && vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "pack:check": "pnpm pack --dry-run",
+    "smoke:exports": "node --input-type=module -e \"const p=await import('vue-carousel-3d');if(!p.Carousel3d||!p.Slide||!p.default)process.exit(1)\" && node -e \"const p=require('vue-carousel-3d');if(!p.Carousel3d||!p.Slide||!p.default)process.exit(1)\" && node -e \"const p=require('vue-carousel-3d/dist/carousel-3d.common');if(!p.Carousel3d||!p.Slide||!p.default)process.exit(1)\""
   },
   "repository": {
     "type": "git",
@@ -31,24 +60,36 @@
   "bugs": {
     "url": "https://github.com/wlada/vue-carousel-3d/issues"
   },
-  "homepage": "https://github.com/wlada/vue-carousel-3d#readme",
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+  "homepage": "https://wlada.github.io/vue-carousel-3d/",
+  "engines": {
+    "node": "^20.19.0 || >=22.13.0"
+  },
+  "packageManager": "pnpm@10.34.5",
+  "peerDependencies": {
+    "vue": "^2.6.14 || ^2.7.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-unit-jest": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/test-utils": "^1.0.3",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "html2jade": "^0.8.6",
-    "sass": "^1.26.5",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "1.62.1",
+    "@vitejs/plugin-vue2": "^2.3.4",
+    "@vitest/coverage-v8": "^4.1.10",
+    "@vue/test-utils": "^1.3.6",
+    "eslint": "^10.8.0",
+    "eslint-plugin-vue": "^10.10.0",
+    "globals": "^17.9.0",
+    "jsdom": "^29.1.1",
+    "sass-embedded": "^1.100.0",
+    "vite": "^7.3.6",
+    "vite-plugin-css-injected-by-js": "^4.0.1",
+    "vitepress": "1.6.4",
+    "vitest": "^4.1.10",
+    "vue": "2.7.16",
+    "vue-eslint-parser": "^10.4.1",
+    "vue-server-renderer": "2.7.16",
+    "vue-template-compiler": "2.7.16",
+    "vue3": "npm:vue@3.5.41"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

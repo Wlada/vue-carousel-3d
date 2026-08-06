@@ -1,17 +1,19 @@
 <template>
   <div class="carousel-3d-controls">
-    <a href="#" class="prev" @click.prevent="parent.goPrev()"
+    <button type="button" class="prev" @click="parent.goPrev()"
        :class="{ disabled: !parent.isPrevPossible }"
+       :disabled="!parent.isPrevPossible"
        :style="`width: ${width}px; height: ${height}px; line-height: ${height}px;`"
        aria-label="Previous slide">
       <span v-html="prevHtml"></span>
-    </a>
-    <a href="#" class="next" @click.prevent="parent.goNext()"
+    </button>
+    <button type="button" class="next" @click="parent.goNext()"
        :class="{ disabled: !parent.isNextPossible }"
+       :disabled="!parent.isNextPossible"
        :style="`width: ${width}px; height: ${height}px; line-height: ${height}px;`"
        aria-label="Next slide">
       <span v-html="nextHtml"></span>
-    </a>
+    </button>
   </div>
 </template>
 
@@ -68,6 +70,9 @@ export default {
 }
 
 .next, .prev {
+  padding: 0;
+  border: 0;
+  background: transparent;
   width: 60px;
   position: absolute;
   z-index: 1010;

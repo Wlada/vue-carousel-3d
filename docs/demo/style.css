@@ -1,0 +1,104 @@
+* { box-sizing: border-box; }
+
+html, body, #app { min-height: 100%; margin: 0; }
+
+body {
+  overflow-x: hidden;
+  color: #edf8f3;
+  background:
+    radial-gradient(circle at 82% 12%, rgba(66, 184, 131, .2), transparent 28rem),
+    linear-gradient(rgba(125, 211, 252, .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 211, 252, .045) 1px, transparent 1px),
+    #081421;
+  background-size: auto, 24px 24px, 24px 24px, auto;
+  font-family: "Aptos", "Segoe UI", sans-serif;
+}
+
+.demo-stage { padding: 24px 18px 18px; }
+
+header {
+  display: flex;
+  max-width: 760px;
+  margin: 0 auto;
+  align-items: end;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(125, 211, 252, .24);
+}
+
+.eyebrow, .hint {
+  color: #7de2b6;
+  font: 11px/1.4 "Cascadia Code", monospace;
+  letter-spacing: .15em;
+}
+
+header strong {
+  padding-bottom: 10px;
+  color: #a8bac3;
+  font: 12px/1 "Cascadia Code", monospace;
+}
+
+.demo-card {
+  position: relative;
+  height: 100%;
+  padding: 24px;
+  overflow: hidden;
+  background: #10283a;
+}
+
+.demo-card::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(180deg, transparent 20%, rgba(5, 14, 24, .94));
+}
+
+.demo-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .65;
+}
+
+.demo-card__number,
+.demo-card h2,
+.demo-card p { position: relative; z-index: 1; }
+
+.demo-card__number {
+  display: block;
+  color: #7dd3fc;
+  font: 12px "Cascadia Code", monospace;
+}
+
+.demo-card h2 {
+  margin: 90px 0 0;
+  font: italic 42px/1 "Palatino Linotype", Georgia, serif;
+  letter-spacing: -.04em;
+}
+
+.demo-card p {
+  margin-top: 8px;
+  color: #a8bac3;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: .14em;
+}
+
+.hint { margin: 8px auto 0; text-align: center; }
+
+.carousel-3d-container:focus-visible {
+  outline: 2px solid #7dd3fc;
+  outline-offset: 6px;
+}
+
+.carousel-3d-slide { border-color: rgba(125, 211, 252, .4) !important; }
+
+.carousel-3d-controls button { color: #edf8f3 !important; }
+
+@media (max-width: 520px) {
+  .demo-stage { padding-inline: 8px; }
+  .demo-card h2 { font-size: 34px; }
+  header { padding-inline: 8px; }
+  .hint { font-size: 9px; }
+}

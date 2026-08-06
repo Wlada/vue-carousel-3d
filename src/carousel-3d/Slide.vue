@@ -1,5 +1,7 @@
 <template>
-	<div class="carousel-3d-slide" :style="slideStyle" :class="computedClasses" @click="goTo()">
+	<div class="carousel-3d-slide" :style="slideStyle" :class="computedClasses" @click="goTo()"
+       role="group" aria-roledescription="slide" :aria-hidden="String(!isCurrent)"
+       :aria-label="slideAriaLabel">
 		<slot :index="index" :isCurrent="isCurrent" :leftIndex="leftIndex" :rightIndex="rightIndex"/>
 	</div>
 </template>
@@ -22,6 +24,9 @@
         computed: {
             isCurrent () {
                 return this.index === this.parent.currentIndex
+            },
+            slideAriaLabel () {
+                return Number.isInteger(this.index) ? `${this.index + 1} of ${this.parent.total}` : undefined
             },
             leftIndex () {
                 if (this.parent.oneDirectional && this.getSideIndex(this.parent.leftIndices) > this.parent.currentIndex - 1) return -1;

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540" role="img" aria-labelledby="title description">
+  <title id="title">Vue Carousel 3D placeholder</title>
+  <desc id="description">Abstract layered cards on a blue and green gradient background.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="0.55" stop-color="#155e75"/>
+      <stop offset="1" stop-color="#42b883"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#d1fae5" stop-opacity="0.76"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="540" rx="28" fill="url(#background)"/>
+  <circle cx="620" cy="80" r="120" fill="#ffffff" opacity="0.08"/>
+  <circle cx="80" cy="490" r="170" fill="#38bdf8" opacity="0.1"/>
+  <g fill="url(#card)" stroke="#ffffff" stroke-opacity="0.45" stroke-width="3">
+    <rect x="112" y="151" width="250" height="238" rx="20" transform="rotate(-9 237 270)" opacity="0.55"/>
+    <rect x="358" y="151" width="250" height="238" rx="20" transform="rotate(9 483 270)" opacity="0.55"/>
+    <rect x="235" y="128" width="250" height="284" rx="22"/>
+  </g>
+  <path d="M322 319h76l-38-66-38 66Z" fill="#42b883"/>
+  <circle cx="360" cy="225" r="25" fill="#38bdf8"/>
+  <text x="360" y="465" fill="#ffffff" font-family="Arial, sans-serif" font-size="28" font-weight="700" text-anchor="middle">VUE CAROUSEL 3D</text>
+</svg>
