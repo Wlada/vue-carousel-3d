@@ -1,62 +1,62 @@
+const isBrowser = typeof window !== 'undefined'
+
 const autoplay = {
-    props: {
-        /**
-         * Flag to enable autoplay
-         */
-        autoplay: {
-            type: Boolean,
-            default: false
-        },
-        /**
-         * Time elapsed before next slide
-         */
-        autoplayTimeout: {
-            type: Number,
-            default: 2000
-        },
-        /**
-         * Flag to pause autoplay on hover
-         */
-        autoplayHoverPause: {
-            type: Boolean,
-            default: true
-        }
+  props: {
+    autoplay: {
+      type: Boolean,
+      default: false
     },
-    data () {
-        return {
-            autoplayInterval: null
-        }
+    autoplayTimeout: {
+      type: Number,
+      default: 2000
     },
-    destroyed () {
-        if (!process.server) {
-            this.pauseAutoplay()
-
-            this.$el.removeEventListener('mouseenter', this.pauseAutoplay)
-            this.$el.removeEventListener('mouseleave', this.startAutoplay)
-        }
-    },
-    methods: {
-        pauseAutoplay () {
-            if (this.autoplayInterval) {
-                this.autoplayInterval = clearInterval(this.autoplayInterval)
-            }
-        },
-        startAutoplay () {
-            if (this.autoplay) {
-                this.autoplayInterval = setInterval(() => {
-                    this.dir === 'ltr' ? this.goPrev() : this.goNext()
-                }, this.autoplayTimeout)
-            }
-        }
-    },
-    mounted () {
-        if (!process.server && this.autoplayHoverPause) {
-            this.$el.addEventListener('mouseenter', this.pauseAutoplay)
-            this.$el.addEventListener('mouseleave', this.startAutoplay)
-
-            this.startAutoplay()
-        }
+    autoplayHoverPause: {
+      type: Boolean,
+      default: true
     }
+  },
+  data () {
+    return {
+      autoplayInterval: null
+    }
+  },
+  mounted () {
+    if (!isBrowser) return
+
+    if (this.autoplayHoverPause) {
+      this.$el.addEventListener('mouseenter', this.pauseAutoplay)
+      this.$el.addEventListener('mouseleave', this.startAutoplay)
+    }
+
+    this.startAutoplay()
+  },
+  beforeDestroy () {
+    if (!isBrowser) return
+
+    this.pauseAutoplay()
+
+    if (this.autoplayHoverPause) {
+      this.$el.removeEventListener('mouseenter', this.pauseAutoplay)
+      this.$el.removeEventListener('mouseleave', this.startAutoplay)
+    }
+  },
+  methods: {
+    pauseAutoplay () {
+      if (this.autoplayInterval) {
+        clearInterval(this.autoplayInterval)
+        this.autoplayInterval = null
+      }
+    },
+    startAutoplay () {
+      this.pauseAutoplay()
+
+      if (this.autoplay) {
+        this.autoplayInterval = setInterval(() => {
+          this.dir === 'ltr' ? this.goPrev() : this.goNext()
+        }, this.autoplayTimeout)
+      }
+    }
+  }
 }
 
 export default autoplay

@@ -1,5 +1,7 @@
 <template>
-  <div class="carousel-3d-container" :style="{height: this.slideHeight + 'px'}">
+  <div class="carousel-3d-container" :style="{height: this.slideHeight + 'px'}"
+       role="region" aria-roledescription="carousel" :aria-label="ariaLabel"
+       tabindex="0" @keydown.left.prevent="goPrev" @keydown.right.prevent="goNext">
     <div class="carousel-3d-slider" :style="{width: this.slideWidth + 'px', height: this.slideHeight + 'px'}">
       <slot></slot>
     </div>
@@ -9,8 +11,10 @@
 </template>
 
 <script>
-import autoplay from "@/carousel-3d/mixins/autoplay";
-import Controls from "@/carousel-3d/Controls";
+import autoplay from '@/carousel-3d/mixins/autoplay.js'
+import Controls from '@/carousel-3d/Controls.vue'
+
+const isBrowser = typeof window !== 'undefined'
 
 const noop = () => {
 }
@@ -120,6 +124,10 @@ export default {
     oneDirectional: {
       type: Boolean,
       default: false
+    },
+    ariaLabel: {
+      type: String,
+      default: '3D carousel'
     }
   },
   data () {
@@ -132,7 +140,9 @@ export default {
       dragOffsetY: 0,
       dragStartY: 0,
       mousedown: false,
-      zIndex: 998
+      zIndex: 998,
+      animationTimer: null,
+      navigationTimers: []
     }
   },
   mixins: [
@@ -143,6 +153,9 @@ export default {
       this.computeData()
     }
   },
+  created () {
+    this.computeSlideData(true)
+  },
   computed: {
     isLastSlide () {
       return this.currentIndex === this.total - 1
@@ -151,16 +164,16 @@ export default {
       return this.currentIndex === 0
     },
     isNextPossible () {
-      return !(!this.loop && this.isLastSlide)
+      return this.total > 0 && !(!this.loop && this.isLastSlide)
     },
     isPrevPossible () {
-      return !(!this.loop && this.isFirstSlide)
+      return this.total > 0 && !(!this.loop && this.isFirstSlide)
     },
     slideWidth () {
       const vw = this.viewport
       const sw = parseInt(this.width) + (parseInt(this.border, 10) * 2)
 
-      return vw < sw && process.browser ? vw : sw
+      return vw > 0 && vw < sw && isBrowser ? vw : sw
     },
     slideHeight () {
       const sw = parseInt(this.width, 10) + (parseInt(this.border, 10) * 2)
@@ -239,7 +252,7 @@ export default {
      * Go to next slide
      */
     goNext () {
-      if (this.isNextPossible) {
+      if (this.total > 0 && this.isNextPossible) {
         this.isLastSlide ? this.goSlide(0) : this.goSlide(this.currentIndex + 1)
       }
     },
@@ -247,7 +260,7 @@ export default {
      * Go to previous slide
      */
     goPrev () {
-      if (this.isPrevPossible) {
+      if (this.total > 0 && this.isPrevPossible) {
         this.isFirstSlide ? this.goSlide(this.total - 1) : this.goSlide(this.currentIndex - 1)
       }
     },
@@ -256,7 +269,12 @@ export default {
      * @param  {String} index of slide where to go
      */
     goSlide (index) {
-      this.currentIndex = (index < 0 || index > this.total - 1) ? 0 : index
+      if (this.total <= 0) return
+
+      const targetIndex = parseInt(index, 10)
+      this.currentIndex = (!Number.isFinite(targetIndex) || targetIndex < 0 || targetIndex >= this.total)
+        ? 0
+        : targetIndex
 
       if (this.isLastSlide) {
         if (this.onLastSlide !== noop) {
@@ -269,12 +287,18 @@ export default {
 
       this.$emit('before-slide-change', this.currentIndex)
 
-      setTimeout(() => this.animationEnd(), this.animationSpeed)
+      clearTimeout(this.animationTimer)
+      this.animationTimer = setTimeout(() => {
+        this.animationTimer = null
+        this.animationEnd()
+      }, parseInt(this.animationSpeed, 10))
     },
     /**
      * Go to slide far slide
      */
     goFar (index) {
+      this.clearNavigationTimers()
+
       let diff = (index === this.total - 1 && this.isFirstSlide) ? -1 : (index - this.currentIndex)
 
       if (this.isLastSlide && index === 0) {
@@ -289,10 +313,17 @@ export default {
         i += 1
         const timeout = (diff2 === 1) ? 0 : (timeBuff)
 
-        setTimeout(() => (diff < 0) ? this.goPrev(diff2) : this.goNext(diff2), timeout)
+        const timer = setTimeout(() => {
+          diff < 0 ? this.goPrev() : this.goNext()
+        }, timeout)
+        this.navigationTimers.push(timer)
 
         timeBuff += (this.animationSpeed / (diff2))
       }
+    },
+    clearNavigationTimers () {
+      this.navigationTimers.forEach((timer) => clearTimeout(timer))
+      this.navigationTimers = []
     },
     /**
      * Trigger actions when animation ends
@@ -319,13 +350,16 @@ export default {
      * @param  {Object} e The event object
      */
     handleMousedown (e) {
-      if (!e.touches) {
+      if (!e.touches && e.cancelable) {
         e.preventDefault()
       }
 
+      const point = this.getEventPoint(e)
+      if (!point) return
+
       this.mousedown = true
-      this.dragStartX = ('ontouchstart' in window) ? e.touches[0].clientX : e.clientX
-      this.dragStartY = ('ontouchstart' in window) ? e.touches[0].clientY : e.clientY
+      this.dragStartX = point.clientX
+      this.dragStartY = point.clientY
     },
     /**
      * Trigger actions when mouse is pressed and then moved (mouse drag)
@@ -336,8 +370,11 @@ export default {
         return
       }
 
-      const eventPosX = ('ontouchstart' in window) ? e.touches[0].clientX : e.clientX
-      const eventPosY = ('ontouchstart' in window) ? e.touches[0].clientY : e.clientY
+      const point = this.getEventPoint(e)
+      if (!point) return
+
+      const eventPosX = point.clientX
+      const eventPosY = point.clientY
       const deltaX = (this.dragStartX - eventPosX)
       const deltaY = (this.dragStartY - eventPosY)
 
@@ -357,6 +394,47 @@ export default {
         this.goPrev()
       }
     },
+    getEventPoint (e) {
+      return (e.touches && e.touches[0]) || (e.changedTouches && e.changedTouches[0]) || e
+    },
+    addInteractionListeners () {
+      if (window.PointerEvent) {
+        this.$el.addEventListener('pointerdown', this.handleMousedown)
+        this.$el.addEventListener('pointerup', this.handleMouseup)
+        this.$el.addEventListener('pointercancel', this.handleMouseup)
+        this.$el.addEventListener('pointerleave', this.handleMouseup)
+        this.$el.addEventListener('pointermove', this.handleMousemove)
+        return
+      }
+
+      this.$el.addEventListener('touchstart', this.handleMousedown)
+      this.$el.addEventListener('touchend', this.handleMouseup)
+      this.$el.addEventListener('touchcancel', this.handleMouseup)
+      this.$el.addEventListener('touchmove', this.handleMousemove)
+      this.$el.addEventListener('mousedown', this.handleMousedown)
+      this.$el.addEventListener('mouseup', this.handleMouseup)
+      this.$el.addEventListener('mouseleave', this.handleMouseup)
+      this.$el.addEventListener('mousemove', this.handleMousemove)
+    },
+    removeInteractionListeners () {
+      if (window.PointerEvent) {
+        this.$el.removeEventListener('pointerdown', this.handleMousedown)
+        this.$el.removeEventListener('pointerup', this.handleMouseup)
+        this.$el.removeEventListener('pointercancel', this.handleMouseup)
+        this.$el.removeEventListener('pointerleave', this.handleMouseup)
+        this.$el.removeEventListener('pointermove', this.handleMousemove)
+        return
+      }
+
+      this.$el.removeEventListener('touchstart', this.handleMousedown)
+      this.$el.removeEventListener('touchend', this.handleMouseup)
+      this.$el.removeEventListener('touchcancel', this.handleMouseup)
+      this.$el.removeEventListener('touchmove', this.handleMousemove)
+      this.$el.removeEventListener('mousedown', this.handleMousedown)
+      this.$el.removeEventListener('mouseup', this.handleMouseup)
+      this.$el.removeEventListener('mouseleave', this.handleMouseup)
+      this.$el.removeEventListener('mousemove', this.handleMousemove)
+    },
     /**
      * A mutation observer is used to detect changes to the containing node
      * in order to keep the magnet container in sync with the height its reference node.
@@ -368,9 +446,9 @@ export default {
 
       if (MutationObserver) {
         const config = {
-          attributes: true,
           childList: true,
-          characterData: true
+          characterData: true,
+          subtree: true
         }
 
         this.mutationObserver = new MutationObserver(() => {
@@ -413,50 +491,53 @@ export default {
     /**
      * Re-compute the number of slides and current slide
      */
-    computeData (firstRun) {
+    computeSlideData (firstRun) {
       this.total = this.getSlideCount()
-      if (firstRun || this.currentIndex >= this.total) {
-        this.currentIndex = parseInt(this.startIndex) > this.total - 1 ? this.total - 1 : parseInt(this.startIndex)
+      if (this.total === 0) {
+        this.currentIndex = 0
+        return
       }
+
+      if (firstRun || this.currentIndex >= this.total) {
+        const startIndex = Math.max(0, parseInt(this.startIndex, 10) || 0)
+        this.currentIndex = startIndex > this.total - 1 ? this.total - 1 : startIndex
+      }
+    },
+    computeData (firstRun) {
+      this.computeSlideData(firstRun)
 
       this.viewport = this.$el.clientWidth
     },
     setSize () {
-      this.$el.style.cssText += 'height:' + this.slideHeight + 'px;'
-      this.$el.childNodes[0].style.cssText += 'width:' + this.slideWidth + 'px;' + ' height:' + this.slideHeight + 'px;'
+      this.viewport = this.$el.clientWidth
+      this.$el.style.height = this.slideHeight + 'px'
+      const slider = this.$el.querySelector('.carousel-3d-slider')
+      if (slider) {
+        slider.style.width = this.slideWidth + 'px'
+        slider.style.height = this.slideHeight + 'px'
+      }
     }
   },
 
   mounted () {
-    if (!process.server) {
+    if (isBrowser) {
       this.computeData(true)
       this.attachMutationObserver()
       window.addEventListener('resize', this.setSize)
 
-      if ('ontouchstart' in window) {
-        this.$el.addEventListener('touchstart', this.handleMousedown)
-        this.$el.addEventListener('touchend', this.handleMouseup)
-        this.$el.addEventListener('touchmove', this.handleMousemove)
-      } else {
-        this.$el.addEventListener('mousedown', this.handleMousedown)
-        this.$el.addEventListener('mouseup', this.handleMouseup)
-        this.$el.addEventListener('mousemove', this.handleMousemove)
-      }
+      this.addInteractionListeners()
     }
   },
 
   beforeDestroy () {
-    if (!process.server) {
+    if (isBrowser) {
       this.detachMutationObserver()
-
-      if ('ontouchstart' in window) {
-        this.$el.removeEventListener('touchmove', this.handleMousemove)
-      } else {
-        this.$el.removeEventListener('mousemove', this.handleMousemove)
-      }
-
+      this.removeInteractionListeners()
       window.removeEventListener('resize', this.setSize)
     }
+
+    clearTimeout(this.animationTimer)
+    this.clearNavigationTimers()
   }
 }
 </script>
@@ -468,6 +549,7 @@ export default {
   position: relative;
   z-index: 0;
   overflow: hidden;
+  touch-action: pan-y;
   margin: 20px auto;
   box-sizing: border-box;
 }

@@ -1,5 +1,7 @@
 .DS_Store
 node_modules
+.pnpm-store
+.vite
 
 
 /tests/e2e/videos/
@@ -16,6 +18,16 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Build output is generated during release.
+/dist
+/coverage
+/docs/.vitepress/dist
+/docs/.vitepress/cache
+/docs/public/demo
+/playwright-report
+/test-results
+/.tmp
 
 # Editor directories and files
 .idea
