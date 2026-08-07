@@ -2,16 +2,17 @@
 
 All notable changes to this project are documented here. The project follows [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [2.0.0] - 2026-08-07
 
 ### Added
 
-- Native Vue 3 beta (`2.0.0-beta.1`) with `vue@^3.5.0` as a peer dependency.
-- Interactive playground and a versioned Vue 2 demo in the documentation.
+- Native Vue 3 components with `vue@^3.5.0` as a peer dependency, plus ESM, CommonJS and UMD outputs with TypeScript declarations.
+- Interactive Carousel Lab playground and a versioned Vue 2 archive demo in the documentation.
 
 ### Changed
 
 - Extracted the carousel core as preparation for the Vue 3 migration.
+- The Vue 2 line continues on `vue-carousel-3d@1`.
 
 ## [1.1.0] - 2026-08-06
 
@@ -45,6 +46,6 @@ All notable changes to this project are documented here. The project follows [Se
 
 - Previous published Vue 2 release.
 
-[Unreleased]: https://github.com/wlada/vue-carousel-3d/compare/v1.1.0...HEAD
+[2.0.0]: https://github.com/wlada/vue-carousel-3d/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/wlada/vue-carousel-3d/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/wlada/vue-carousel-3d/releases/tag/v1.0.1

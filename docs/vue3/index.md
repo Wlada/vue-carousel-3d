@@ -1,6 +1,6 @@
 # Vue 3 migration guide
 
-The Vue 3 implementation lives on its own branch and is first published through the `next` tag.
+The Vue 3 implementation is the current release line and is installed as the default `latest` version.
 
 ## Contract
 
@@ -10,4 +10,4 @@ The Vue 3 implementation lives on its own branch and is first published through 
 - A migration table for every renamed or removed API.
 - Dedicated unit, SSR and real-browser coverage.
 
-The current `1.x` package remains the Vue 2 track. The public component names, props, events, slots and navigation methods are retained in `2.x`, but users should validate the beta in their application before moving from `@1` to `@next`.
+The current `1.x` package remains the Vue 2 track. The public component names, props, events, slots and navigation methods are retained in `2.x`; Vue 2 users should remain on `vue-carousel-3d@1`.

@@ -1,6 +1,6 @@
 # Examples
 
-These recipes use the Vue 3 preview build. The live panel is self-contained and does not depend on the retired `placehold.it` service.
+These recipes use the Vue 3 package. The live panel is self-contained and does not depend on the retired `placehold.it` service.
 
 <div class="demo-shell" data-track="LIVE / VUE 3">
   <iframe class="demo-frame" src="../demo/index.html" title="Vue Carousel 3D examples"></iframe>

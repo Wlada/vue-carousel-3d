@@ -24,7 +24,7 @@ export default defineConfig({
       { text: 'Playground', link: '/playground/' },
       { text: 'API', link: '/api/' },
       { text: 'Version', items: [
-        { text: 'Vue 3 · package v2 beta', link: '/' },
+        { text: 'Vue 3 · package v2', link: '/' },
         { text: 'Vue 2 · package v1 maintained', link: '/v1/' },
         { text: 'Compatibility policy', link: '/guide/versioning' }
       ] }
@@ -45,7 +45,7 @@ export default defineConfig({
       ],
       '/': [
         {
-          text: 'Vue 3 · package v2 beta',
+          text: 'Vue 3 · package v2',
           items: [
             { text: 'Overview', link: '/' },
             { text: 'Installation', link: '/guide/' },

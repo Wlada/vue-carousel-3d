@@ -1,21 +1,21 @@
 # Installation
 
-<div class="version-strip">THIS GUIDE · Vue 3.5+ · v2 preview release</div>
+<div class="version-strip">THIS GUIDE · Vue 3.5+ · package v2</div>
 
 ## Add the package
 
 ::: code-group
 
 ```sh [pnpm]
-pnpm add vue-carousel-3d@next
+pnpm add vue-carousel-3d
 ```
 
 ```sh [npm]
-npm install vue-carousel-3d@next
+npm install vue-carousel-3d
 ```
 
 ```sh [yarn]
-yarn add vue-carousel-3d@next
+yarn add vue-carousel-3d
 ```
 
 :::

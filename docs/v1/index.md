@@ -19,7 +19,7 @@ hero:
 This is the documentation track for applications that continue to use Vue 2. It remains available for maintenance releases and should be used with `vue-carousel-3d@1`.
 
 <div class="track-note">
-  <strong>Starting a new Vue application?</strong> Use the <a href="/">Vue 3 / package v2 beta documentation</a> instead. The public carousel API is intentionally kept familiar across both tracks.
+  <strong>Starting a new Vue application?</strong> Use the <a href="/">Vue 3 / package v2 documentation</a> instead. The public carousel API is intentionally kept familiar across both tracks.
 </div>
 
 ## Live demo
@@ -28,7 +28,7 @@ This is the documentation track for applications that continue to use Vue 2. It 
   <iframe class="demo-frame" src="./demo/index.html" title="Vue 2 Vue Carousel 3D demo"></iframe>
 </div>
 
-The archive demo loads Vue `2.7.16` and the published `vue-carousel-3d@1.0.1` package directly, so it demonstrates the actual Vue 2 package rather than the Vue 3 preview.
+The archive demo loads Vue `2.7.16` and the published `vue-carousel-3d@1.0.1` package directly, so it demonstrates the actual Vue 2 package rather than the Vue 3 package.
 
 ## What remains supported
 

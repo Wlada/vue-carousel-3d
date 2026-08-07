@@ -25,11 +25,11 @@ features:
     details: ESM, CommonJS and UMD outputs, TypeScript declarations, SSR coverage and reproducible pnpm builds.
 ---
 
-<div class="version-strip">CURRENT TRACK · Vue 3.5+ · v2 preview line</div>
+<div class="version-strip">CURRENT TRACK · Vue 3.5+ · package v2</div>
 
 ## See it move
 
-The preview below is built from the same source as the package. Use the controls, arrow keys, swipe, or click a side card.
+The live demo below is built from the same source as the package. Use the controls, arrow keys, swipe, or click a side card.
 
 <div class="demo-shell" data-track="LIVE / VUE 3">
   <iframe class="demo-frame" src="./demo/index.html" title="Interactive Vue Carousel 3D demo"></iframe>

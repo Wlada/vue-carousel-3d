@@ -2,7 +2,7 @@
 
 <div class="version-strip">VUE 2 TRACK · package v1.x</div>
 
-The Vue 2 track exposes the same carousel surface retained by the Vue 3 beta: `<carousel-3d>`, `<slide>`, navigation methods and the documented events.
+The Vue 2 track exposes the same carousel surface retained by the Vue 3 line: `<carousel-3d>`, `<slide>`, navigation methods and the documented events.
 
 ## Carousel props
 
