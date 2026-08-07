@@ -14,3 +14,5 @@ Version `1.x` remains the stable Vue 2 line. It accepts Vue 2.6 and 2.7 and will
 | `2.x` | `^3.5.0` | `next` preview / separate branch |
 
 See the [Vue 3 migration guide](/vue3/) for the compatibility contract.
+
+The [Vue 2 archive](/v1/) keeps the installation guide, examples and API reference for the `1.x` line available after the Vue 3 documentation becomes the default site.

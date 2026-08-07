@@ -31,11 +31,15 @@ features:
 
 The preview below is built from the same source as the package. Use the controls, arrow keys, swipe, or click a side card.
 
-<div class="demo-shell">
+<div class="demo-shell" data-track="LIVE / VUE 3">
   <iframe class="demo-frame" src="./demo/" title="Interactive Vue Carousel 3D demo"></iframe>
 </div>
 
 ## Small surface, deliberate behavior
+
+<div class="track-note">
+  <strong>Need Vue 2?</strong> The maintained package <code>1.x</code> has its own <a href="/v1/">archived documentation track</a>.
+</div>
 
 ```vue
 <template>

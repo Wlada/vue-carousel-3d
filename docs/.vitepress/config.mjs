@@ -22,29 +22,44 @@ export default defineConfig({
       { text: 'Guide', link: '/guide/' },
       { text: 'Examples', link: '/examples/' },
       { text: 'API', link: '/api/' },
-      { text: 'Vue 3 · v2', items: [
-        { text: 'Vue 3 migration', link: '/vue3/' },
-        { text: 'Vue 2 maintenance', link: '/guide/versioning' }
+      { text: 'Version', items: [
+        { text: 'Vue 3 · package v2 beta', link: '/' },
+        { text: 'Vue 2 · package v1 maintained', link: '/v1/' },
+        { text: 'Compatibility policy', link: '/guide/versioning' }
       ] }
     ],
-    sidebar: [
-      {
-        text: 'Start',
-        items: [
-          { text: 'Overview', link: '/' },
-          { text: 'Installation', link: '/guide/' },
-          { text: 'Versioning', link: '/guide/versioning' }
-        ]
-      },
-      {
-        text: 'Build',
-        items: [
-          { text: 'Examples', link: '/examples/' },
-          { text: 'API reference', link: '/api/' },
-          { text: 'Vue 3 migration', link: '/vue3/' }
-        ]
-      }
-    ],
+    sidebar: {
+      '/v1/': [
+        {
+          text: 'Vue 2 archive · package v1',
+          items: [
+            { text: 'Overview', link: '/v1/' },
+            { text: 'Installation', link: '/v1/guide/' },
+            { text: 'Examples', link: '/v1/examples/' },
+            { text: 'API reference', link: '/v1/api/' },
+            { text: 'Maintenance policy', link: '/v1/guide/versioning' }
+          ]
+        }
+      ],
+      '/': [
+        {
+          text: 'Vue 3 · package v2 beta',
+          items: [
+            { text: 'Overview', link: '/' },
+            { text: 'Installation', link: '/guide/' },
+            { text: 'Compatibility policy', link: '/guide/versioning' }
+          ]
+        },
+        {
+          text: 'Build',
+          items: [
+            { text: 'Examples', link: '/examples/' },
+            { text: 'API reference', link: '/api/' },
+            { text: 'Vue 3 migration', link: '/vue3/' }
+          ]
+        }
+      ]
+    },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/wlada/vue-carousel-3d' },
       { icon: 'npm', link: 'https://www.npmjs.com/package/vue-carousel-3d' }

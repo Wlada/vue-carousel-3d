@@ -98,12 +98,25 @@ body {
 }
 
 .demo-shell::before {
-  content: "LIVE / VUE 2";
+  content: attr(data-track);
   display: block;
   padding: 3px 4px 11px;
   color: #7de2b6;
   font: 11px/1 var(--vp-font-family-mono);
   letter-spacing: .14em;
+}
+
+.track-note {
+  margin: 24px 0;
+  padding: 16px 18px;
+  border: 1px solid rgba(14, 143, 112, .35);
+  border-radius: 4px;
+  background: linear-gradient(100deg, var(--vp-c-brand-soft), transparent);
+  line-height: 1.6;
+}
+
+.track-note strong {
+  color: var(--vp-c-brand-1);
 }
 
 .demo-frame {
