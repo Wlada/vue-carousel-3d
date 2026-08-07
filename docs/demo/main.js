@@ -23,10 +23,10 @@ createApp({
   render () {
     const cards = slides.map(([number, title], index) => h(Slide, {
       key: number,
-      props: { index }
+      index
     }, [
       h('article', { class: 'demo-card' }, [
-        h('img', { attrs: { src: placeholderImage, alt: '' } }),
+        h('img', { src: placeholderImage, alt: '' }),
         h('span', { class: 'demo-card__number' }, number),
         h('h2', title),
         h('p', index === this.activeIndex ? 'Active plane' : 'Explore the stack')
