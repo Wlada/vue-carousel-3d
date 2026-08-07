@@ -57,4 +57,31 @@ describe('Controls', () => {
             return utils.expectToMatchSnapshot(vm);
         });
     });
+
+    it('should render custom prev/next slot content inside the buttons', async () => {
+        const vm = new Vue({
+            el: document.createElement('div'),
+            render: (h) => h(Carousel3d, {
+                props: { controlsVisible: true },
+                scopedSlots: {
+                    prev: () => h('span', { attrs: { 'data-testid': 'custom-prev' } }, 'PREV'),
+                    next: () => h('span', { attrs: { 'data-testid': 'custom-next' } }, 'NEXT')
+                }
+            }, [
+                h(Slide, { props: { index: 0 } }),
+                h(Slide, { props: { index: 1 } }),
+                h(Slide, { props: { index: 2 } }),
+                h(Slide, { props: { index: 3 } })
+            ])
+        });
+        const carouselInstance = vm.$children[0];
+
+        expect(vm.$el.querySelector('[data-testid="custom-prev"]').textContent).toBe('PREV');
+        expect(vm.$el.querySelector('[data-testid="custom-next"]').textContent).toBe('NEXT');
+
+        vm.$el.querySelector('.next').click();
+        await Vue.nextTick();
+
+        expect(carouselInstance.currentIndex).toBe(1);
+    });
 })

@@ -100,6 +100,53 @@ describe('Carousel3d', () => {
         vi.useRealTimers();
     });
 
+    it('should render navigation dots and navigate on click', async () => {
+        const vm = new Vue({
+            el: document.createElement('div'),
+            render: (h) => h(Carousel3d, { props: { dots: true } }, [
+                h(Slide, { props: { index: 0 } }),
+                h(Slide, { props: { index: 1 } }),
+                h(Slide, { props: { index: 2 } }),
+                h(Slide, { props: { index: 3 } }),
+                h(Slide, { props: { index: 4 } })
+            ])
+        });
+        const carouselInstance = vm.$children[0];
+        const dots = vm.$el.querySelectorAll('.carousel-3d-dot');
+
+        expect(dots.length).toBe(5);
+        expect(dots[0].getAttribute('aria-current')).toBe('true');
+
+        dots[3].click();
+        await Vue.nextTick();
+
+        expect(carouselInstance.currentIndex).toBe(3);
+        expect(dots[3].getAttribute('aria-current')).toBe('true');
+    });
+
+    it('should let beforeSlideChange cancel navigation', () => {
+        const vm = new Vue({
+            el: document.createElement('div'),
+            render: (h) => h(Carousel3d, { props: { beforeSlideChange: () => false } }, [
+                h(Slide, { props: { index: 0 } }),
+                h(Slide, { props: { index: 1 } }),
+                h(Slide, { props: { index: 2 } })
+            ])
+        });
+        const carouselInstance = vm.$children[0];
+
+        carouselInstance.goNext();
+        expect(carouselInstance.currentIndex).toBe(0);
+        expect(carouselInstance.$listeners['before-slide-change']).toBeUndefined();
+
+        carouselInstance.beforeSlideChange = (index) => index !== 2;
+        carouselInstance.goSlide(2);
+        expect(carouselInstance.currentIndex).toBe(0);
+
+        carouselInstance.goSlide(1);
+        expect(carouselInstance.currentIndex).toBe(1);
+    });
+
     it('should register 3 slides when 3 slides are added to the slots', () => {
         const vm = new Vue({
             el: document.createElement('div'),

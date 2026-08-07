@@ -2,7 +2,15 @@
 
 All notable changes to this project are documented here. The project follows [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.2.0] - 2026-08-07
+
+### Added
+
+- Optional navigation dots (`dots`, `dots-position`) with keyboard-accessible, `aria-current`-aware buttons.
+- Custom control content via `prev` / `next` slots on the carousel, rendered inside the existing native buttons.
+- `beforeSlideChange` guard prop: return `false` to cancel any navigation (arrows, swipes, dots, programmatic).
+- `horizonOffset` prop to arch side slides vertically (waterwheel-style effect).
+- `lazy` prop that renders slide content only near the current slide, useful for image-heavy carousels.
 
 ## [1.1.0] - 2026-08-06
 
@@ -36,6 +44,6 @@ All notable changes to this project are documented here. The project follows [Se
 
 - Previous published Vue 2 release.
 
-[Unreleased]: https://github.com/wlada/vue-carousel-3d/compare/v1.1.0...HEAD
+[1.2.0]: https://github.com/wlada/vue-carousel-3d/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/wlada/vue-carousel-3d/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/wlada/vue-carousel-3d/releases/tag/v1.0.1

@@ -6,13 +6,22 @@
       <slot></slot>
     </div>
     <controls v-if="controlsVisible" :next-html="controlsNextHtml" :prev-html="controlsPrevHtml"
-              :width="controlsWidth" :height="controlsHeight"></controls>
+              :width="controlsWidth" :height="controlsHeight">
+      <template #prev="slotProps">
+        <slot name="prev" v-bind="slotProps"></slot>
+      </template>
+      <template #next="slotProps">
+        <slot name="next" v-bind="slotProps"></slot>
+      </template>
+    </controls>
+    <dots v-if="dots" :position="dotsPosition"></dots>
   </div>
 </template>
 
 <script>
 import autoplay from '@/carousel-3d/mixins/autoplay.js'
 import Controls from '@/carousel-3d/Controls.vue'
+import Dots from '@/carousel-3d/Dots.vue'
 
 const isBrowser = typeof window !== 'undefined'
 
@@ -22,7 +31,8 @@ const noop = () => {
 export default {
   name: 'carousel3d',
   components: {
-    Controls
+    Controls,
+    Dots
   },
   props: {
     count: {
@@ -104,6 +114,26 @@ export default {
     controlsHeight: {
       type: [String, Number],
       default: 50
+    },
+    dots: {
+      type: Boolean,
+      default: false
+    },
+    dotsPosition: {
+      type: String,
+      default: 'bottom'
+    },
+    horizonOffset: {
+      type: [Number, String],
+      default: 0
+    },
+    lazy: {
+      type: Boolean,
+      default: false
+    },
+    beforeSlideChange: {
+      type: Function,
+      default: noop
     },
     onLastSlide: {
       type: Function,
@@ -272,9 +302,15 @@ export default {
       if (this.total <= 0) return
 
       const targetIndex = parseInt(index, 10)
-      this.currentIndex = (!Number.isFinite(targetIndex) || targetIndex < 0 || targetIndex >= this.total)
+      const safeIndex = (!Number.isFinite(targetIndex) || targetIndex < 0 || targetIndex >= this.total)
         ? 0
         : targetIndex
+
+      if (this.beforeSlideChange !== noop && this.beforeSlideChange(safeIndex, this.currentIndex) === false) {
+        return
+      }
+
+      this.currentIndex = safeIndex
 
       if (this.isLastSlide) {
         if (this.onLastSlide !== noop) {
