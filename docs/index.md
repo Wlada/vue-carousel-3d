@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Vue Carousel 3D"
   text: "Depth without the dead weight."
-  tagline: A compact, touch-friendly 3D carousel for Vue 2 — refreshed with modern packaging, accessible controls and a tested SSR path.
+  tagline: A compact, touch-friendly 3D carousel for Vue 3 — with accessible controls and a tested SSR path.
   actions:
     - theme: brand
       text: Install
@@ -25,7 +25,7 @@ features:
     details: ESM, CommonJS and UMD outputs, TypeScript declarations, SSR coverage and reproducible pnpm builds.
 ---
 
-<div class="version-strip">CURRENT TRACK · Vue 2.6 / 2.7 · v1 maintenance line</div>
+<div class="version-strip">CURRENT TRACK · Vue 3.5+ · v2 preview line</div>
 
 ## See it move
 

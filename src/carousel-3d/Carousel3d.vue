@@ -1,8 +1,8 @@
 <template>
-  <div class="carousel-3d-container" :style="{height: this.slideHeight + 'px'}"
+  <div class="carousel-3d-container" :style="{height: slideHeight + 'px'}"
        role="region" aria-roledescription="carousel" :aria-label="ariaLabel"
        tabindex="0" @keydown.left.prevent="goPrev" @keydown.right.prevent="goNext">
-    <div class="carousel-3d-slider" :style="{width: this.slideWidth + 'px', height: this.slideHeight + 'px'}">
+    <div class="carousel-3d-slider" :style="{width: slideWidth + 'px', height: slideHeight + 'px'}">
       <slot></slot>
     </div>
     <controls v-if="controlsVisible" :next-html="controlsNextHtml" :prev-html="controlsPrevHtml"
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { Comment, Fragment, Text } from 'vue'
 import {
   getOutIndex,
   getSafeIndex,
@@ -26,11 +27,22 @@ const isBrowser = typeof window !== 'undefined'
 const noop = () => {
 }
 
+function countSlides (nodes) {
+  return nodes.reduce((count, node) => {
+    if (node.type === Fragment && Array.isArray(node.children)) {
+      return count + countSlides(node.children)
+    }
+
+    return node.type === Comment || node.type === Text ? count : count + 1
+  }, 0)
+}
+
 export default {
   name: 'carousel3d',
   components: {
     Controls
   },
+  emits: ['after-slide-change', 'before-slide-change', 'last-slide'],
   provide () {
     return {
       carousel: this
@@ -464,13 +476,10 @@ export default {
      * @return {Number} Number of slides
      */
     getSlideCount () {
-      if (this.$slots.default !== undefined) {
-        return this.$slots.default.filter((value) => {
-          return value.tag !== void 0
-        }).length
-      }
+      const defaultSlot = this.$slots.default
+      if (!defaultSlot) return 0
 
-      return 0
+      return countSlides(defaultSlot())
     },
     /**
      * Calculate slide with and keep defined aspect ratio
@@ -519,7 +528,7 @@ export default {
     }
   },
 
-  beforeDestroy () {
+  beforeUnmount () {
     if (isBrowser) {
       this.detachMutationObserver()
       this.removeInteractionListeners()

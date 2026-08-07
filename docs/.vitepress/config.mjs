@@ -2,23 +2,15 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'Vue Carousel 3D',
-  description: 'A flexible, touch-friendly 3D carousel for Vue 2.',
+  description: 'A flexible, touch-friendly 3D carousel for Vue 3.',
   lang: 'en-US',
   base: '/vue-carousel-3d/',
   cleanUrls: true,
-  vite: {
-    resolve: {
-      alias: [
-        { find: /^vue$/, replacement: 'vue3' },
-        { find: /^vue\/(.*)$/, replacement: 'vue3/$1' }
-      ]
-    }
-  },
   head: [
     ['link', { rel: 'icon', href: '/vue-carousel-3d/mark.svg', type: 'image/svg+xml' }],
     ['meta', { name: 'theme-color', content: '#07111f' }],
     ['meta', { property: 'og:title', content: 'Vue Carousel 3D' }],
-    ['meta', { property: 'og:description', content: 'Depth, motion and accessible controls for Vue 2.' }]
+    ['meta', { property: 'og:description', content: 'Depth, motion and accessible controls for Vue 3.' }]
   ],
   markdown: {
     lineNumbers: true
@@ -30,9 +22,9 @@ export default defineConfig({
       { text: 'Guide', link: '/guide/' },
       { text: 'Examples', link: '/examples/' },
       { text: 'API', link: '/api/' },
-      { text: 'Vue 2 · v1', items: [
-        { text: 'Vue 2 maintenance', link: '/guide/versioning' },
-        { text: 'Vue 3 roadmap', link: '/vue3/' }
+      { text: 'Vue 3 · v2', items: [
+        { text: 'Vue 3 migration', link: '/vue3/' },
+        { text: 'Vue 2 maintenance', link: '/guide/versioning' }
       ] }
     ],
     sidebar: [
@@ -49,7 +41,7 @@ export default defineConfig({
         items: [
           { text: 'Examples', link: '/examples/' },
           { text: 'API reference', link: '/api/' },
-          { text: 'Vue 3 roadmap', link: '/vue3/' }
+          { text: 'Vue 3 migration', link: '/vue3/' }
         ]
       }
     ],

@@ -13,11 +13,14 @@ export default [
       'docs/public/**',
       'docs/themes/vue/source/js/**',
       'node_modules/**',
-      'output/**'
+      'output/**',
+      'playwright-report/**',
+      'test-results/**',
+      '.playwright-cli/**'
     ]
   },
   js.configs.recommended,
-  ...pluginVue.configs['flat/vue2-essential'],
+  ...pluginVue.configs['flat/essential'],
   {
     files: ['src/**/*.{js,vue}', 'tests/**/*.{js,cjs}', 'docs/demo/**/*.js', '*.config.mjs'],
     languageOptions: {
