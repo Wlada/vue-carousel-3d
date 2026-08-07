@@ -30,7 +30,7 @@ const autoplay = {
 
     this.startAutoplay()
   },
-  beforeDestroy () {
+  beforeUnmount () {
     if (!isBrowser) return
 
     this.pauseAutoplay()

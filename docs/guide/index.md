@@ -1,26 +1,26 @@
 # Installation
 
-<div class="version-strip">THIS GUIDE · Vue 2 maintenance release</div>
+<div class="version-strip">THIS GUIDE · Vue 3.5+ · v2 preview release</div>
 
 ## Add the package
 
 ::: code-group
 
 ```sh [pnpm]
-pnpm add vue-carousel-3d
+pnpm add vue-carousel-3d@next
 ```
 
 ```sh [npm]
-npm install vue-carousel-3d
+npm install vue-carousel-3d@next
 ```
 
 ```sh [yarn]
-yarn add vue-carousel-3d
+yarn add vue-carousel-3d@next
 ```
 
 :::
 
-Vue is a peer dependency. The maintenance line supports Vue `^2.6.14` and `^2.7.0`.
+Vue is a peer dependency. This line supports Vue `^3.5.0`; Vue 2 users should install `vue-carousel-3d@1`.
 
 ## Local registration
 
@@ -48,10 +48,10 @@ Every slide needs a zero-based, stable `index`. When a list changes, also pass `
 ## Global registration
 
 ```js
-import Vue from 'vue'
+import { createApp } from 'vue'
 import Carousel3d from 'vue-carousel-3d'
 
-Vue.use(Carousel3d)
+createApp(App).use(Carousel3d)
 ```
 
 This registers `<carousel-3d>` and `<slide>` globally.
@@ -74,7 +74,7 @@ Prefer Vue events over the deprecated callback props:
 
 ```vue
 <slide v-for="(slide, index) in slides" :key="slide.id" :index="index">
-  <template slot-scope="{ isCurrent, leftIndex, rightIndex }">
+  <template #default="{ isCurrent, leftIndex, rightIndex }">
     <article :class="{ active: isCurrent }">
       {{ slide.title }} · left {{ leftIndex }} · right {{ rightIndex }}
     </article>

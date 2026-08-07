@@ -1,7 +1,6 @@
-import type Vue from 'vue'
-import type { PluginObject, VueConstructor } from 'vue'
+import type { Component, ComponentPublicInstance, Plugin } from 'vue'
 
-export interface Carousel3dInstance extends Vue {
+export interface Carousel3dInstance extends ComponentPublicInstance {
   currentIndex: number
   total: number
   goNext(): void
@@ -10,8 +9,8 @@ export interface Carousel3dInstance extends Vue {
   goFar(index: number): void
 }
 
-declare const VueCarousel3d: PluginObject<never>
+declare const VueCarousel3d: Plugin
 
 export default VueCarousel3d
-export const Carousel3d: VueConstructor<Carousel3dInstance>
-export const Slide: VueConstructor
+export const Carousel3d: Component
+export const Slide: Component

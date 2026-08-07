@@ -25,6 +25,8 @@ pnpm-debug.log*
 /docs/.vitepress/dist
 /docs/.vitepress/cache
 /docs/public/demo
+/docs/public/lab
+/docs/public/v1
 /playwright-report
 /test-results
 /.tmp

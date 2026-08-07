@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { createApp, h } from 'vue'
 import Carousel3d from '@/carousel-3d/Carousel3d.vue'
 import Slide from '@/carousel-3d/Slide.vue'
 import placeholderImage from '@/assets/carousel-placeholder.svg'
@@ -14,12 +14,13 @@ const slides = [
   ['07', 'Scale']
 ]
 
-new Vue({
-  el: '#app',
-  data: {
-    activeIndex: 0
+createApp({
+  data () {
+    return {
+      activeIndex: 0
+    }
   },
-  render (h) {
+  render () {
     const cards = slides.map(([number, title], index) => h(Slide, {
       key: number,
       props: { index }
@@ -38,20 +39,16 @@ new Vue({
         h('strong', `Plane ${this.activeIndex + 1} / ${slides.length}`)
       ]),
       h(Carousel3d, {
-        props: {
-          controlsVisible: true,
-          display: 5,
-          width: 280,
-          height: 210,
-          perspective: 32,
-          space: 160,
-          ariaLabel: 'Interactive feature carousel'
-        },
-        on: {
-          'before-slide-change': (index) => { this.activeIndex = index }
-        }
+        controlsVisible: true,
+        display: 5,
+        width: 280,
+        height: 210,
+        perspective: 32,
+        space: 160,
+        ariaLabel: 'Interactive feature carousel',
+        onBeforeSlideChange: (index) => { this.activeIndex = index }
       }, cards),
       h('p', { class: 'hint' }, 'TAB TO FOCUS · ← → TO NAVIGATE · SWIPE OR USE CONTROLS')
     ])
   }
-})
+}).mount('#app')

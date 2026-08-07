@@ -98,12 +98,25 @@ body {
 }
 
 .demo-shell::before {
-  content: "LIVE / VUE 2";
+  content: attr(data-track);
   display: block;
   padding: 3px 4px 11px;
   color: #7de2b6;
   font: 11px/1 var(--vp-font-family-mono);
   letter-spacing: .14em;
+}
+
+.track-note {
+  margin: 24px 0;
+  padding: 16px 18px;
+  border: 1px solid rgba(14, 143, 112, .35);
+  border-radius: 4px;
+  background: linear-gradient(100deg, var(--vp-c-brand-soft), transparent);
+  line-height: 1.6;
+}
+
+.track-note strong {
+  color: var(--vp-c-brand-1);
 }
 
 .demo-frame {
@@ -113,6 +126,22 @@ body {
   border: 0;
   border-radius: 3px;
   background: #0c1928;
+}
+
+.lab-shell {
+  margin: 20px 0 42px;
+  overflow: hidden;
+  border: 1px solid rgba(66, 184, 131, .36);
+  background: #07111f;
+  box-shadow: 0 28px 80px rgba(4, 13, 23, .24);
+}
+
+.lab-frame {
+  display: block;
+  width: 100%;
+  height: 1800px;
+  border: 0;
+  background: #07111f;
 }
 
 .api-table table {
@@ -129,6 +158,7 @@ body {
 
 @media (max-width: 640px) {
   .demo-frame { height: 460px; }
+  .lab-frame { height: 2600px; }
   .VPHero .name { font-size: 48px !important; }
 }
 

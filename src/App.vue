@@ -151,7 +151,7 @@
       <h3>Scoped Slot</h3>
       <carousel-3d>
         <slide v-for="(slide, i) in slides" :index="i" :key="i">
-          <template slot-scope="{ index, isCurrent, leftIndex, rightIndex }">
+          <template #default="{ index, isCurrent, leftIndex, rightIndex }">
             <div :style="{ textAlign: leftIndex >= 0 ? 'right' : 'left' }">
               right {{ rightIndex }} <br>
               left {{ leftIndex }}

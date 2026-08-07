@@ -5,22 +5,22 @@
 [![npm downloads](https://img.shields.io/npm/dm/vue-carousel-3d.svg)](https://www.npmjs.com/package/vue-carousel-3d)
 [![license](https://img.shields.io/npm/l/vue-carousel-3d.svg)](LICENSE)
 
-A compact, flexible and touch-friendly 3D carousel for Vue 2.
+A compact, flexible and touch-friendly 3D carousel for Vue 3.
 
 - [Documentation and live examples](https://wlada.github.io/vue-carousel-3d/)
 - [API reference](https://wlada.github.io/vue-carousel-3d/api/)
-- [Vue 3 roadmap](https://wlada.github.io/vue-carousel-3d/vue3/)
+- [Migration guide](https://wlada.github.io/vue-carousel-3d/vue3/)
 
-> The `1.x` line supports Vue `^2.6.14` and `^2.7.0`. The Vue 3 port is being developed as a separate major version.
+> `2.x` supports Vue `^3.5.0`. Existing Vue 2 users should remain on `vue-carousel-3d@1`.
 
 ## Installation
 
 ```sh
-pnpm add vue-carousel-3d
+pnpm add vue-carousel-3d@next
 ```
 
 ```sh
-npm install vue-carousel-3d
+npm install vue-carousel-3d@next
 ```
 
 ## Local registration
@@ -49,10 +49,10 @@ Each slide needs a stable, zero-based `index`. For dynamic collections, also pas
 ## Global registration
 
 ```js
-import Vue from 'vue'
+import { createApp } from 'vue'
 import Carousel3d from 'vue-carousel-3d'
 
-Vue.use(Carousel3d)
+createApp(App).use(Carousel3d)
 ```
 
 This registers `<carousel-3d>` and `<slide>` globally.

@@ -1,8 +1,8 @@
 <template>
-  <div class="carousel-3d-container" :style="{height: this.slideHeight + 'px'}"
+  <div class="carousel-3d-container" :style="{height: slideHeight + 'px'}"
        role="region" aria-roledescription="carousel" :aria-label="ariaLabel"
        tabindex="0" @keydown.left.prevent="goPrev" @keydown.right.prevent="goNext">
-    <div class="carousel-3d-slider" :style="{width: this.slideWidth + 'px', height: this.slideHeight + 'px'}">
+    <div class="carousel-3d-slider" :style="{width: slideWidth + 'px', height: slideHeight + 'px'}">
       <slot></slot>
     </div>
     <controls v-if="controlsVisible" :next-html="controlsNextHtml" :prev-html="controlsPrevHtml"
@@ -11,6 +11,14 @@
 </template>
 
 <script>
+import { Comment, Fragment, Text } from 'vue'
+import {
+  getOutIndex,
+  getSafeIndex,
+  getSideIndices,
+  getStartIndex,
+  getVisibleSlideCount
+} from '@/carousel-3d/core/carousel.js'
 import autoplay from '@/carousel-3d/mixins/autoplay.js'
 import Controls from '@/carousel-3d/Controls.vue'
 
@@ -19,10 +27,26 @@ const isBrowser = typeof window !== 'undefined'
 const noop = () => {
 }
 
+function countSlides (nodes) {
+  return nodes.reduce((count, node) => {
+    if (node.type === Fragment && Array.isArray(node.children)) {
+      return count + countSlides(node.children)
+    }
+
+    return node.type === Comment || node.type === Text ? count : count + 1
+  }, 0)
+}
+
 export default {
   name: 'carousel3d',
   components: {
     Controls
+  },
+  emits: ['after-slide-change', 'before-slide-change', 'last-slide'],
+  provide () {
+    return {
+      carousel: this
+    }
   },
   props: {
     count: {
@@ -183,68 +207,50 @@ export default {
       return this.slideWidth / ar
     },
     visible () {
-      const v = (this.display > this.total) ? this.total : this.display
-      return v
+      return getVisibleSlideCount(this.display, this.total)
     },
     hasHiddenSlides () {
       return this.total > this.visible
     },
     leftIndices () {
-      let n = (this.visible - 1) / 2
-
-      n = (this.bias.toLowerCase() === 'left' ? Math.ceil(n) : Math.floor(n))
-
-      const indices = []
-
-      for (let m = 1; m <= n; m++) {
-        indices.push((this.dir === 'ltr')
-            ? (this.currentIndex + m) % (this.total)
-            : (this.currentIndex - m) % (this.total))
-      }
-
-      return indices
+      return getSideIndices({
+        currentIndex: this.currentIndex,
+        total: this.total,
+        visible: this.visible,
+        bias: this.bias,
+        dir: this.dir,
+        side: 'left'
+      })
     },
     rightIndices () {
-      let n = (this.visible - 1) / 2
-
-      n = (this.bias.toLowerCase() === 'right' ? Math.ceil(n) : Math.floor(n))
-      const indices = []
-
-      for (let m = 1; m <= n; m++) {
-        indices.push((this.dir === 'ltr')
-            ? (this.currentIndex - m) % (this.total)
-            : (this.currentIndex + m) % (this.total))
-      }
-
-      return indices
+      return getSideIndices({
+        currentIndex: this.currentIndex,
+        total: this.total,
+        visible: this.visible,
+        bias: this.bias,
+        dir: this.dir,
+        side: 'right'
+      })
     },
     leftOutIndex () {
-      let n = (this.visible - 1) / 2
-
-      n = (this.bias.toLowerCase() === 'left' ? Math.ceil(n) : Math.floor(n))
-      n++
-
-      if (this.dir === 'ltr') {
-        return ((this.total - this.currentIndex - n) <= 0)
-            ? (-parseInt(this.total - this.currentIndex - n))
-            : (this.currentIndex + n)
-      } else {
-        return (this.currentIndex - n)
-      }
+      return getOutIndex({
+        currentIndex: this.currentIndex,
+        total: this.total,
+        visible: this.visible,
+        bias: this.bias,
+        dir: this.dir,
+        side: 'left'
+      })
     },
     rightOutIndex () {
-      let n = (this.visible - 1) / 2
-
-      n = (this.bias.toLowerCase() === 'right' ? Math.ceil(n) : Math.floor(n))
-      n++
-
-      if (this.dir === 'ltr') {
-        return (this.currentIndex - n)
-      } else {
-        return ((this.total - this.currentIndex - n) <= 0)
-            ? (-parseInt(this.total - this.currentIndex - n, 10))
-            : (this.currentIndex + n)
-      }
+      return getOutIndex({
+        currentIndex: this.currentIndex,
+        total: this.total,
+        visible: this.visible,
+        bias: this.bias,
+        dir: this.dir,
+        side: 'right'
+      })
     }
   },
   methods: {
@@ -271,10 +277,7 @@ export default {
     goSlide (index) {
       if (this.total <= 0) return
 
-      const targetIndex = parseInt(index, 10)
-      this.currentIndex = (!Number.isFinite(targetIndex) || targetIndex < 0 || targetIndex >= this.total)
-        ? 0
-        : targetIndex
+      this.currentIndex = getSafeIndex(index, this.total)
 
       if (this.isLastSlide) {
         if (this.onLastSlide !== noop) {
@@ -473,13 +476,10 @@ export default {
      * @return {Number} Number of slides
      */
     getSlideCount () {
-      if (this.$slots.default !== undefined) {
-        return this.$slots.default.filter((value) => {
-          return value.tag !== void 0
-        }).length
-      }
+      const defaultSlot = this.$slots.default
+      if (!defaultSlot) return 0
 
-      return 0
+      return countSlides(defaultSlot())
     },
     /**
      * Calculate slide with and keep defined aspect ratio
@@ -499,8 +499,7 @@ export default {
       }
 
       if (firstRun || this.currentIndex >= this.total) {
-        const startIndex = Math.max(0, parseInt(this.startIndex, 10) || 0)
-        this.currentIndex = startIndex > this.total - 1 ? this.total - 1 : startIndex
+        this.currentIndex = getStartIndex(this.startIndex, this.total)
       }
     },
     computeData (firstRun) {
@@ -529,7 +528,7 @@ export default {
     }
   },
 
-  beforeDestroy () {
+  beforeUnmount () {
     if (isBrowser) {
       this.detachMutationObserver()
       this.removeInteractionListeners()
