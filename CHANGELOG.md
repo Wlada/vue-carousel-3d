@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The project follows [Se
 
 ## [Unreleased]
 
+### Added
+
+- Native Vue 3 beta (`2.0.0-beta.1`) with `vue@^3.5.0` as a peer dependency.
+- Interactive playground and a versioned Vue 2 demo in the documentation.
+
+### Changed
+
+- Extracted the carousel core as preparation for the Vue 3 migration.
+
 ## [1.1.0] - 2026-08-06
 
 ### Added
