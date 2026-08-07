@@ -88,6 +88,11 @@ jobs:
   vue-compatibility:
     name: Vue ${{ matrix.vue }} package smoke test
     runs-on: ubuntu-latest
+    # Vue 2 is maintained on maintenance/vue2 only; the Vue 3 line
+    # (master, next/vue3) publishes with a `vue ^3.5.0` peer dependency,
+    # so the Vue 2 smoke test applies to the maintenance branch and PRs
+    # targeting it.
+    if: github.ref == 'refs/heads/maintenance/vue2' || github.base_ref == 'maintenance/vue2'
     strategy:
       fail-fast: false
       matrix:
