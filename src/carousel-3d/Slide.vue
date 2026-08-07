@@ -14,14 +14,17 @@
                 type: Number
             }
         },
+        inject: ['carousel'],
         data () {
             return {
-                parent: this.$parent,
                 styles: {},
                 zIndex: 999
             }
         },
         computed: {
+            parent () {
+                return this.carousel
+            },
             isCurrent () {
                 return this.index === this.parent.currentIndex
             },

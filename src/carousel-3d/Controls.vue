@@ -50,9 +50,10 @@ export default {
       default: '&rsaquo;'
     }
   },
-  data () {
-    return {
-      parent: this.$parent
+  inject: ['carousel'],
+  computed: {
+    parent () {
+      return this.carousel
     }
   }
 }

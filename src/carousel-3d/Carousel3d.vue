@@ -11,6 +11,13 @@
 </template>
 
 <script>
+import {
+  getOutIndex,
+  getSafeIndex,
+  getSideIndices,
+  getStartIndex,
+  getVisibleSlideCount
+} from '@/carousel-3d/core/carousel.js'
 import autoplay from '@/carousel-3d/mixins/autoplay.js'
 import Controls from '@/carousel-3d/Controls.vue'
 
@@ -23,6 +30,11 @@ export default {
   name: 'carousel3d',
   components: {
     Controls
+  },
+  provide () {
+    return {
+      carousel: this
+    }
   },
   props: {
     count: {
@@ -183,68 +195,50 @@ export default {
       return this.slideWidth / ar
     },
     visible () {
-      const v = (this.display > this.total) ? this.total : this.display
-      return v
+      return getVisibleSlideCount(this.display, this.total)
     },
     hasHiddenSlides () {
       return this.total > this.visible
     },
     leftIndices () {
-      let n = (this.visible - 1) / 2
-
-      n = (this.bias.toLowerCase() === 'left' ? Math.ceil(n) : Math.floor(n))
-
-      const indices = []
-
-      for (let m = 1; m <= n; m++) {
-        indices.push((this.dir === 'ltr')
-            ? (this.currentIndex + m) % (this.total)
-            : (this.currentIndex - m) % (this.total))
-      }
-
-      return indices
+      return getSideIndices({
+        currentIndex: this.currentIndex,
+        total: this.total,
+        visible: this.visible,
+        bias: this.bias,
+        dir: this.dir,
+        side: 'left'
+      })
     },
     rightIndices () {
-      let n = (this.visible - 1) / 2
-
-      n = (this.bias.toLowerCase() === 'right' ? Math.ceil(n) : Math.floor(n))
-      const indices = []
-
-      for (let m = 1; m <= n; m++) {
-        indices.push((this.dir === 'ltr')
-            ? (this.currentIndex - m) % (this.total)
-            : (this.currentIndex + m) % (this.total))
-      }
-
-      return indices
+      return getSideIndices({
+        currentIndex: this.currentIndex,
+        total: this.total,
+        visible: this.visible,
+        bias: this.bias,
+        dir: this.dir,
+        side: 'right'
+      })
     },
     leftOutIndex () {
-      let n = (this.visible - 1) / 2
-
-      n = (this.bias.toLowerCase() === 'left' ? Math.ceil(n) : Math.floor(n))
-      n++
-
-      if (this.dir === 'ltr') {
-        return ((this.total - this.currentIndex - n) <= 0)
-            ? (-parseInt(this.total - this.currentIndex - n))
-            : (this.currentIndex + n)
-      } else {
-        return (this.currentIndex - n)
-      }
+      return getOutIndex({
+        currentIndex: this.currentIndex,
+        total: this.total,
+        visible: this.visible,
+        bias: this.bias,
+        dir: this.dir,
+        side: 'left'
+      })
     },
     rightOutIndex () {
-      let n = (this.visible - 1) / 2
-
-      n = (this.bias.toLowerCase() === 'right' ? Math.ceil(n) : Math.floor(n))
-      n++
-
-      if (this.dir === 'ltr') {
-        return (this.currentIndex - n)
-      } else {
-        return ((this.total - this.currentIndex - n) <= 0)
-            ? (-parseInt(this.total - this.currentIndex - n, 10))
-            : (this.currentIndex + n)
-      }
+      return getOutIndex({
+        currentIndex: this.currentIndex,
+        total: this.total,
+        visible: this.visible,
+        bias: this.bias,
+        dir: this.dir,
+        side: 'right'
+      })
     }
   },
   methods: {
@@ -271,10 +265,7 @@ export default {
     goSlide (index) {
       if (this.total <= 0) return
 
-      const targetIndex = parseInt(index, 10)
-      this.currentIndex = (!Number.isFinite(targetIndex) || targetIndex < 0 || targetIndex >= this.total)
-        ? 0
-        : targetIndex
+      this.currentIndex = getSafeIndex(index, this.total)
 
       if (this.isLastSlide) {
         if (this.onLastSlide !== noop) {
@@ -499,8 +490,7 @@ export default {
       }
 
       if (firstRun || this.currentIndex >= this.total) {
-        const startIndex = Math.max(0, parseInt(this.startIndex, 10) || 0)
-        this.currentIndex = startIndex > this.total - 1 ? this.total - 1 : startIndex
+        this.currentIndex = getStartIndex(this.startIndex, this.total)
       }
     },
     computeData (firstRun) {
