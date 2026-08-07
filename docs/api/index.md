@@ -31,6 +31,11 @@
 | `controlsNextHtml` | `String` | `&rsaquo;` | Next-control markup. |
 | `controlsWidth` | `Number \| String` | `50` | Control hit-area width. |
 | `controlsHeight` | `Number \| String` | `50` | Control hit-area height. |
+| `dots` | `Boolean` | `false` | Show navigation dots. |
+| `dotsPosition` | `String` | `bottom` | Dots position (`bottom` or `top`). |
+| `horizonOffset` | `Number \| String` | `0` | Vertical arch applied to side slides. |
+| `lazy` | `Boolean` | `false` | Render slide content only near the current slide. |
+| `beforeSlideChange` | `Function` | — | Called with `(index, fromIndex)`; return `false` to cancel navigation. |
 | `oneDirectional` | `Boolean` | `false` | Constrain side-slide calculation. |
 
 ## Slide props
@@ -46,6 +51,13 @@
 | `before-slide-change` | Current index | Immediately after navigation starts. |
 | `after-slide-change` | Current index | After `animationSpeed` elapses. |
 | `last-slide` | Last index | When navigation reaches the last slide. |
+
+## Control slots
+
+| Slot | Scope | Purpose |
+| --- | --- | --- |
+| `prev` | `{ goPrev, disabled }` | Custom previous-control content inside the native button. |
+| `next` | `{ goNext, disabled }` | Custom next-control content inside the native button. |
 
 ## Public methods
 

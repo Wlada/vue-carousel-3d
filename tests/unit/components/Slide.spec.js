@@ -72,4 +72,46 @@ describe('Slide', () => {
 
         return utils.expectToMatchSnapshot(vm)
     })
+
+    it('should apply horizonOffset to side slides', () => {
+        const vm = new Vue({
+            el: document.createElement('div'),
+            render: (h) => h(Carousel3d, { props: { horizonOffset: 20, display: 5 } }, [
+                h(Slide, { props: { index: 0 } }),
+                h(Slide, { props: { index: 1 } }),
+                h(Slide, { props: { index: 2 } }),
+                h(Slide, { props: { index: 3 } }),
+                h(Slide, { props: { index: 4 } })
+            ])
+        })
+
+        expect(vm.$el.querySelector('.right-1').style.transform).toContain('translateY(20px)')
+        expect(vm.$el.querySelector('.left-1').style.transform).toContain('translateY(20px)')
+    })
+
+    it('should render only near-current content in lazy mode', async () => {
+        const vm = new Vue({
+            el: document.createElement('div'),
+            render: (h) => h(Carousel3d, { props: { lazy: true, display: 3 } }, Array.from({ length: 20 }, (_, index) =>
+                h(Slide, {
+                    props: { index },
+                    scopedSlots: {
+                        default: () => h('div', { attrs: { 'data-testid': `content-${index}` } }, `Content ${index}`)
+                    }
+                })
+            ))
+        })
+        const carouselInstance = vm.$children[0]
+
+        expect(vm.$el.querySelector('[data-testid="content-0"]')).not.toBeNull()
+        expect(vm.$el.querySelector('[data-testid="content-5"]')).toBeNull()
+        expect(vm.$el.querySelector('[data-testid="content-19"]')).not.toBeNull()
+
+        carouselInstance.goSlide(10)
+        await Vue.nextTick()
+
+        expect(vm.$el.querySelector('[data-testid="content-0"]')).toBeNull()
+        expect(vm.$el.querySelector('[data-testid="content-6"]')).not.toBeNull()
+        expect(vm.$el.querySelector('[data-testid="content-15"]')).toBeNull()
+    })
 })
