@@ -30,4 +30,21 @@ describe('Controls', () => {
     await nextTick()
     expect(wrapper.vm.currentIndex).toBe(0)
   })
+
+  it('renders custom prev/next slot content inside the buttons', async () => {
+    const wrapper = mount(Carousel3d, {
+      props: { controlsVisible: true },
+      slots: {
+        default: () => Array.from({ length: 4 }, (_, index) => h(Slide, { index })),
+        prev: () => h('span', { 'data-testid': 'custom-prev' }, 'PREV'),
+        next: () => h('span', { 'data-testid': 'custom-next' }, 'NEXT')
+      }
+    })
+
+    expect(wrapper.get('[data-testid="custom-prev"]').text()).toBe('PREV')
+    expect(wrapper.get('[data-testid="custom-next"]').text()).toBe('NEXT')
+
+    await wrapper.get('.next').trigger('click')
+    expect(wrapper.vm.currentIndex).toBe(1)
+  })
 })

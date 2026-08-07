@@ -161,6 +161,39 @@
         </slide>
       </carousel-3d>
     </div>
+    <!-- ----------------------------------------------------------------------------------------------------- -->
+    <div class="box">
+      <h3>Navigation dots</h3>
+      <carousel-3d dots :controls-visible="true">
+        <slide v-for="(slide, i) in slides" :index="i" :key="i">
+          <img :src="slide.src">
+        </slide>
+      </carousel-3d>
+    </div>
+    <!-- ----------------------------------------------------------------------------------------------------- -->
+    <div class="box">
+      <h3>Custom control slots</h3>
+      <carousel-3d :controls-visible="true">
+        <template #prev="{ disabled }">
+          <span :class="{ 'is-disabled': disabled }" aria-hidden="true">&larr;</span>
+        </template>
+        <template #next="{ disabled }">
+          <span :class="{ 'is-disabled': disabled }" aria-hidden="true">&rarr;</span>
+        </template>
+        <slide v-for="(slide, i) in slides" :index="i" :key="i">
+          <img :src="slide.src">
+        </slide>
+      </carousel-3d>
+    </div>
+    <!-- ----------------------------------------------------------------------------------------------------- -->
+    <div class="box">
+      <h3>Lazy slide content</h3>
+      <carousel-3d lazy :display="3" :count="manySlides.length" :controls-visible="true">
+        <slide v-for="(slide, i) in manySlides" :index="i" :key="i">
+          <img :src="slide.src">
+        </slide>
+      </carousel-3d>
+    </div>
   </div>
 </template>
 
@@ -231,6 +264,10 @@ export default {
   data () {
     return {
       slides: slides,
+      manySlides: Array.from({ length: 20 }, (_, i) => ({
+        ...slides[i % slides.length],
+        title: `Slide ${i + 1}`
+      })),
       slideCount: 10
     }
   },

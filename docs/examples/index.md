@@ -50,3 +50,49 @@ These recipes use the Vue 3 package. The live panel is self-contained and does n
   Open slide 4
 </button>
 ```
+
+## Navigation dots
+
+```vue
+<carousel-3d dots controls-visible>
+  <slide v-for="(item, index) in items" :key="item.id" :index="index">
+    {{ item.title }}
+  </slide>
+</carousel-3d>
+```
+
+## Custom controls
+
+```vue
+<carousel-3d controls-visible>
+  <template #prev>
+    <span aria-hidden="true">&larr;</span>
+  </template>
+  <template #next>
+    <span aria-hidden="true">&rarr;</span>
+  </template>
+  <slide v-for="(item, index) in items" :key="item.id" :index="index">
+    {{ item.title }}
+  </slide>
+</carousel-3d>
+```
+
+## Guarding slide changes
+
+```vue
+<carousel-3d :before-slide-change="(index) => index !== 3">
+  <slide v-for="(item, index) in items" :key="item.id" :index="index">
+    {{ item.title }}
+  </slide>
+</carousel-3d>
+```
+
+## Lazy slide content
+
+```vue
+<carousel-3d lazy :display="3" :count="items.length">
+  <slide v-for="(item, index) in items" :key="item.id" :index="index">
+    <img :src="item.image" :alt="item.title">
+  </slide>
+</carousel-3d>
+```
