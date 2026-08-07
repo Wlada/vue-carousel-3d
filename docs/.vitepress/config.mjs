@@ -21,6 +21,7 @@ export default defineConfig({
     nav: [
       { text: 'Guide', link: '/guide/' },
       { text: 'Examples', link: '/examples/' },
+      { text: 'Playground', link: '/playground/' },
       { text: 'API', link: '/api/' },
       { text: 'Version', items: [
         { text: 'Vue 3 · package v2 beta', link: '/' },
@@ -35,6 +36,7 @@ export default defineConfig({
           items: [
             { text: 'Overview', link: '/v1/' },
             { text: 'Installation', link: '/v1/guide/' },
+            { text: 'Live demo', link: '/v1/#live-demo' },
             { text: 'Examples', link: '/v1/examples/' },
             { text: 'API reference', link: '/v1/api/' },
             { text: 'Maintenance policy', link: '/v1/guide/versioning' }
@@ -47,6 +49,7 @@ export default defineConfig({
           items: [
             { text: 'Overview', link: '/' },
             { text: 'Installation', link: '/guide/' },
+            { text: 'Playground', link: '/playground/' },
             { text: 'Compatibility policy', link: '/guide/versioning' }
           ]
         },

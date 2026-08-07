@@ -1,0 +1,33 @@
+[v-cloak] { display: none; }
+
+:root { color: #eaf7f2; background: #07111f; font-family: "Aptos", "Segoe UI", sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, select { font: inherit; }
+
+.v1-demo {
+  min-height: 100vh;
+  padding: 18px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(125, 226, 182, .04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 226, 182, .04) 1px, transparent 1px),
+    #07111f;
+  background-size: 24px 24px;
+}
+
+header { display: flex; align-items: center; justify-content: space-between; max-width: 980px; margin: 0 auto; padding-bottom: 12px; border-bottom: 1px solid rgba(125, 226, 182, .25); }
+header p { margin: 0; color: #7de2b6; font: 11px "Cascadia Code", monospace; letter-spacing: .13em; }
+header strong { font: italic 20px Georgia, serif; }
+.carousel-3d-container { margin: 20px auto 26px; }
+.v1-card { position: relative; display: flex; height: 100%; padding: 22px; flex-direction: column; justify-content: flex-end; overflow: hidden; background: linear-gradient(135deg, hsl(var(--hue), 62%, 25%), #091721 74%); color: #f4fffa; }
+.v1-card::after { content: ""; position: absolute; inset: 14px; border: 1px solid hsl(var(--hue), 82%, 78%, .3); }
+.v1-card span { margin-bottom: auto; color: hsl(var(--hue), 82%, 78%); font: 11px "Cascadia Code", monospace; letter-spacing: .12em; }
+.v1-card h1 { margin: 0; font: italic 700 35px/.9 Georgia, serif; }
+.v1-card p { margin: 8px 0 0; color: rgba(244, 255, 250, .72); font-size: 12px; }
+.v1-controls { display: flex; max-width: 980px; margin: auto; padding: 15px; flex-wrap: wrap; align-items: center; gap: 14px; border: 1px solid rgba(125, 226, 182, .24); background: rgba(8, 27, 38, .86); color: #d6ede3; font-size: 13px; }
+.v1-controls label { display: flex; align-items: center; gap: 6px; }
+.v1-controls input[type="range"] { accent-color: #52dca5; }
+.v1-controls button { padding: 6px 9px; border: 1px solid rgba(125, 226, 182, .45); color: #eaf7f2; background: rgba(20, 105, 79, .52); cursor: pointer; }
+.v1-controls button:disabled { opacity: .4; cursor: not-allowed; }
+@media (max-width: 600px) { .v1-demo { padding: 12px; } header { align-items: flex-start; gap: 8px; flex-direction: column; } .carousel-3d-container { transform: scale(.78); transform-origin: center; margin: -16px auto; } }

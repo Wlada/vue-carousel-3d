@@ -128,6 +128,22 @@ body {
   background: #0c1928;
 }
 
+.lab-shell {
+  margin: 20px 0 42px;
+  overflow: hidden;
+  border: 1px solid rgba(66, 184, 131, .36);
+  background: #07111f;
+  box-shadow: 0 28px 80px rgba(4, 13, 23, .24);
+}
+
+.lab-frame {
+  display: block;
+  width: 100%;
+  height: 1800px;
+  border: 0;
+  background: #07111f;
+}
+
 .api-table table {
   display: table;
   width: 100%;
@@ -142,6 +158,7 @@ body {
 
 @media (max-width: 640px) {
   .demo-frame { height: 460px; }
+  .lab-frame { height: 2600px; }
   .VPHero .name { font-size: 48px !important; }
 }
 

@@ -39,8 +39,11 @@
     "test:coverage": "vitest run --coverage",
     "test:browser": "playwright test",
     "docs:demo": "vite build --config docs/demo/vite.config.mjs",
-    "docs:dev": "pnpm docs:demo && vitepress dev docs",
-    "docs:build": "pnpm docs:demo && vitepress build docs",
+    "docs:playground": "vite build --config docs/playground/vite.config.mjs",
+    "docs:v1-demo": "vite build --config docs/v1-demo/vite.config.mjs",
+    "docs:assets": "pnpm docs:demo && pnpm docs:playground && pnpm docs:v1-demo",
+    "docs:dev": "pnpm docs:assets && vitepress dev docs",
+    "docs:build": "pnpm docs:assets && vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "pack:check": "pnpm pack --dry-run",
     "smoke:exports": "node --input-type=module -e \"const p=await import('vue-carousel-3d');if(!p.Carousel3d||!p.Slide||!p.default)process.exit(1)\" && node -e \"const p=require('vue-carousel-3d');if(!p.Carousel3d||!p.Slide||!p.default)process.exit(1)\" && node -e \"const p=require('vue-carousel-3d/dist/carousel-3d.common');if(!p.Carousel3d||!p.Slide||!p.default)process.exit(1)\""

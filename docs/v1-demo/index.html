@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Carousel 3D · Vue 2 demo</title>
+    <script src="https://unpkg.com/vue@2.7.16/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/vue-carousel-3d@1.0.1/dist/carousel-3d.umd.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <main class="v1-demo" v-cloak>
+        <header>
+          <p>VUE 2 / PACKAGE v1.0.1</p>
+          <strong>Maintained reference build</strong>
+        </header>
+        <carousel-3d
+          :controls-visible="controlsVisible"
+          :count="slides.length"
+          :dir="dir"
+          :display="display"
+          :height="height"
+          :loop="loop"
+          :perspective="perspective"
+          :space="space"
+          :width="width"
+        >
+          <slide v-for="(slide, index) in slides" :key="slide.id" :index="index">
+            <article class="v1-card" :style="{ '--hue': slide.hue }">
+              <span>{{ String(index + 1).padStart(2, '0') }}</span>
+              <h1>{{ slide.title }}</h1>
+              <p>Vue 2 component instance</p>
+            </article>
+          </slide>
+        </carousel-3d>
+        <section class="v1-controls" aria-label="Vue 2 demo controls">
+          <label>Visible <input v-model.number="display" type="range" min="1" :max="slides.length"></label>
+          <label>Perspective <input v-model.number="perspective" type="range" min="0" max="60"></label>
+          <label>Spacing <input v-model.number="space" type="range" min="0" max="240" step="10"></label>
+          <label><input v-model="loop" type="checkbox"> Infinite loop</label>
+          <label><input v-model="controlsVisible" type="checkbox"> Controls</label>
+          <label>Direction <select v-model="dir"><option value="rtl">RTL</option><option value="ltr">LTR</option></select></label>
+          <div>
+            <button @click="addSlide">Add plane</button>
+            <button :disabled="slides.length <= 1" @click="removeSlide">Remove plane</button>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

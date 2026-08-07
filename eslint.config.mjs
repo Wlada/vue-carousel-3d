@@ -22,7 +22,7 @@ export default [
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
   {
-    files: ['src/**/*.{js,vue}', 'tests/**/*.{js,cjs}', 'docs/demo/**/*.js', '*.config.mjs'],
+    files: ['src/**/*.{js,vue}', 'tests/**/*.{js,cjs}', 'docs/**/*.js', '*.config.mjs'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
