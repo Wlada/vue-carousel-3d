@@ -79,6 +79,38 @@ describe('Carousel3d', () => {
     expect(wrapper.vm.currentIndex).toBe(0)
   })
 
+  it('renders navigation dots and navigates on click', async () => {
+    const wrapper = mountCarousel({ dots: true }, 5)
+    const dots = wrapper.findAll('.carousel-3d-dot')
+
+    expect(dots).toHaveLength(5)
+    expect(dots[0].attributes('aria-current')).toBe('true')
+
+    await dots[3].trigger('click')
+    expect(wrapper.vm.currentIndex).toBe(3)
+    expect(dots[3].attributes('aria-current')).toBe('true')
+  })
+
+  it('lets beforeSlideChange cancel navigation', async () => {
+    const wrapper = mountCarousel({
+      beforeSlideChange: () => false
+    })
+
+    wrapper.vm.goNext()
+    expect(wrapper.vm.currentIndex).toBe(0)
+    expect(wrapper.emitted('before-slide-change')).toBeUndefined()
+
+    await wrapper.setProps({
+      beforeSlideChange: (index) => index !== 2
+    })
+
+    wrapper.vm.goSlide(2)
+    expect(wrapper.vm.currentIndex).toBe(0)
+
+    wrapper.vm.goSlide(1)
+    expect(wrapper.vm.currentIndex).toBe(1)
+  })
+
   it('cleans up autoplay when unmounted', () => {
     const wrapper = mountCarousel({ autoplay: true, autoplayHoverPause: false })
 

@@ -2,7 +2,7 @@
 	<div class="carousel-3d-slide" :style="slideStyle" :class="computedClasses" @click="goTo()"
        role="group" aria-roledescription="slide" :aria-hidden="String(!isCurrent)"
        :aria-label="slideAriaLabel">
-		<slot :index="index" :isCurrent="isCurrent" :leftIndex="leftIndex" :rightIndex="rightIndex"/>
+		<slot v-if="shouldRenderContent" :index="index" :isCurrent="isCurrent" :leftIndex="leftIndex" :rightIndex="rightIndex"/>
 	</div>
 </template>
 
@@ -27,6 +27,15 @@
             },
             isCurrent () {
                 return this.index === this.parent.currentIndex
+            },
+            shouldRenderContent () {
+                if (!this.parent.lazy) return true
+
+                const distance = Math.abs(this.index - this.parent.currentIndex)
+                const circularDistance = Math.min(distance, this.parent.total - distance)
+                const margin = Math.max(this.parent.visible + 1, 3)
+
+                return circularDistance <= margin
             },
             slideAriaLabel () {
                 return Number.isInteger(this.index) ? `${this.index + 1} of ${this.parent.total}` : undefined
@@ -100,11 +109,12 @@
                 const leftRemain = (this.parent.space === 'auto')
                     ? parseInt((i + 1) * (this.parent.width / 1.5), 10)
                     : parseInt((i + 1) * (this.parent.space), 10)
+                const horizon = this.parent.horizonOffset ? parseInt(this.parent.horizonOffset, 10) * (i + 1) : 0
                 const transform = (positive)
                     ? 'translateX(' + (leftRemain) + 'px) translateZ(-' + z + 'px) ' +
-                    'rotateY(-' + y + 'deg)'
+                    'rotateY(-' + y + 'deg)' + (horizon ? ' translateY(' + horizon + 'px)' : '')
                     : 'translateX(-' + (leftRemain) + 'px) translateZ(-' + z + 'px) ' +
-                    'rotateY(' + y + 'deg)'
+                    'rotateY(' + y + 'deg)' + (horizon ? ' translateY(' + horizon + 'px)' : '')
                 const top = this.parent.space === 'auto' ? 0 : parseInt((i + 1) * (this.parent.space))
 
                 return {

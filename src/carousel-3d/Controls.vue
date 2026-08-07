@@ -5,14 +5,18 @@
        :disabled="!parent.isPrevPossible"
        :style="`width: ${width}px; height: ${height}px; line-height: ${height}px;`"
        aria-label="Previous slide">
-      <span v-html="prevHtml"></span>
+      <slot name="prev" :go-prev="parent.goPrev" :disabled="!parent.isPrevPossible">
+        <span v-html="prevHtml"></span>
+      </slot>
     </button>
     <button type="button" class="next" @click="parent.goNext()"
        :class="{ disabled: !parent.isNextPossible }"
        :disabled="!parent.isNextPossible"
        :style="`width: ${width}px; height: ${height}px; line-height: ${height}px;`"
        aria-label="Next slide">
-      <span v-html="nextHtml"></span>
+      <slot name="next" :go-next="parent.goNext" :disabled="!parent.isNextPossible">
+        <span v-html="nextHtml"></span>
+      </slot>
     </button>
   </div>
 </template>

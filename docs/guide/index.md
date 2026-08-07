@@ -82,6 +82,85 @@ Prefer Vue events over the deprecated callback props:
 </slide>
 ```
 
+## Navigation dots
+
+```vue
+<carousel-3d dots dots-position="bottom" controls-visible>
+  <slide v-for="(item, index) in items" :key="item.id" :index="index">
+    {{ item.title }}
+  </slide>
+</carousel-3d>
+```
+
+Dots are keyboard-accessible buttons that jump straight to a slide. The active dot
+is marked with `aria-current`.
+
+## Custom controls
+
+The default controls render `controls-prev-html` / `controls-next-html` inside native
+buttons. Use the `prev` and `next` slots to render your own markup (SVG icons,
+components, …) instead:
+
+```vue
+<carousel-3d controls-visible>
+  <template #prev="{ disabled }">
+    <svg :class="{ 'is-disabled': disabled }" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" />
+    </svg>
+  </template>
+  <template #next="{ disabled }">
+    <svg :class="{ 'is-disabled': disabled }" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" />
+    </svg>
+  </template>
+  <!-- slides -->
+</carousel-3d>
+```
+
+The slot content is rendered inside the existing accessible button, so the click
+handler, `disabled` state and `aria-label` are preserved.
+
+## Guarding slide changes
+
+Pass a `beforeSlideChange` function to block navigation. It receives the target
+index and the current index; returning `false` cancels the move. The guard applies
+to arrows, swipes, dots and programmatic navigation:
+
+```vue
+<carousel-3d :before-slide-change="canChange">
+  <!-- slides -->
+</carousel-3d>
+
+<script>
+export default {
+  methods: {
+    canChange (index, fromIndex) {
+      return index !== 4 // e.g. validation before leaving a slide
+    }
+  }
+}
+</script>
+```
+
+`@before-slide-change` still fires as a notification for every allowed navigation.
+
+## Lazy slide content
+
+For image-heavy carousels, `lazy` renders each slide's slot content only when the
+slide is close to the current one (a small margin beyond `display`). The slide
+placeholder stays in place, so the layout does not shift:
+
+```vue
+<carousel-3d lazy :display="3" :count="items.length">
+  <slide v-for="(item, index) in items" :key="item.id" :index="index">
+    <img :src="item.image" :alt="item.title">
+  </slide>
+</carousel-3d>
+```
+
+Lazy rendering is disabled by default and is intended for client-side rendering;
+server-rendered carousels should keep it off so content is available in the HTML.
+
 ## Accessibility baseline
 
 - Give each carousel a useful `aria-label` when the page contains more than one.

@@ -6,7 +6,15 @@
       <slot></slot>
     </div>
     <controls v-if="controlsVisible" :next-html="controlsNextHtml" :prev-html="controlsPrevHtml"
-              :width="controlsWidth" :height="controlsHeight"></controls>
+              :width="controlsWidth" :height="controlsHeight">
+      <template #prev="slotProps">
+        <slot name="prev" v-bind="slotProps"></slot>
+      </template>
+      <template #next="slotProps">
+        <slot name="next" v-bind="slotProps"></slot>
+      </template>
+    </controls>
+    <dots v-if="dots" :position="dotsPosition"></dots>
   </div>
 </template>
 
@@ -21,6 +29,7 @@ import {
 } from '@/carousel-3d/core/carousel.js'
 import autoplay from '@/carousel-3d/mixins/autoplay.js'
 import Controls from '@/carousel-3d/Controls.vue'
+import Dots from '@/carousel-3d/Dots.vue'
 
 const isBrowser = typeof window !== 'undefined'
 
@@ -40,7 +49,8 @@ function countSlides (nodes) {
 export default {
   name: 'carousel3d',
   components: {
-    Controls
+    Controls,
+    Dots
   },
   emits: ['after-slide-change', 'before-slide-change', 'last-slide'],
   provide () {
@@ -128,6 +138,26 @@ export default {
     controlsHeight: {
       type: [String, Number],
       default: 50
+    },
+    dots: {
+      type: Boolean,
+      default: false
+    },
+    dotsPosition: {
+      type: String,
+      default: 'bottom'
+    },
+    horizonOffset: {
+      type: [Number, String],
+      default: 0
+    },
+    lazy: {
+      type: Boolean,
+      default: false
+    },
+    beforeSlideChange: {
+      type: Function,
+      default: noop
     },
     onLastSlide: {
       type: Function,
@@ -277,7 +307,13 @@ export default {
     goSlide (index) {
       if (this.total <= 0) return
 
-      this.currentIndex = getSafeIndex(index, this.total)
+      const targetIndex = getSafeIndex(index, this.total)
+
+      if (this.beforeSlideChange !== noop && this.beforeSlideChange(targetIndex, this.currentIndex) === false) {
+        return
+      }
+
+      this.currentIndex = targetIndex
 
       if (this.isLastSlide) {
         if (this.onLastSlide !== noop) {
