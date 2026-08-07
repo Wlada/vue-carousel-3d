@@ -16,11 +16,11 @@ A compact, flexible and touch-friendly 3D carousel for Vue 3.
 ## Installation
 
 ```sh
-pnpm add vue-carousel-3d@next
+pnpm add vue-carousel-3d
 ```
 
 ```sh
-npm install vue-carousel-3d@next
+npm install vue-carousel-3d
 ```
 
 ## Local registration
