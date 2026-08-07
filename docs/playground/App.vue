@@ -22,6 +22,8 @@
         :dir="settings.dir"
         :disable3d="settings.disable3d"
         :display="settings.display"
+        :dots="settings.dots"
+        :dots-position="settings.dotsPosition"
         :height="settings.height"
         :inverse-scaling="settings.inverseScaling"
         :loop="settings.loop"
@@ -86,6 +88,11 @@
         <p class="control-group__title">Behavior</p>
         <label class="switch"><input v-model="settings.loop" type="checkbox"><span>Infinite loop</span></label>
         <label class="switch"><input v-model="settings.controlsVisible" type="checkbox"><span>Navigation controls</span></label>
+        <label class="switch"><input v-model="settings.dots" type="checkbox"><span>Navigation dots</span></label>
+        <label class="select-label">
+          <span>Dots position</span>
+          <select v-model="settings.dotsPosition"><option value="bottom">Bottom</option><option value="top">Top</option></select>
+        </label>
         <label class="switch"><input v-model="settings.autoplay" type="checkbox"><span>Autoplay</span></label>
         <label class="switch"><input v-model="settings.disable3d" type="checkbox"><span>Flat mode</span></label>
         <label class="select-label">
@@ -119,6 +126,8 @@ const defaultSettings = {
   dir: 'rtl',
   disable3d: false,
   display: 5,
+  dots: true,
+  dotsPosition: 'bottom',
   height: 220,
   inverseScaling: 300,
   loop: true,
@@ -171,6 +180,8 @@ export default {
         loop: this.settings.loop,
         dir: this.settings.dir,
         controlsVisible: this.settings.controlsVisible,
+        dots: this.settings.dots,
+        dotsPosition: this.settings.dotsPosition,
         autoplay: this.settings.autoplay,
         disable3d: this.settings.disable3d
       }
