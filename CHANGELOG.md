@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. The project follows [Semantic Versioning](https://semver.org/).
 
+## [1.2.1] - 2026-08-08
+
+### Docs
+
+- Refresh the published README with a feature list, common patterns and an API overview.
+
 ## [1.2.0] - 2026-08-07
 
 ### Added
@@ -45,5 +51,6 @@ All notable changes to this project are documented here. The project follows [Se
 - Previous published Vue 2 release.
 
 [1.2.0]: https://github.com/wlada/vue-carousel-3d/compare/v1.1.0...v1.2.0
+[1.2.1]: https://github.com/wlada/vue-carousel-3d/compare/v1.2.0...v1.2.1
 [1.1.0]: https://github.com/wlada/vue-carousel-3d/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/wlada/vue-carousel-3d/releases/tag/v1.0.1
