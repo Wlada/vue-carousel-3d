@@ -32,7 +32,7 @@ features:
 The preview below is built from the same source as the package. Use the controls, arrow keys, swipe, or click a side card.
 
 <div class="demo-shell" data-track="LIVE / VUE 3">
-  <iframe class="demo-frame" src="./demo/" title="Interactive Vue Carousel 3D demo"></iframe>
+  <iframe class="demo-frame" src="./demo/index.html" title="Interactive Vue Carousel 3D demo"></iframe>
 </div>
 
 ## Small surface, deliberate behavior

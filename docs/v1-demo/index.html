@@ -10,41 +10,104 @@
   <body>
     <div id="app">
       <main class="v1-demo" v-cloak>
-        <header>
-          <p>VUE 2 / PACKAGE v1.0.1</p>
-          <strong>Maintained reference build</strong>
-        </header>
-        <carousel-3d
-          :controls-visible="controlsVisible"
-          :count="slides.length"
-          :dir="dir"
-          :display="display"
-          :height="height"
-          :loop="loop"
-          :perspective="perspective"
-          :space="space"
-          :width="width"
-        >
-          <slide v-for="(slide, index) in slides" :key="slide.id" :index="index">
-            <article class="v1-card" :style="{ '--hue': slide.hue }">
-              <span>{{ String(index + 1).padStart(2, '0') }}</span>
-              <h1>{{ slide.title }}</h1>
-              <p>Vue 2 component instance</p>
-            </article>
-          </slide>
-        </carousel-3d>
-        <section class="v1-controls" aria-label="Vue 2 demo controls">
-          <label>Visible <input v-model.number="display" type="range" min="1" :max="slides.length"></label>
-          <label>Perspective <input v-model.number="perspective" type="range" min="0" max="60"></label>
-          <label>Spacing <input v-model.number="space" type="range" min="0" max="240" step="10"></label>
-          <label><input v-model="loop" type="checkbox"> Infinite loop</label>
-          <label><input v-model="controlsVisible" type="checkbox"> Controls</label>
-          <label>Direction <select v-model="dir"><option value="rtl">RTL</option><option value="ltr">LTR</option></select></label>
+        <header class="v1-header">
           <div>
-            <button @click="addSlide">Add plane</button>
-            <button :disabled="slides.length <= 1" @click="removeSlide">Remove plane</button>
+            <p class="v1-header__eyebrow">ARCHIVED TRACK · VUE 2 · PACKAGE v1.0.1</p>
+            <h1 class="v1-header__title">Depth, the way it used to be.</h1>
+          </div>
+          <div class="v1-header__status" aria-live="polite">
+            <span>ACTIVE PLANE</span>
+            <strong>{{ String(active + 1).padStart(2, '0') }} / {{ String(slides.length).padStart(2, '0') }}</strong>
+          </div>
+        </header>
+
+        <section class="v1-stage" aria-label="Carousel preview">
+          <carousel-3d
+            ref="carousel"
+            :animation-speed="animationSpeed"
+            :autoplay="autoplay"
+            :autoplay-timeout="autoplayTimeout"
+            :autoplay-hover-pause="true"
+            :border="border"
+            :clickable="true"
+            :controls-visible="controlsVisible"
+            :count="slides.length"
+            :dir="dir"
+            :display="display"
+            :height="height"
+            :inverse-scaling="inverseScaling"
+            :loop="loop"
+            :perspective="perspective"
+            :space="space"
+            :width="width"
+            aria-label="Vue 2 carousel playground"
+            @before-slide-change="active = $event"
+          >
+            <slide v-for="(slide, index) in slides" :key="slide.id" :index="index">
+              <article class="v1-card" :style="{ '--hue': slide.hue }">
+                <span class="v1-card__index">{{ String(index + 1).padStart(2, '0') }}</span>
+                <h2 class="v1-card__title">{{ slide.title }}</h2>
+                <p class="v1-card__caption">Vue 2 component instance</p>
+              </article>
+            </slide>
+          </carousel-3d>
+        </section>
+
+        <section class="v1-controls" aria-label="Vue 2 demo controls">
+          <div class="v1-group">
+            <p class="v1-group__title">Geometry</p>
+            <label class="v1-field">
+              <span>Visible planes <output>{{ display }}</output></span>
+              <input v-model.number="display" type="range" min="1" :max="slides.length" step="1">
+            </label>
+            <label class="v1-field">
+              <span>Perspective <output>{{ perspective }}°</output></span>
+              <input v-model.number="perspective" type="range" min="0" max="60" step="1">
+            </label>
+            <label class="v1-field">
+              <span>Spacing <output>{{ space }}px</output></span>
+              <input v-model.number="space" type="range" min="0" max="240" step="10">
+            </label>
+            <label class="v1-field">
+              <span>Depth <output>{{ inverseScaling }}px</output></span>
+              <input v-model.number="inverseScaling" type="range" min="0" max="500" step="25">
+            </label>
+          </div>
+
+          <div class="v1-group">
+            <p class="v1-group__title">Dimensions &amp; motion</p>
+            <label class="v1-field">
+              <span>Width <output>{{ width }}px</output></span>
+              <input v-model.number="width" type="range" min="200" max="420" step="10">
+            </label>
+            <label class="v1-field">
+              <span>Height <output>{{ height }}px</output></span>
+              <input v-model.number="height" type="range" min="150" max="300" step="10">
+            </label>
+            <label class="v1-field">
+              <span>Animation <output>{{ animationSpeed }}ms</output></span>
+              <input v-model.number="animationSpeed" type="range" min="0" max="1200" step="50">
+            </label>
+          </div>
+
+          <div class="v1-group v1-group--switches">
+            <p class="v1-group__title">Behavior</p>
+            <label class="v1-switch"><input v-model="loop" type="checkbox"><span>Infinite loop</span></label>
+            <label class="v1-switch"><input v-model="controlsVisible" type="checkbox"><span>Navigation controls</span></label>
+            <label class="v1-switch"><input v-model="autoplay" type="checkbox"><span>Autoplay</span></label>
+            <label class="v1-select">
+              <span>Direction</span>
+              <select v-model="dir"><option value="rtl">RTL</option><option value="ltr">LTR</option></select>
+            </label>
+            <div class="v1-actions">
+              <button type="button" @click="addSlide">Add plane</button>
+              <button type="button" :disabled="slides.length <= 1" @click="removeSlide">Remove plane</button>
+              <button type="button" class="v1-button--ghost" @click="reset">Reset</button>
+            </div>
           </div>
         </section>
+
+        <footer class="v1-footer">TAB TO FOCUS · ← → TO NAVIGATE · SWIPE OR USE CONTROLS</footer>
       </main>
     </div>
     <script type="module" src="./main.js"></script>

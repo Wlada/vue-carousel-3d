@@ -25,7 +25,7 @@ This is the documentation track for applications that continue to use Vue 2. It 
 ## Live demo
 
 <div id="live-demo" class="demo-shell" data-track="LIVE / VUE 2 / PACKAGE v1">
-  <iframe class="demo-frame" src="./demo/" title="Vue 2 Vue Carousel 3D demo"></iframe>
+  <iframe class="demo-frame" src="./demo/index.html" title="Vue 2 Vue Carousel 3D demo"></iframe>
 </div>
 
 The archive demo loads Vue `2.7.16` and the published `vue-carousel-3d@1.0.1` package directly, so it demonstrates the actual Vue 2 package rather than the Vue 3 preview.
