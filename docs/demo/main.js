@@ -41,6 +41,7 @@ new Vue({
         props: {
           controlsVisible: true,
           display: 5,
+          dots: true,
           width: 280,
           height: 210,
           perspective: 32,
