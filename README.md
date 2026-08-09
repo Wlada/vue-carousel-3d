@@ -1,5 +1,7 @@
 # Vue Carousel 3D
 
+English | [简体中文](README.zh-CN.md)
+
 [![CI](https://github.com/wlada/vue-carousel-3d/actions/workflows/ci.yml/badge.svg)](https://github.com/wlada/vue-carousel-3d/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/vue-carousel-3d.svg)](https://www.npmjs.com/package/vue-carousel-3d)
 [![npm downloads](https://img.shields.io/npm/dm/vue-carousel-3d.svg)](https://www.npmjs.com/package/vue-carousel-3d)
