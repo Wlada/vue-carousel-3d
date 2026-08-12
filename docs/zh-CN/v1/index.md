@@ -1,5 +1,7 @@
 ---
 layout: home
+title: Vue Carousel 3D v1 – Vue 2 轮播组件文档
+description: Vue Carousel 3D 的 Vue 2.6 和 2.7 维护文档，适用于软件包 v1。
 
 hero:
   name: "Vue Carousel 3D"

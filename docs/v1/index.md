@@ -1,5 +1,7 @@
 ---
 layout: home
+title: Vue Carousel 3D v1 – Vue 2 Carousel Documentation
+description: Maintenance documentation for Vue Carousel 3D package v1, supporting Vue 2.6 and 2.7 applications.
 
 hero:
   name: "Vue Carousel 3D"
