@@ -1,4 +1,77 @@
+import { URL } from 'node:url'
 import { defineConfig } from 'vitepress'
+
+const siteUrl = 'https://wlada.github.io/vue-carousel-3d/'
+const englishRoutes = new Set([
+  'index.md',
+  'api/index.md',
+  'examples/index.md',
+  'guide/index.md',
+  'guide/versioning.md',
+  'playground/index.md',
+  'v1/index.md',
+  'v1/api/index.md',
+  'v1/examples/index.md',
+  'v1/guide/index.md',
+  'v1/guide/versioning.md',
+  'vue3/index.md'
+])
+
+function toPageUrl (relativePath) {
+  const route = relativePath
+    .replace(/index\.md$/, '')
+    .replace(/\.md$/, '')
+
+  return new URL(route, siteUrl).href
+}
+
+function getAlternateLinks (relativePath) {
+  const isChinese = relativePath.startsWith('zh-CN/')
+  const englishPath = isChinese ? relativePath.slice('zh-CN/'.length) : relativePath
+
+  if (!englishRoutes.has(englishPath)) return []
+
+  const chinesePath = `zh-CN/${englishPath}`
+
+  return [
+    ['link', { rel: 'alternate', hreflang: 'en', href: toPageUrl(englishPath) }],
+    ['link', { rel: 'alternate', hreflang: 'zh-CN', href: toPageUrl(chinesePath) }],
+    ['link', { rel: 'alternate', hreflang: 'x-default', href: toPageUrl(englishPath) }]
+  ]
+}
+
+function getHomeStructuredData (isChinese) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Vue Carousel 3D',
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Web',
+    softwareVersion: '2.1.1',
+    description: isChinese
+      ? '适用于 Vue 3 的轻量、支持触摸的 3D 轮播组件，具有无障碍控件、SSR 支持和 TypeScript 声明。'
+      : 'Lightweight, touch-friendly 3D carousel component for Vue 3 with accessible controls, SSR support and TypeScript declarations.',
+    url: siteUrl,
+    downloadUrl: 'https://www.npmjs.com/package/vue-carousel-3d',
+    codeRepository: 'https://github.com/wlada/vue-carousel-3d',
+    license: 'https://opensource.org/license/mit'
+  }
+}
+
+function getDescription (relativePath) {
+  const isChinese = relativePath.startsWith('zh-CN/')
+  const route = isChinese ? relativePath.slice('zh-CN/'.length) : relativePath
+
+  if (route.startsWith('v1/')) {
+    return isChinese
+      ? 'Vue Carousel 3D 的 Vue 2.6 和 2.7 维护文档，适用于软件包 v1。'
+      : 'Maintenance documentation for Vue Carousel 3D package v1, supporting Vue 2.6 and 2.7 applications.'
+  }
+
+  return isChinese
+    ? '适用于 Vue 3 的轻量、支持触摸的 3D 轮播组件，具有无障碍控件、SSR 支持和 TypeScript 声明。'
+    : 'Lightweight, touch-friendly 3D carousel component for Vue 3 with accessible controls, SSR support and TypeScript declarations.'
+}
 
 // Simplified Chinese UI strings for the built-in local search.
 const zhSearchTranslations = {
@@ -65,16 +138,35 @@ function zhCjkTokenizer (text) {
 
 export default defineConfig({
   lang: 'en-US',
-  title: 'Vue Carousel 3D',
-  description: 'A flexible, touch-friendly 3D carousel for Vue 3.',
+  title: 'Vue Carousel 3D – 3D Carousel Component for Vue 3',
+  description: 'Lightweight, touch-friendly 3D carousel component for Vue 3 with accessible controls, SSR support and TypeScript declarations.',
   base: '/vue-carousel-3d/',
   cleanUrls: true,
   head: [
     ['link', { rel: 'icon', href: '/vue-carousel-3d/mark.svg', type: 'image/svg+xml' }],
     ['meta', { name: 'theme-color', content: '#07111f' }],
-    ['meta', { property: 'og:title', content: 'Vue Carousel 3D' }],
-    ['meta', { property: 'og:description', content: 'Depth, motion and accessible controls for Vue 3.' }]
+    ['meta', { name: 'google-site-verification', content: 'j7k2Vin9D3fJKlxZqkcEQK-o4eH3yJbJHwi3u2-KHwQ' }]
   ],
+  transformHead: ({ pageData }) => {
+    const { relativePath } = pageData
+    const isChinese = relativePath.startsWith('zh-CN/')
+    const isHomePage = relativePath === 'index.md' || relativePath === 'zh-CN/index.md'
+    const description = getDescription(relativePath)
+    const title = isChinese
+      ? 'Vue Carousel 3D – Vue 3 的 3D 轮播组件'
+      : 'Vue Carousel 3D – 3D Carousel Component for Vue 3'
+
+    return [
+      ['link', { rel: 'canonical', href: toPageUrl(relativePath) }],
+      ...getAlternateLinks(relativePath),
+      ['meta', { property: 'og:url', content: toPageUrl(relativePath) }],
+      ['meta', { property: 'og:title', content: title }],
+      ['meta', { property: 'og:description', content: description }],
+      ...(isHomePage
+        ? [['script', { type: 'application/ld+json' }, JSON.stringify(getHomeStructuredData(isChinese))]]
+        : [])
+    ]
+  },
   markdown: {
     lineNumbers: true
   },
@@ -148,11 +240,8 @@ export default defineConfig({
     'zh-CN': {
       label: '简体中文',
       lang: 'zh-CN',
-      title: 'Vue Carousel 3D',
-      description: '为 Vue 3 打造的灵活、支持触摸的 3D 轮播组件。',
-      head: [
-        ['meta', { property: 'og:description', content: '为 Vue 3 打造，具备纵深、动效与无障碍控件的轮播组件。' }]
-      ],
+      title: 'Vue Carousel 3D – Vue 3 的 3D 轮播组件',
+      description: '适用于 Vue 3 的轻量、支持触摸的 3D 轮播组件，具有无障碍控件、SSR 支持和 TypeScript 声明。',
       themeConfig: {
         siteTitle: 'Carousel 3D',
         outline: { label: '本页目录' },
